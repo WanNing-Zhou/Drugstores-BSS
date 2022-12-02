@@ -1,8 +1,8 @@
 package com.drugstore.bean;
 
-import javax.lang.model.element.NestingKind;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author 周万宁
@@ -11,19 +11,19 @@ import java.sql.Date;
  * @description 销售信息表
  */
 public class MarketingInfo {
-    private String ID;
-    private String drugID;
-    private String drugName;
-    private BigDecimal unitPrice;
-    private int number;
-    private BigDecimal amount;
-    private String customerID;
-    private Date time;
+    private int ID; //销售ID
+    private String drugID; //药品ID
+    private String drugName;//药品名称
+    private BigDecimal unitPrice;//单价
+    private int number;//数量
+    private BigDecimal amount;//总金额
+    private int customerID;//顾客ID
+    private Timestamp time;//时间
 
     public MarketingInfo() {
     }
 
-    public MarketingInfo(String ID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, String customerID, Date time) {
+    public MarketingInfo(int ID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerID, Timestamp time) {
         this.ID = ID;
         this.drugID = drugID;
         this.drugName = drugName;
@@ -34,11 +34,11 @@ public class MarketingInfo {
         this.time = time;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -82,26 +82,26 @@ public class MarketingInfo {
         this.amount = amount;
     }
 
-    public String getCustomerID() {
+    public int getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
     @Override
     public String toString() {
         return "MarketingInfo{" +
-                "ID='" + ID + '\'' +
+                "ID=" + ID +
                 ", drugID='" + drugID + '\'' +
                 ", drugName='" + drugName + '\'' +
                 ", unitPrice=" + unitPrice +

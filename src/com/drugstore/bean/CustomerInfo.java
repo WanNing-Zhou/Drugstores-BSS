@@ -7,25 +7,26 @@ package com.drugstore.bean;
  * @create 2022-12-18:33
  */
 public class CustomerInfo {
-    private String ID;
-    private String name;
-    private String phone;
 
-    public CustomerInfo(String ID, String name, String phone) {
-        this.ID = ID;
-        this.name = name;
-        this.phone = phone;
-    }
+    private int customerID;//顾客ID
+    private String name;//顾客姓名
+    private String phone;//顾客电话
 
     public CustomerInfo() {
     }
 
-    public String getID() {
-        return ID;
+    public CustomerInfo(int customerID, String name, String phone) {
+        this.customerID = customerID;
+        this.name = name;
+        this.phone = phone;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public String getName() {
@@ -47,7 +48,7 @@ public class CustomerInfo {
     @Override
     public String toString() {
         return "CustomerInfo{" +
-                "ID='" + ID + '\'' +
+                "customerID=" + customerID +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';

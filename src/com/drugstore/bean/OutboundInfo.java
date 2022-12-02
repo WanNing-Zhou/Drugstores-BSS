@@ -1,46 +1,33 @@
 package com.drugstore.bean;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
  * @author 周万宁
- * className StorageEntryInfo
- * create 2022/12/1-19:23
- * description 入库信息表
+ * @className OutboundInfo
+ * @create 2022/12/2-15:19
+ * @description 出库信息表
  */
-public class StorageEntryInfo {
-
-    private int storageEntryID; //入库ID
-    private String drugID;  //药品ID
-    private String drugName;    //药品名称
+public class OutboundInfo {
+    private int outboundID;//出库ID
+    private String drugID;//药品ID
+    private String drugName;//药品名称
     private BigDecimal purchasingPrice;//进价
     private int number;//数量
     private BigDecimal amount;//总金额
     private int supplierID;//供应商ID
     private Timestamp time;//时间
 
-    public StorageEntryInfo() {
+    public OutboundInfo() {
     }
 
-    public StorageEntryInfo(int storageEntryID, String drugID, String drugName, BigDecimal purchasingPrice, int number, BigDecimal amount, int supplierID, Timestamp time) {
-        this.storageEntryID = storageEntryID;
-        this.drugID = drugID;
-        this.drugName = drugName;
-        this.purchasingPrice = purchasingPrice;
-        this.number = number;
-        this.amount = amount;
-        this.supplierID = supplierID;
-        this.time = time;
+    public int getOutboundID() {
+        return outboundID;
     }
 
-    public int getStorageEntryID() {
-        return storageEntryID;
-    }
-
-    public void setStorageEntryID(int storageEntryID) {
-        this.storageEntryID = storageEntryID;
+    public void setOutboundID(int outboundID) {
+        this.outboundID = outboundID;
     }
 
     public String getDrugID() {
@@ -95,21 +82,32 @@ public class StorageEntryInfo {
         return time;
     }
 
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
-        return "StorageEntryInfo{" +
-                "storageEntryID=" + storageEntryID +
+        return "OutboundInfo{" +
+                "outboundID=" + outboundID +
                 ", drugID='" + drugID + '\'' +
                 ", drugName='" + drugName + '\'' +
                 ", purchasingPrice=" + purchasingPrice +
                 ", number=" + number +
                 ", amount=" + amount +
-                ", supplierID='" + supplierID + '\'' +
+                ", supplierID=" + supplierID +
                 ", time=" + time +
                 '}';
     }
 
-    public void setTime(Timestamp time) {
+    public OutboundInfo(int outboundID, String drugID, String drugName, BigDecimal purchasingPrice, int number, BigDecimal amount, int supplierID, Timestamp time) {
+        this.outboundID = outboundID;
+        this.drugID = drugID;
+        this.drugName = drugName;
+        this.purchasingPrice = purchasingPrice;
+        this.number = number;
+        this.amount = amount;
+        this.supplierID = supplierID;
         this.time = time;
     }
 }

@@ -9,29 +9,29 @@ import java.math.BigInteger;
  * @create 2022-12-18:39
  */
 public class SupplierInfo {
-    private String ID;
-    private String name;
-    private String agent;
-    private String  phone;
-    private String address;
+    private int supplierID; //供应商ID
+    private String name;//供应商名字
+    private String agent;//代理人
+    private String  phone;//供应商电话
+    private String address;//供应商地址
 
     public SupplierInfo() {
     }
 
-    public SupplierInfo(String ID, String name, String agent, String phone, String address) {
-        this.ID = ID;
+    public SupplierInfo(int supplierID, String name, String agent, String phone, String address) {
+        this.supplierID = supplierID;
         this.name = name;
         this.agent = agent;
         this.phone = phone;
         this.address = address;
     }
 
-    public String getID() {
-        return ID;
+    public int getSupplierID() {
+        return supplierID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setSupplierID(int supplierID) {
+        this.supplierID = supplierID;
     }
 
     public String getName() {
@@ -62,18 +62,18 @@ public class SupplierInfo {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     @Override
     public String toString() {
         return "SupplierInfo{" +
-                "ID='" + ID + '\'' +
+                "supplierID=" + supplierID +
                 ", name='" + name + '\'' +
                 ", agent='" + agent + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

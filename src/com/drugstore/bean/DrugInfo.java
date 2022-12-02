@@ -10,25 +10,27 @@ import java.sql.Date;
  * @description 药品信息表
  */
 public class DrugInfo {
-    private String ID;
-    private String name;
-    private String supplierID;
-    private String placeOfOrigion;
-    private String categoryOfOwnership;
-    private BigDecimal purchasingPrice;
-    private BigDecimal unitPrice;
-    private int inventory;
-    private Date dateOfProduction;
-    private Date dateOfExpiry;
+    private String drugID;//药品ID
+    private String name;//药品名称
+    private String supplierID;//供应商ID
+    private String batchNumber;//生产批号
+    private String placeOfOrigion;//产地
+    private String categoryOfOwnership;//所属类别
+    private BigDecimal purchasingPrice;//进价
+    private BigDecimal unitPrice;//单价
+    private int inventory;//库存
+    private Date dateOfProduction;//生产日期
+    private Date dateOfExpiry;//有效期至
 
 
     public DrugInfo() {
     }
 
-    public DrugInfo(String ID, String name, String supplierID, String placeOfOrigion, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
-        this.ID = ID;
+    public DrugInfo(String drugID, String name, String supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
+        this.drugID = drugID;
         this.name = name;
         this.supplierID = supplierID;
+        this.batchNumber = batchNumber;
         this.placeOfOrigion = placeOfOrigion;
         this.categoryOfOwnership = categoryOfOwnership;
         this.purchasingPrice = purchasingPrice;
@@ -38,12 +40,12 @@ public class DrugInfo {
         this.dateOfExpiry = dateOfExpiry;
     }
 
-    public String getID() {
-        return ID;
+    public String getDrugID() {
+        return drugID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setDrugID(String drugID) {
+        this.drugID = drugID;
     }
 
     public String getName() {
@@ -60,6 +62,14 @@ public class DrugInfo {
 
     public void setSupplierID(String supplierID) {
         this.supplierID = supplierID;
+    }
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
     }
 
     public String getPlaceOfOrigion() {
@@ -121,9 +131,10 @@ public class DrugInfo {
     @Override
     public String toString() {
         return "DrugInfo{" +
-                "ID='" + ID + '\'' +
+                "drugID='" + drugID + '\'' +
                 ", name='" + name + '\'' +
                 ", supplierID='" + supplierID + '\'' +
+                ", batchNumber='" + batchNumber + '\'' +
                 ", placeOfOrigion='" + placeOfOrigion + '\'' +
                 ", categoryOfOwnership='" + categoryOfOwnership + '\'' +
                 ", purchasingPrice=" + purchasingPrice +
@@ -133,4 +144,6 @@ public class DrugInfo {
                 ", dateOfExpiry=" + dateOfExpiry +
                 '}';
     }
+
+
 }

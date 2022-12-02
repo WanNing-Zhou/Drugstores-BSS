@@ -77,7 +77,6 @@ public class JDBCUtils {
         }
     }
 
-
     //如果返回null说明获取联连接失败
     public  static Connection getConnection()throws Exception{
 

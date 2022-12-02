@@ -7,31 +7,29 @@ package com.drugstore.bean;
  * @create 2022-12-18:36
  */
 public class EmployeesInfo {
-    private String ID;
-    private String name;
-    private String password;
-    private String position;
-    private String phone;
+    private int employeesID;//员工ID
+    private String name;//员工姓名
+    private String password;//员工密码
+    private String position;//员工职位
+    private String phone;//员工电话
 
     public EmployeesInfo() {
     }
 
-    public EmployeesInfo(String ID, String name, String password, String position, String phone) {
-        this.ID = ID;
+    public EmployeesInfo(int employeesID, String name, String password, String position, String phone) {
+        this.employeesID = employeesID;
         this.name = name;
         this.password = password;
         this.position = position;
         this.phone = phone;
     }
 
-
-
-    public String getID() {
-        return ID;
+    public int getEmployeesID() {
+        return employeesID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setEmployeesID(int employeesID) {
+        this.employeesID = employeesID;
     }
 
     public String getName() {
@@ -69,12 +67,11 @@ public class EmployeesInfo {
     @Override
     public String toString() {
         return "EmployeesInfo{" +
-                "ID='" + ID + '\'' +
+                "employeesID=" + employeesID +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", position='" + position + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
     }
-
 }

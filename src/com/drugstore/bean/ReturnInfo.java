@@ -2,6 +2,7 @@ package com.drugstore.bean;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author 周万宁
@@ -10,20 +11,21 @@ import java.sql.Date;
  * @description 退货信息表
  */
 public class ReturnInfo {
-    private String ID;
-    private String drugID;
-    private String drugName;
-    private BigDecimal unitPrice;
-    private int number;
-    private BigDecimal amount;
-    private String customerId;
-    private Date time;
+    private int returnID; //退货信息ID
+    private String drugID; //药品ID
+    private String drugName;//药品名称
+    private BigDecimal unitPrice;//单价
+    private int number;//数量
+    private BigDecimal amount;//总金额
+    private int customerId;//顾客ID
+    private Timestamp time;//退货时间
 
     public ReturnInfo() {
+
     }
 
-    public ReturnInfo(String ID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, String customerId, Date time) {
-        this.ID = ID;
+    public ReturnInfo(int returnID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerId, Timestamp time) {
+        this.returnID = returnID;
         this.drugID = drugID;
         this.drugName = drugName;
         this.unitPrice = unitPrice;
@@ -33,12 +35,12 @@ public class ReturnInfo {
         this.time = time;
     }
 
-    public String getID() {
-        return ID;
+    public int getReturnID() {
+        return returnID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setReturnID(int returnID) {
+        this.returnID = returnID;
     }
 
     public String getDrugID() {
@@ -81,26 +83,26 @@ public class ReturnInfo {
         this.amount = amount;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
     @Override
     public String toString() {
         return "ReturnInfo{" +
-                "ID='" + ID + '\'' +
+                "returnID=" + returnID +
                 ", drugID='" + drugID + '\'' +
                 ", drugName='" + drugName + '\'' +
                 ", unitPrice=" + unitPrice +
