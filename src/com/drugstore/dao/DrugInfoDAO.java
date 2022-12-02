@@ -38,7 +38,7 @@ public interface DrugInfoDAO {
      * @Param [conn, id]
      * @return DrugInfo
      **/
-    DrugInfo getByID(Connection conn,String id);
+    List<DrugInfo> getByID(Connection conn,String id);
 
     /**
      * @Author 周万宁

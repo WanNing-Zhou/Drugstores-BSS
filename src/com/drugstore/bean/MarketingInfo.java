@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  * @description 销售信息表
  */
 public class MarketingInfo {
-    private int ID; //销售ID
+    private int marketingID; //销售ID
     private String drugID; //药品ID
     private String drugName;//药品名称
     private BigDecimal unitPrice;//单价
@@ -23,8 +23,8 @@ public class MarketingInfo {
     public MarketingInfo() {
     }
 
-    public MarketingInfo(int ID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerID, Timestamp time) {
-        this.ID = ID;
+    public MarketingInfo(int marketingID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerID, Timestamp time) {
+        this.marketingID = marketingID;
         this.drugID = drugID;
         this.drugName = drugName;
         this.unitPrice = unitPrice;
@@ -34,12 +34,12 @@ public class MarketingInfo {
         this.time = time;
     }
 
-    public int getID() {
-        return ID;
+    public int getMarketingID() {
+        return marketingID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setMarketingID(int marketingID) {
+        this.marketingID = marketingID;
     }
 
     public String getDrugID() {
@@ -101,13 +101,13 @@ public class MarketingInfo {
     @Override
     public String toString() {
         return "MarketingInfo{" +
-                "ID=" + ID +
+                "marketingID=" + marketingID +
                 ", drugID='" + drugID + '\'' +
                 ", drugName='" + drugName + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", number=" + number +
                 ", amount=" + amount +
-                ", customerID='" + customerID + '\'' +
+                ", customerID=" + customerID +
                 ", time=" + time +
                 '}';
     }

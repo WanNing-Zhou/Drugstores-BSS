@@ -13,6 +13,7 @@ public class CustomerInfo {
     private String phone;//顾客电话
 
     public CustomerInfo() {
+
     }
 
     public CustomerInfo(int customerID, String name, String phone) {

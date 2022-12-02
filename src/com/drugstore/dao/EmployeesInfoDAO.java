@@ -42,7 +42,7 @@ public interface EmployeesInfoDAO {
      * @Param [connection, id]
      * @return int
      **/
-    EmployeesInfo getByID(Connection connection,String id);
+    EmployeesInfo getByID(Connection conn,String id);
 
     /**
      * @MethodName getAllEmpl
@@ -52,7 +52,7 @@ public interface EmployeesInfoDAO {
      * @Param [connection]
      * @return java.util.List<com.drugstore.dao.EmployeesInfo>
      **/
-    List<EmployeesInfo> getAllEmpl(Connection connection);
+    List<EmployeesInfo> getAllEmpl(Connection conn);
 
 
     /**
