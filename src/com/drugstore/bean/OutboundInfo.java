@@ -19,7 +19,18 @@ public class OutboundInfo {
     private int supplierID;//供应商ID
     private Timestamp time;//时间
 
+
     public OutboundInfo() {
+    }
+
+    public OutboundInfo(String drugID, String drugName, BigDecimal purchasingPrice, int number, BigDecimal amount, int supplierID, Timestamp time) {
+        this.drugID = drugID;
+        this.drugName = drugName;
+        this.purchasingPrice = purchasingPrice;
+        this.number = number;
+        this.amount = amount;
+        this.supplierID = supplierID;
+        this.time = time;
     }
 
     public int getOutboundID() {

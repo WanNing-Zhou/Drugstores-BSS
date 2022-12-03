@@ -23,6 +23,16 @@ public class MarketingInfo {
     public MarketingInfo() {
     }
 
+    public MarketingInfo(String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerID, Timestamp time) {
+        this.drugID = drugID;
+        this.drugName = drugName;
+        this.unitPrice = unitPrice;
+        this.number = number;
+        this.amount = amount;
+        this.customerID = customerID;
+        this.time = time;
+    }
+
     public MarketingInfo(int marketingID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerID, Timestamp time) {
         this.marketingID = marketingID;
         this.drugID = drugID;

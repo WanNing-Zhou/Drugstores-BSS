@@ -16,6 +16,11 @@ public class CustomerInfo {
 
     }
 
+    public CustomerInfo(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
     public CustomerInfo(int customerID, String name, String phone) {
         this.customerID = customerID;
         this.name = name;

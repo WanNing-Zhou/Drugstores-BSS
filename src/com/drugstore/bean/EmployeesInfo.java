@@ -16,6 +16,13 @@ public class EmployeesInfo {
     public EmployeesInfo() {
     }
 
+    public EmployeesInfo(String name, String password, String position, String phone) {
+        this.name = name;
+        this.password = password;
+        this.position = position;
+        this.phone = phone;
+    }
+
     public EmployeesInfo(int employeesID, String name, String password, String position, String phone) {
         this.employeesID = employeesID;
         this.name = name;

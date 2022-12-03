@@ -12,7 +12,7 @@ import java.sql.Date;
 public class DrugInfo {
     private String drugID;//药品ID
     private String name;//药品名称
-    private String supplierID;//供应商ID
+    private int supplierID;//供应商ID
     private String batchNumber;//生产批号
     private String placeOfOrigion;//产地
     private String categoryOfOwnership;//所属类别
@@ -26,7 +26,7 @@ public class DrugInfo {
     public DrugInfo() {
     }
 
-    public DrugInfo(String drugID, String name, String supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
+    public DrugInfo(String drugID, String name, int supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
         this.drugID = drugID;
         this.name = name;
         this.supplierID = supplierID;
@@ -56,11 +56,11 @@ public class DrugInfo {
         this.name = name;
     }
 
-    public String getSupplierID() {
+    public int getSupplierID() {
         return supplierID;
     }
 
-    public void setSupplierID(String supplierID) {
+    public void setSupplierID(int supplierID) {
         this.supplierID = supplierID;
     }
 

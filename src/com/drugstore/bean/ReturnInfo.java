@@ -24,6 +24,16 @@ public class ReturnInfo {
 
     }
 
+    public ReturnInfo(String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerId, Timestamp time) {
+        this.drugID = drugID;
+        this.drugName = drugName;
+        this.unitPrice = unitPrice;
+        this.number = number;
+        this.amount = amount;
+        this.customerId = customerId;
+        this.time = time;
+    }
+
     public ReturnInfo(int returnID, String drugID, String drugName, BigDecimal unitPrice, int number, BigDecimal amount, int customerId, Timestamp time) {
         this.returnID = returnID;
         this.drugID = drugID;

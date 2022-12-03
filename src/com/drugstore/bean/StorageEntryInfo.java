@@ -24,6 +24,16 @@ public class StorageEntryInfo {
     public StorageEntryInfo() {
     }
 
+    public StorageEntryInfo(String drugID, String drugName, BigDecimal purchasingPrice, int number, BigDecimal amount, int supplierID, Timestamp time) {
+        this.drugID = drugID;
+        this.drugName = drugName;
+        this.purchasingPrice = purchasingPrice;
+        this.number = number;
+        this.amount = amount;
+        this.supplierID = supplierID;
+        this.time = time;
+    }
+
     public StorageEntryInfo(int storageEntryID, String drugID, String drugName, BigDecimal purchasingPrice, int number, BigDecimal amount, int supplierID, Timestamp time) {
         this.storageEntryID = storageEntryID;
         this.drugID = drugID;

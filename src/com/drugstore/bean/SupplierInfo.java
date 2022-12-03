@@ -18,6 +18,13 @@ public class SupplierInfo {
     public SupplierInfo() {
     }
 
+    public SupplierInfo(String name, String agent, String phone, String address) {
+        this.name = name;
+        this.agent = agent;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public SupplierInfo(int supplierID, String name, String agent, String phone, String address) {
         this.supplierID = supplierID;
         this.name = name;

@@ -22,6 +22,14 @@ public class FinancialRevenueAndExpenditureInfo {
     public FinancialRevenueAndExpenditureInfo() {
     }
 
+    public FinancialRevenueAndExpenditureInfo(int billID, String typeOfBill, BigDecimal profitAndLoss, BigDecimal currentAmount, Timestamp time) {
+        this.billID = billID;
+        this.typeOfBill = typeOfBill;
+        this.profitAndLoss = profitAndLoss;
+        this.currentAmount = currentAmount;
+        this.time = time;
+    }
+
     public FinancialRevenueAndExpenditureInfo(int financialRevenueAndExpenditureID, int billID, String typeOfBill, BigDecimal profitAndLoss, BigDecimal currentAmount, Timestamp time) {
         this.financialRevenueAndExpenditureID = financialRevenueAndExpenditureID;
         this.billID = billID;
