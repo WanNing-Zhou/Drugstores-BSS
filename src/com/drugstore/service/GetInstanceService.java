@@ -11,7 +11,7 @@ import java.util.List;
  * @create 2022/12/3-17:24
  * @description 信息查询操作接口,用于返回实例
  */
-public interface getInstanceService {
+public interface GetInstanceService {
     /**
      * @MethodName getCustomerInfo
      * @Author 周万宁
