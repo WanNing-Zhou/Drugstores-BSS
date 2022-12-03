@@ -47,7 +47,7 @@ public interface AddInfoService {
      * @Param [billID, typeOfBill, profitAndLoss, currentAmount, time]
      * @return boolean
      **/
-    boolean addFinancialRevenueAndExpenditureInfo(String billID, String typeOfBill, String profitAndLoss, String currentAmount, String time);
+    boolean addFinancialRevenueAndExpenditureInfo(String billID, String typeOfBill, String profitAndLoss, String currentAmount);
 
     /**
      * @MethodName addMarketingInfo
@@ -57,7 +57,7 @@ public interface AddInfoService {
      * @Param [drugID, unitPrice, number, amount, customerID, time]
      * @return boolean
      **/
-    boolean addMarketingInfo(String drugID,String unitPrice,String number,String amount,String customerID,String time);
+    boolean addMarketingInfo(String drugID,String drugName,String unitPrice,String number,String customerID);
 
     /**
      * @MethodName addOutboundInfo
@@ -67,7 +67,7 @@ public interface AddInfoService {
      * @Param [drugID, drugName, purchasingPrice, number, amount, supplierID, time]
      * @return boolean
      **/
-    boolean addOutboundInfo(String drugID,String drugName,String purchasingPrice,String number,String amount,String supplierID,String time);
+    boolean addOutboundInfo(String drugID,String drugName,String purchasingPrice,String number,String supplierID);
 
     /**
      * @MethodName addOutboundInfo
@@ -77,7 +77,7 @@ public interface AddInfoService {
      * @Param [drugID, drugName, purchasingPrice, number, amount, supplierID, time]
      * @return boolean
      **/
-    boolean addReturnInfo(String drugID,String drugName,String purchasingPrice,String number,String amount,String customerId,String time);
+    boolean addReturnInfo(String drugID,String drugName,String purchasingPrice,String number,String customerId);
 
     /**
      * @MethodName addStorageEntryInfo
@@ -87,7 +87,7 @@ public interface AddInfoService {
      * @Param [drugID, drugName, purchasingPrice, number, amount, supplierID, time]
      * @return boolean
      **/
-    boolean addStorageEntryInfo(String drugID,String drugName,String purchasingPrice,String number,String amount,String supplierID,String time);
+    boolean addStorageEntryInfo(String drugID,String drugName,String purchasingPrice,String number,String supplierID);
 
     /**
      * @MethodName addSupplierInfo
