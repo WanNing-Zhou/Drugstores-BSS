@@ -46,7 +46,7 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
      * @return com.drugstore.bean.OutboundInfo
      **/
     @Override
-    public OutboundInfo getByID(Connection conn, String id) {
+    public OutboundInfo getByID(Connection conn, int id) {
         String sql = "select * from  outboundinfo where outboundID = ?";
         OutboundInfo instance = getInstance(conn, sql, id);
         return instance;

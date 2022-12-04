@@ -54,7 +54,7 @@ public class StorageEntryInfoDAOImpl extends BaseDAO<StorageEntryInfo> implement
      **/
 
     @Override
-    public StorageEntryInfo getByID(Connection conn, String id) {
+    public StorageEntryInfo getByID(Connection conn, int id) {
         String sql = "select * from  storageentryinfo where supplierID = ?";
         StorageEntryInfo instance = getInstance(conn, sql, id);
         return instance;

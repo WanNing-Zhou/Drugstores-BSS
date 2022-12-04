@@ -43,7 +43,7 @@ public interface MarketingInfoDAO {
      * @return com.drugstore.bean.MarketingInfo
      **/
 
-    MarketingInfo getByID(Connection conn,String id);
+    MarketingInfo getByID(Connection conn,int id);
 
 
 

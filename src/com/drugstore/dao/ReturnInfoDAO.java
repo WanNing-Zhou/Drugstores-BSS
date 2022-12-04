@@ -41,7 +41,7 @@ public interface ReturnInfoDAO {
      * @Param [conn, id]
      * @return com.drugstore.bean.ReturnInfo
      **/
-    ReturnInfo getByID(Connection conn,String id);
+    ReturnInfo getByID(Connection conn,int id);
 
 
     /**

@@ -41,7 +41,7 @@ public interface OutboundInfoDAO {
      * @Param [conn, id]
      * @return com.drugstore.bean.OutboundInfo
      **/
-    OutboundInfo getByID(Connection conn,String id);
+    OutboundInfo getByID(Connection conn,int id);
 
     /**
      * @MethodName getALLObi

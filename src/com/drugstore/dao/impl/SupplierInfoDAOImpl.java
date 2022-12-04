@@ -56,7 +56,7 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
      * @return com.drugstore.bean.SupplierInfo
      **/
     @Override
-    public SupplierInfo getByID(Connection conn, String id) {
+    public SupplierInfo getByID(Connection conn, int id) {
         String sql = "select * from  supplierinfo where supplierID = ?";
         SupplierInfo instance = getInstance(conn, sql, id);
         return instance;

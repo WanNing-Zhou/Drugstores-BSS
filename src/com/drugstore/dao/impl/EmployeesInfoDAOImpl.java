@@ -56,7 +56,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
      **/
 
     @Override
-    public EmployeesInfo getByID(Connection conn, String id) {
+    public EmployeesInfo getByID(Connection conn, int id) {
         String sql = "select employeesID,name,position,phone from employeesinfo where employeesID = ?";
         EmployeesInfo instance = getInstance(conn, sql, id);
         return instance;

@@ -42,7 +42,7 @@ public interface EmployeesInfoDAO {
      * @Param [connection, id]
      * @return int
      **/
-    EmployeesInfo getByID(Connection conn,String id);
+    EmployeesInfo getByID(Connection conn,int id);
 
     /**
      * @MethodName getAllEmpl

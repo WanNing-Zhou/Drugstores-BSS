@@ -40,7 +40,7 @@ public class FinancialRevenueAndExpenditureInfoDAOImpl extends BaseDAO<Financial
      **/
 
     @Override
-    public FinancialRevenueAndExpenditureInfo getByID(Connection conn, String ID) {
+    public FinancialRevenueAndExpenditureInfo getByID(Connection conn, int ID) {
         String sql = "select * from financialrevenueandexpenditureinfo where financialRevenueAndExpenditureID = ?";
         FinancialRevenueAndExpenditureInfo instance = getInstance(conn, sql, ID);
         return instance;

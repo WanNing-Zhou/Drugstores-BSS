@@ -32,7 +32,7 @@ public interface FinancialRevenueAndExpenditureInfoDAO {
      * @Param [conn, ID]
      * @return com.drugstore.bean.FinancialRevenueAndExpenditureInfo
      **/
-    FinancialRevenueAndExpenditureInfo getByID(Connection conn,String ID);
+    FinancialRevenueAndExpenditureInfo getByID(Connection conn,int ID);
 
     /**
      * @MethodName getAllFre

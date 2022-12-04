@@ -53,7 +53,7 @@ public class ReturnInfoDAOImpl extends BaseDAO<ReturnInfo> implements ReturnInfo
      * @return com.drugstore.bean.ReturnInfo
      **/
     @Override
-    public ReturnInfo getByID(Connection conn, String id) {
+    public ReturnInfo getByID(Connection conn, int id) {
         String sql = "select * from  returninfo where returnID = ?";
         ReturnInfo instance = getInstance(conn, sql, id);
         return instance;

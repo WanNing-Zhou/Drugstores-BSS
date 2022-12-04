@@ -53,7 +53,7 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
      * @return com.drugstore.bean.MarketingInfo
      **/
     @Override
-    public MarketingInfo getByID(Connection conn, String id) {
+    public MarketingInfo getByID(Connection conn, int id) {
         String sql = "select * from  marketinginfo where marketingID = ?";
         MarketingInfo instance = getInstance(conn, sql, id);
         return instance;

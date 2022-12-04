@@ -41,7 +41,7 @@ public interface StorageEntryInfoDAO {
      * @Param [conn, id]
      * @return com.drugstore.bean.StorageEntryInfo
      **/
-    StorageEntryInfo getByID(Connection conn,String id);
+    StorageEntryInfo getByID(Connection conn,int id);
 
 
     /**

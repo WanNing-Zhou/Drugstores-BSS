@@ -41,7 +41,7 @@ public interface SupplierInfoDAO {
      * @Param [conn, id]
      * @return com.drugstore.bean.SupplierInfo
      **/
-    SupplierInfo getByID(Connection conn,String id);
+    SupplierInfo getByID(Connection conn,int id);
 
 
     /**
