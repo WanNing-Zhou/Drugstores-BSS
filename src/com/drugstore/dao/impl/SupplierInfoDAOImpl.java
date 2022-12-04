@@ -41,7 +41,7 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
      * @return int
      **/
     @Override
-    public int delete(Connection conn, String id) {
+    public int delete(Connection conn, int id) {
         String sql = "delete from supplierinfo where supplierID = ?";
         int num = update(conn, sql, id);
         return num;

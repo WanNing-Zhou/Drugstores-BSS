@@ -86,7 +86,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
      * @return int
      **/
     @Override
-    public int deleteByID(Connection conn, String id) {
+    public int deleteByID(Connection conn, int id) {
         String sql="delete from employeesinfo where id = ?";
         int num = update(conn,sql,id);
         return num;

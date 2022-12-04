@@ -31,7 +31,7 @@ public interface SupplierInfoDAO {
      * @Param [conn, id]
      * @return int
      **/
-    int delete(Connection conn,String id);
+    int delete(Connection conn,int id);
 
     /**
      * @MethodName getByID

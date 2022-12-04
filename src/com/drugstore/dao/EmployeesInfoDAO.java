@@ -63,7 +63,7 @@ public interface EmployeesInfoDAO {
      * @Param [conn, id]
      * @return int
      **/
-    int deleteByID(Connection conn,String id);
+    int deleteByID(Connection conn,int id);
 
     /**
      * @MethodName getByIDAndPassword
