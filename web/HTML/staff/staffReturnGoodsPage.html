@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退货管理</title>
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/c/font_3325711_mirxq8ske8b.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="headder">
+        <div class="headderLeft">
+            <i class="iconfont">&#xe616;</i>药店进销存系统
+        </div>
+        
+        <div class="headderRight">
+            <div class="managerWelcome" id="r1">你好，员工</div>
+            <div class="userId" id="r1">ID:</div>
+            <div class="exit" id="r1"><a>退出<i class="iconfont">&#xe606;</i></a></div>
+        </div>
+    </div>
+    <div id="search">
+        <div class="welcome">
+            <h2>您的身份是员工，<br>欢迎使用本系统~</h2>
+        </div>
+        <p class="search">
+        <input type="text" placeholder="在此搜索...">
+        
+        <button><span class="t" type="submit"> 搜索</span></button>
+    </p> 
+    </div>
+   
+    <div class="innerbody">
+        <!-- 左侧导航栏 -->
+        <div class="nav">
+            <ul class="ul_1">
+                <li  class="">
+                    <div>
+                       <i class="iconfont"> &#xe62e;</i><a href="../staff/staffCustomerPage.html">客户管理</a>
+                    </div>
+               </li>
+                </li>
+                <li class="">
+                   <div class="">
+                    <i class="iconfont">&#xe91b;</i><a href="../staff/staffDrugsPage.html">药品管理</a>
+                   </div>
+              </li>
+              <li class="">
+               <div class="">
+                <i class="iconfont">&#xe60b;</i><a href="../staff/staffSalePage.html">销售管理</a>
+               </div>
+                </li>
+                <li class="current">
+                   <div class="">
+                    <i class="iconfont">&#xe91d;</i><a href="../staff/staffReturnGoodsPage.html">退货管理</a>
+                   </div>
+              </li>
+              
+        </div>
+        <!-- 表单 -->
+        <div class="table">
+            <table>
+               <thead>
+                    <tr>
+                       
+                        <td>退货ID</td>
+                        <td>药品ID</td>
+                        <td>药品名称</td>
+                        <td>单价</td>
+                        <td>药品数量</td>
+                        <td>总金额</td>
+                        <td>客户ID</td>
+                        <td>退货时间</td>
+                         <!-- <td>操作</td> -->
+                        <td class="insert"><a href="../staff/staffReturnGoodsInsert.html">增加(<span>+</span>)</a></td> 
+
+                        
+                    </tr>
+               </thead>
+               <tbody>
+                   
+               </tbody>
+            </table>
+           
+            
+        </div>
+        <script>
+        // table
+        var datas=[{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        },{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        },{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        },{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        },{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        },{
+            ID:'1',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'2',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'3',
+            Name:'一二三',
+            Tel:'12345'
+        },
+        {
+            ID:'4',
+            Name:'一二三',
+            Tel:'12345'
+        }, 
+        {
+            ID:'5',
+            Name:'一二三',
+            Tel:'12345'
+        }, {
+            ID:'6',
+            Name:'一二三',
+            Tel:'12345'
+        }];
+        var tbody = document.querySelector('tbody');
+        for(var i = 0;i<datas.length;i++){
+            //创建tr
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //行里面创建单元格td
+            for(var k in datas[i]){//遍历对象
+                var td = document.createElement('td');
+                td.innerHTML=datas[i][k];//
+                //k得到的是属性名 obj[k]得到的是属性值
+                tr.appendChild(td);
+            }
+            // // 创建删除单元格
+            // var td =document.createElement('td');
+            // td.innerHTML= '<a class="del"> 删除 </a>';
+            // tr.appendChild(td);
+            // 创建编辑
+            // var td_2 = document.createElement('td');
+            // td_2.innerHTML = '<a href="../manager/customer-update.html">编辑</a>';
+            // tr.appendChild(td_2);
+            
+        }
+        //表格hover
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        for(var i = 0;i<trs.length;i++)//鼠标经过事件
+        {
+            trs[i].onmousemove = function(){
+                this.className='highlight';
+            }
+            trs[i].onmouseout = function() {
+                this.className = '';//鼠标离开
+            }
+        }
+
+        // 删除弹窗
+        // var dels = document.querySelectorAll('.del');
+        // var tbody =document.querySelector('tbody');
+        // for(var i=0;i<dels.length;i++){
+        //     dels[i].addEventListener('click',function(){
+        //         var yes = confirm('确定删除吗');
+        //         if(yes){
+        //              tbody.removeChild(this.parentNode.parentNode);
+        //             //点击a删除a所在的行 a的爸爸是单元格td 爷爷是tr 要删除tr
+        //             alert('删除成功');
+        //         }
+        //     });
+        // }
+
+
+
+        // 导航栏
+        var ul_1 = document.querySelector('.ul_1');
+        var lis = ul_1.querySelectorAll('li');
+        for(var i = 0; i<lis.length;i++){
+             //设置索引
+            lis[i].setAttribute('index',i);
+            lis[i].addEventListener('click',function(){
+                for(var i=0;i<lis.length;i++){
+                   lis[i].className='li_1';
+                }
+                this.className='current';
+             });
+           
+        }
+          //退出页面
+          var exit = document.querySelector('.exit');
+        exit.onclick = function(){
+            var yes = confirm('确认退出到登录界面吗？')
+            if(yes){
+                location.replace("../login/login.html")
+            }
+            
+        }
+
+        </script>
+</body>
+</html>

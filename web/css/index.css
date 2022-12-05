@@ -1,0 +1,178 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    list-style: none;
+    }
+
+body,
+html {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
+a{
+    text-decoration: none;
+    color:darkgrey;
+}
+.nav a{
+    color: rgb(134, 130, 165);
+}		
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot');
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+    url('iconfont.woff') format('woff'),
+    url('iconfont.ttf') format('truetype'),
+    url('iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+i.iconfont{
+    font-size: 25px;
+    color: rgb(134, 130, 165);
+}
+.headder{
+    background-color: rgb(90,152,222);
+    height: 50px;
+}
+.headderLeft{
+    font-size: 25px;
+    height: 40px;
+    line-height: 40px;
+    font-style:oblique;
+}
+.headderLeft i.iconfont{
+    color: black;
+    font-size: 35px;
+}
+.headderRight{
+    height: 10px;
+    font-size: 15px;
+    float: right;
+    position: relative;
+    top: -30px;
+    font-weight: bold;
+}
+#r1,.headderRight .iconfont,.headder a{
+    float: left;
+    padding-left: 40px;
+    color: rgb(49, 47, 47);
+}
+#r1 i{
+    position: relative;
+    top: 2px;
+    font-size: 18px;
+}
+.welcome{
+    float: left;
+    color: rgb(64, 84, 103);
+    font-size: 15px;
+}
+#search{
+    height: 90px;
+}
+.search{
+    margin: auto;
+    width: 900px;
+    height: 50px;
+    position: relative;
+    top: 20px;
+    left: 150px;
+}
+input{
+    font-size: 20px;
+    width: 700px;
+    height: 40px;
+    background-color: #eeeeee;
+    border:none;
+    border-radius:5px 0 0 5px;
+    font: bold 15px ;
+    font-style:italic;
+    
+}
+button{
+    width:100px;
+    height: 40px;
+    background-color:#d93c3c;
+    color:#fff;
+    border:none;
+    border-radius:0 5px 5px 0;
+    position: relative;
+    font-size: 15px;
+    
+
+}
+.nav{
+    font-size: 20px;
+    background-color: rgb(238,238,238);
+    float: left;
+    height: 600px;
+    width: 15%;   
+    color: rgb(142,140,155);
+    margin-right: 10px;
+    
+}
+.nav li{
+    padding: 15px;
+    
+}
+.table{
+    height: 600px;
+    overflow-y: scroll
+
+}
+table {
+    width: 1000px;
+    margin: 10px auto;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 17px;
+    height: 150px;
+    overflow-y: scroll;
+    position: relative;
+    right: 10px;
+}
+thead{
+    position:sticky;
+    top: 0px;
+}
+tbody .highlight{
+    
+    background-color: rgba(238,238,238);
+    /* color: #fff; */
+}
+td{
+    padding: 10px 20px;
+    height: 20px;
+}
+.ul_1 .current {
+    background-color: rgb(41,127,184);
+    
+}
+.current i,.current a{
+    color: #fff;
+}
+tbody tr{
+    background-color: rgba(214, 199, 199, 0.078);
+}
+thead{
+   background-color:  rgb(90,152,222); 
+}
+.insert a{
+    color: black;
+}
+.insert{
+    background-color: hsla(165, 69%, 65%, 0.694);
+}
+.insert span{
+    font-size: 25px;
+}
+.del:hover ,.exit,.t{
+    cursor: pointer;
+}

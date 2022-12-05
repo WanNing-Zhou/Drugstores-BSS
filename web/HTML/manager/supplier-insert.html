@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>供应商信息添加</title>
+	<link rel="stylesheet" href="../../css/update.css">
+</head>
+<style>
+	
+</style>
+<body>
+	<div class="headder">
+		<p>供应商信息添加</p>
+	</div>
+	<div class="out">
+		<form>
+			<div>
+				<label><span>*</span>名称：</label>
+				<div>
+					<input type="text" class="input-text" >
+				</div>
+			</div>
+			<div>
+				<label><span>*</span>代理人：</label>
+				<div>
+					<input type="text" class="input-text" >
+				</div>
+			</div>
+			<div>
+				<label><span>*</span>联系方式：</label>
+				<div>
+					<input type="text" class="input-text" >
+				</div>
+			</div>
+			<div>
+				<label><span>*</span>地址：</label>
+				<div>
+					<input type="text" class="input-text" >
+				</div>
+			</div>
+			
+			
+					
+			<div>
+				<div >
+					<button class="submit" type="submit"><i></i> 提交</button>
+					
+					<button  type="button"><a href="../manager/supplier.html">取消</a></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script>
+		// 设置input高亮
+		var form = document.querySelector('form');
+		var btns = form.querySelector('button');
+		var inputs = form.querySelectorAll('input');
+		for(var i=0;i<inputs.length;i++){
+		inputs[i].addEventListener('click',function(){
+                for(var i=0;i<inputs.length;i++){
+                   inputs[i].className='';
+                }
+                this.className='checked';
+             });
+		}
+
+		//提交弹窗
+		var sub = document.querySelector('.submit');
+		sub.addEventListener('click',function(){
+			var yes = confirm('确认提交吗？');
+			if(yes)
+			{
+				alert('提交成功');
+			}
+
+		})
+	</script>
+</body>
+</html>
