@@ -1,6 +1,5 @@
 package com.drugstore.dao.impl;
 
-import com.drugstore.bean.CustomerInfo;
 import com.drugstore.bean.DrugInfo;
 import com.drugstore.dao.BaseDAO;
 import com.drugstore.dao.DrugInfoDAO;

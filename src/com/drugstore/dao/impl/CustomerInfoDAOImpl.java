@@ -80,8 +80,6 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
         return cust;
     }
 
-
-
     /**
      * @MethodName getAllCust
      * @Author 周万宁
@@ -96,4 +94,6 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
         List<CustomerInfo> forList = getForList(conn, sql);
         return forList;
     }
+
+
 }
