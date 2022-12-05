@@ -1,4 +1,4 @@
-package com.drugstore.service.impl;
+package com.drugstore.service;
 
 /**
  * @author 周万宁

@@ -16,6 +16,7 @@ public class ServiceSingleton {
     private static DeleteService deleteService = new DeleteServiceImpl();
     private static GetInstanceService getInstanceService = new GetInstanceServiceImpl();
     private static GetForListService getForListService = new GetForListServiceImpl();
+    private static UpdateService updateService = new UpdateServiceImpl();
 
 
     //私有化构造方法
@@ -41,6 +42,8 @@ public class ServiceSingleton {
     public static GetForListService getGetForListService() {
         return getForListService;
     }
+
+    public static UpdateService getUpdateService(){return updateService;}
 
 
 }
