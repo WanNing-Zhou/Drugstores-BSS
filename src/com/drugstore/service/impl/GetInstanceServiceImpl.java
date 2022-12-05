@@ -206,6 +206,15 @@ public class GetInstanceServiceImpl implements GetInstanceService {
         return storageEntryInfo;
     }
 
+    /**
+     * @MethodName getSupplierInfo
+     * @Author 周万宁
+     * @Description 根据id获取供应商实例
+     * @Date 22:59 2022/12/4
+     * @Param [id]
+     * @return com.drugstore.bean.SupplierInfo
+     **/
+
     @Override
     public SupplierInfo getSupplierInfo(String id) {
         Connection conn = null;
