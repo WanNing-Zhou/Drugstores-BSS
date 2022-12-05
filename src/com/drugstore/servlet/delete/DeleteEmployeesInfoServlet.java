@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:38
  * @description 删除员工信息
  */
-@WebServlet("/delete/employee")
+@WebServlet("/manager/delete/employee")
 public class DeleteEmployeesInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

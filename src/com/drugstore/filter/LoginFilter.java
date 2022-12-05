@@ -14,7 +14,7 @@ import java.io.IOException;
  * @create 2022/12/5-10:35
  * @description 拦截未登录访问操作
  */
-//@WebFilter("/*")
+@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     public static String defaultUrl;
@@ -60,20 +60,30 @@ public class LoginFilter implements Filter {
         }else{
             filterChain.doFilter(request, response);
         }
-
-        if(url.indexOf("/login.action") > -1||url.indexOf("/login.html")>-1||isIgnoreType==true){
+        if(contextPath.indexOf("/login") > -1||url.indexOf("/login.html")>-1||isIgnoreType==true){
             System.out.println(url+"这是登录入口或者静态资源，放行");
             filterChain.doFilter(request, response);
         }else{
+
             String postion = (String)request.getSession().getAttribute("positon");
             if(postion==null){
                 response.sendRedirect(contextPath+"/login/login.html");
             }else if(postion=="经理"){
-                System.out.println("职位:"+postion);
-                filterChain.doFilter(request, response);
+
+                if(contextPath.indexOf("/staff/") > -1){
+                    response.getWriter().write("经理是不是被降职了??!!!");
+                }else {
+                    System.out.println("经理登录");
+                    filterChain.doFilter(request,response);
+                }
+
             }else if(postion=="员工"){
-                System.out.println("员工登录");
-                filterChain.doFilter(request,response);
+                if(contextPath.indexOf("/manager/") > -1){
+                    response.getWriter().write("抱歉,您无权访问");
+                }else {
+                    System.out.println("员工登录");
+                    filterChain.doFilter(request,response);
+                }
             }
         }
     }

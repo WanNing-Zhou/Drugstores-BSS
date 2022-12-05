@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2022/12/5-15:35
  * @description 获取所有的收支记录
  */
-@WebServlet("/all/frae")
+@WebServlet("/manager/all/frae")
 public class GetAllFinancialRevenueAndExpenditureInfoServlet extends HttpServlet {
 
     @Override

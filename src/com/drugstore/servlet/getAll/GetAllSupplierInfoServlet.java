@@ -21,7 +21,7 @@ import java.util.List;
  * @description 获取所有供应商信息
  */
 
-@WebServlet("/all/supplier")
+@WebServlet("/manager/all/supplier")
 public class GetAllSupplierInfoServlet extends HttpServlet {
 
     @Override

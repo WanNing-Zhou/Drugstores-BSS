@@ -13,7 +13,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:51
  * @description 搜索供应商信息
  */
-@WebServlet("/search/supplier")
+@WebServlet("/manager/search/supplier")
 public class GetListSupplierInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

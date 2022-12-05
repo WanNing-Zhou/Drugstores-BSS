@@ -13,7 +13,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:37
  * @description 搜索财政收支接口
  */
-@WebServlet("/search/frae")
+@WebServlet("/manager/search/frae")
 public class GetListFinancialRevenueAndExpenditureInfoServlet extends HttpServlet {
 
     @Override

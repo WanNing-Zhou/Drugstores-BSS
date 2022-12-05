@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:03
  * @description 更改药品信息接口
  */
-@WebServlet("/update/drug")
+@WebServlet("/manager/update/drug")
 public class UpdateDrugInfoServlet extends HttpServlet {
 
     @Override

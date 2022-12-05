@@ -18,7 +18,7 @@ import java.io.IOException;
  * @description 更改员工信息接口
  */
 
-@WebServlet("/update/employee")
+@WebServlet("/manager/update/employee")
 public class UpdateEmployeesInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

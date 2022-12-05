@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:33
  * @description 删除药品信息
  */
-@WebServlet("/delete/drug")
+@WebServlet("/manager/delete/drug")
 public class DeleteDrugInfoServlet extends HttpServlet {
 
     @Override

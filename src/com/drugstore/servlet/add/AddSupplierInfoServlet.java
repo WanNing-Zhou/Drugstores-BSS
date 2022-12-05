@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:22
  * @description 添加供应商接口
  */
-@WebServlet("/add/supplier")
+@WebServlet("/manager/add/supplier")
 public class AddSupplierInfoServlet extends HttpServlet {
 
     @Override

@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:13
  * @description 添加出库信息
  */
-@WebServlet("/add/outbound")
+@WebServlet("/manager/add/outbound")
 public class AddOutboundInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -21,7 +21,7 @@ import java.util.List;
  * @description 获取所有入库信息
  */
 
-@WebServlet("/all/storage")
+@WebServlet("/manager/all/storage")
 public class GetAllStorageEntryInfoServlet extends HttpServlet {
 
     @Override

@@ -18,7 +18,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:28
  * @description 删除顾客接口
  */
-@WebServlet("/delete/customer")
+@WebServlet("/manager/delete/customer")
 public class DeleteCustomerInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

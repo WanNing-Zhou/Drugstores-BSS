@@ -13,7 +13,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:39
  * @description 搜索出库信息
  */
-@WebServlet("/search/outbound")
+@WebServlet("/manager/search/outbound")
 public class GetListOutboundInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

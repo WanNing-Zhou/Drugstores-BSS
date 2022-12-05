@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:05
  * @description 员工添加
  */
-@WebServlet("/add/employee")
+@WebServlet("/manager/add/employee")
 public class AddEmployeesInfoServlet extends HttpServlet {
 
     @Override
