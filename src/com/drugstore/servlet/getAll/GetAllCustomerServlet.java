@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2022/12/5-15:13
  * @description 响应所有顾客信息
  */
-@WebServlet("/manager/getAllCustomer")
+@WebServlet("/all/customer")
 public class GetAllCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -5,6 +5,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.DeleteService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:33
  * @description 删除药品信息
  */
+@WebServlet("/delete/drug")
 public class DeleteDrugInfoServlet extends HttpServlet {
 
     @Override

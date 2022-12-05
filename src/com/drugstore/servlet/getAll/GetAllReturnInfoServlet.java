@@ -7,6 +7,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.util.List;
  * @create 2022/12/5-15:55
  * @description 获取所有退货信息
  */
+@WebServlet("/all/returninfo")
 public class GetAllReturnInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

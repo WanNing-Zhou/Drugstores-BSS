@@ -5,6 +5,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.AddInfoService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:17
  * @description 添加退货信息的接口
  */
+@WebServlet("/add/returnInfo")
 public class AddReturnInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

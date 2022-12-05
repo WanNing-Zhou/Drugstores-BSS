@@ -5,6 +5,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.AddInfoService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:13
  * @description 添加出库信息
  */
+@WebServlet("/add/outbound")
 public class AddOutboundInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

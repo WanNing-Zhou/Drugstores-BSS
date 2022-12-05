@@ -1,6 +1,7 @@
 package com.drugstore.servlet.getList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:37
  * @description 搜索财政收支接口
  */
+@WebServlet("/search/frae")
 public class GetListFinancialRevenueAndExpenditureInfoServlet extends HttpServlet {
 
     @Override

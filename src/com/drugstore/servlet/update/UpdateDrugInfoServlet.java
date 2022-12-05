@@ -5,6 +5,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.UpdateService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-21:03
  * @description 更改药品信息接口
  */
+@WebServlet("/update/drug")
 public class UpdateDrugInfoServlet extends HttpServlet {
 
     @Override

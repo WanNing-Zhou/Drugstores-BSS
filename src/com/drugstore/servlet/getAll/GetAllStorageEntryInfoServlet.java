@@ -7,6 +7,7 @@ import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,8 @@ import java.util.List;
  * @create 2022/12/5-16:10
  * @description 获取所有入库信息
  */
+
+@WebServlet("/all/storage")
 public class GetAllStorageEntryInfoServlet extends HttpServlet {
 
     @Override

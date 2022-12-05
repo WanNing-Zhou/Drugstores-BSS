@@ -6,6 +6,7 @@ import com.drugstore.service.AddInfoService;
 import com.drugstore.service.UpdateService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import java.net.http.HttpClient;
  * @create 2022/12/5-20:44
  * @description 更改顾客信息接口
  */
+@WebServlet("/update/customer")
 public class UpdateCustomerInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
