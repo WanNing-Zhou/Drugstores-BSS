@@ -37,11 +37,8 @@ public class GetInstanceServiceImpl implements GetInstanceService {
         } finally {
             JDBCUtils.closeResource(conn,null);
         }
-
-
         return cust;
     }
-
 
     /**
      * @MethodName getEmployeesInfo

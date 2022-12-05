@@ -22,7 +22,6 @@ public class ServiceSingleton {
     private  ServiceSingleton(){};
 
 
-
     public static LoginService getLoginService() {
         return loginService;
     }
@@ -42,4 +41,6 @@ public class ServiceSingleton {
     public static GetForListService getGetForListService() {
         return getForListService;
     }
+
+
 }

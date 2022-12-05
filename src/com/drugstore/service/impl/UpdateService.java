@@ -36,6 +36,4 @@ public interface UpdateService {
      **/
     boolean updateEmployeesInfoDAO(String employeesID,String name,String password,String position,String phone);
 
-
-
 }
