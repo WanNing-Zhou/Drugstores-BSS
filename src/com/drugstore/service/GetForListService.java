@@ -74,6 +74,8 @@ public interface GetForListService {
      **/
     List<OutboundInfo> getALLOutboundInfo();
 
+    List<ReturnInfo> getAllReturnInfo();
+
     /**
      * @MethodName getAllStorageEntryInfo
      * @Author 周万宁

@@ -41,6 +41,7 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
      * @return int
      **/
 
+
     @Override
     public int deleteByPhone(Connection conn, String phone) {
         String sql="delete from customerinfo where phone = ?";
@@ -63,6 +64,7 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
         return num;
     }
 
+
     /**
      * @MethodName getByPhone
      * @Author 周万宁
@@ -77,6 +79,9 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
         CustomerInfo cust = getInstance(conn,sql,phone);
         return cust;
     }
+
+
+
     /**
      * @MethodName getAllCust
      * @Author 周万宁
@@ -85,7 +90,6 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
      * @Param [conn]
      * @return java.util.List<com.drugstore.bean.CustomerInfo>
      **/
-
     @Override
     public List<CustomerInfo> getAllCust(Connection conn) {
         String sql = "select * from customerinfo";
