@@ -175,6 +175,34 @@ public class GetForListServiceImpl implements GetForListService {
 
         return list;
     }
+    /**
+     * @MethodName getAllReturnInfo
+     * @Author 周万宁
+     * @Description 获取所有退货信息
+     * @Date 16:01 2022/12/5
+     * @Param []
+     * @return java.util.List<com.drugstore.bean.ReturnInfo>
+     **/
+
+    @Override
+    public List<ReturnInfo> getAllReturnInfo() {
+
+        Connection conn = null;
+        List<ReturnInfo> list = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            ReturnInfoDAO dao = DAOSingleton.getReturnInfoDAO();
+            list = dao.getAllRet(conn);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
 
     /**
      * @MethodName getAllStorageEntryInfo

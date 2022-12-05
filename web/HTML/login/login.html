@@ -19,32 +19,54 @@
         <div class="item">
           <input class="password" type="password" placeholder="密码">
         </div>
-        <div class="button" >
+        <div class="button">
           <button type="submit">登录</button>
         </div>
         <div class="last">
             <last>———————药店进销存系统———————</last>
         </div>
       </div>
+      <script src="./md5.min.js"></script>
       <script>
+
           //登录弹窗
           var btn =document.querySelector('button');
           var id = document.querySelector('.id');
           var pwd = document.querySelector('.password');
           btn.onclick = function(){
-              if(id.value == 'admin' && pwd.value == '123456')
+              if(id.value == 'admin' && pwd.value == 'admin')
               {
                 alert('登录成功');
                 // 跳转经理页面
                 location.replace("../manager/customer.html")
               }     
-              else if(id.value == 'staff' && pwd.value == '123456')
-              {
-                // 跳转员工页面
-                location.replace("../staff/staffCustomerPage.html");
+              // else if(id.value == 'staff' && pwd.value == '123456')
+              // {
+              //   // 跳转员工页面
+              //   location.replace("../staff/staffCustomerPage.html");
+              // }
+              else{
+                  fetch("http://localhost:8080/login",{//请求地址
+                      body:`ID=${id.value}&&password=${md5(pwd.value)}`,  //请求的数据
+                      method:"POST",
+                      headers:{
+                          'Content-Type':'application/x-www-form-urlencoded' //用url编码形式处理数据
+                      }
+                  }).then(res=>{
+                      if(res.position=="经理"){
+                          //跳转到经理页面
+                          location.replace("../manager/customer.html")
+                      } else if(res.position=="员工")
+                      {
+                        // 跳转员工页面
+                        location.replace("../staff/staffCustomerPage.html");
+                      }else{
+                          alert("账号活密码失败");
+                      }
+                  }).catch(err=>{//错误打印
+                      console.log(err)
+                  })
               }
-              else
-                alert('账号或密码错误，登陆失败');
           }
       </script>
 </body>
