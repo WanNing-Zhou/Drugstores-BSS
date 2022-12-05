@@ -1,4 +1,4 @@
-package com.drugstore.test;
+
 
 import com.drugstore.bean.CustomerInfo;
 import com.drugstore.dao.CustomerInfoDAO;
@@ -16,25 +16,25 @@ import java.sql.Connection;
  */
 public class test {
 
-    public static void main(String[] args) throws Exception {
-        //获取数据库连接
-        Connection conn = JDBCUtils.getConnection();
-        System.out.println(conn);
-        //创建CustomerInfo类
-        CustomerInfo cust = new CustomerInfo("zhouzhou","12345671");
-        //通过单例工厂获取dao实例
-        CustomerInfoDAO dao = DAOSingleton.getCustomerInfoDAO();
-        //添加
-        dao.insert(conn,cust);
-
-        //断开数据库连接
-        JDBCUtils.closeResource(conn,null);
-
-    }
-    @Test
-    public void test(){
-
-        System.out.println("你好");
-    }
+//    public static void main(String[] args) throws Exception {
+//        //获取数据库连接
+//        Connection conn = JDBCUtils.getConnection();
+//        System.out.println(conn);
+//        //创建CustomerInfo类
+//        CustomerInfo cust = new CustomerInfo("zhouzhou","12345671");
+//        //通过单例工厂获取dao实例
+//        CustomerInfoDAO dao = DAOSingleton.getCustomerInfoDAO();
+//        //添加
+//        dao.insert(conn,cust);
+//
+//        //断开数据库连接
+//        JDBCUtils.closeResource(conn,null);
+//
+//    }
+//    @Test
+//    public void test(){
+//
+//        System.out.println("你好");
+//    }
 
 }
