@@ -122,15 +122,23 @@
         <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
         // table
-        var htmlTag = '<a href="./drugs-update.html">编辑</a>';
-        var datas=[{
-            ID:'1',
-            Psd:'123456',
-            Name:'一二三',
-            Tel:'12345',
-            psn:'qqqqq'
-        }];
-        showlist(datas,htmlTag);
+        // var htmlTag = '<a href="./drugs-update.html">编辑</a>';
+        // var datas=[{
+        //     ID:'1',
+        //     Psd:'123456',
+        //     Name:'一二三',
+        //     Tel:'12345',
+        //     psn:'qqqqq'
+        // }];
+        // showlist(datas,htmlTag);
+
+
+        let requestUrl = hostURL+"/all/drug";
+        let deleteUrl = hostURL + "/manager/delete/drug";
+        let updateUrl = hostURL + "HTML/manager/drugs-update.html";
+        let deleteByWhat="";
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,true);
+
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件

@@ -24,7 +24,7 @@ public class DeleteEmployeesInfoServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         DeleteService sev = ServiceSingleton.getDeleteService();
-        String id = req.getParameter("ID");
+        String id = req.getParameter("employeesID");
         //将结果返回给前端页面
         boolean b = sev.deleteEmployeesInfo(id);
         String re = JSON.toJSONString(b);

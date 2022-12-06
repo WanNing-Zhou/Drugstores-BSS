@@ -1,5 +1,68 @@
+
+
+
+// 表单操作++
+//第一个参数是数据, 参数二 编辑地址   参数三 删除地址 参数四根据什么删除
+function showListPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug){
+    //获取表单元素
+    var tbody = document.querySelector('tbody');
+    //将元素内得所有内容清空
+    tbody.innerHTML = "";
+    //遍历数据
+    for(let i = 0;i<datas.length;i++){
+        //创建tr
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        //行里面创建单元格td
+        for(let k in datas[i]){//遍历对象
+            var td = document.createElement('td');
+            td.innerHTML=datas[i][k];//
+            //k得到的是属性名 obj[k]得到的是属性值
+            tr.appendChild(td);
+        }
+
+        if (isdrug==true){
+            var td =document.createElement('td');
+            td.innerHTML= `<a class="del" herf="${deleteUrl}?drugID=${datas[i]["drugID"]}&batchNumber=${datas[i]["batchNumber"]}> 删除 </a>`;
+            tr.appendChild(td);
+        }
+        else
+        if(deleteUrl!=null && deleteUrl!=""){
+            var td =document.createElement('td');
+            td.innerHTML= `<a class="del" herf="${deleteUrl}?${deleteByWhat}=${datas[i][deleteByWhat]}"> 删除 </a>`;
+            tr.appendChild(td);
+        }
+
+        //如果需要生成编辑编辑选项
+        if (updateUrl!=null&&updateUrl!=""){
+            // 创建编辑
+            let td_2 = document.createElement('td');
+            let htmlTag = `<a href="${updateUrl}`;
+
+            for(let k in datas[i]){//遍历对象
+                htmlTag += `${k}=${datas[i][k]}&`
+            }
+
+            htmlTag += ">编辑</a>";
+            td_2.innerHTML = htmlTag;
+            tr.appendChild(td_2);
+        }
+
+    }
+}
+
+
+const hostURL = "http://localhost:8080"
+
+//获取域名地址
+function getHostURl(){
+    return hostURL;
+}
+
+
+
 // 表单操作
-function showlist(datas,htmlTag){
+function showlist(datas,url){
     var tbody = document.querySelector('tbody');
     tbody.innerHTML = "";
     for(var i = 0;i<datas.length;i++){
@@ -13,16 +76,21 @@ function showlist(datas,htmlTag){
             //k得到的是属性名 obj[k]得到的是属性值
             tr.appendChild(td);
              }
+
             var td =document.createElement('td');
             td.innerHTML= '<a class="del" herf=""> 删除 </a>';
             tr.appendChild(td);
             // 创建编辑
             var td_2 = document.createElement('td');
+            var htmlTag = document.createElement('a');
+
             td_2.innerHTML = htmlTag;
             tr.appendChild(td_2);
-        
     }
 }
+
+
+
 //没有编辑与删除
 function staffShowList(datas) {
     var tbody = document.querySelector('tbody');
@@ -38,9 +106,10 @@ function staffShowList(datas) {
             //k得到的是属性名 obj[k]得到的是属性值
             tr.appendChild(td);
             }
-             
     }
 }
+
+
 //完全没有用
 function showlistWithoutDel(datas,htmlTag) {
     var tbody = document.querySelector('tbody');
@@ -60,7 +129,6 @@ function showlistWithoutDel(datas,htmlTag) {
             var td_2 = document.createElement('td');
             td_2.innerHTML = htmlTag;
             tr.appendChild(td_2);
-        
     }
 }
 
@@ -81,8 +149,30 @@ function getURLParams() { //获取url中的参数,并以键值对的形式保存
     }
     return obj;
 }
+
+//为a标签添加编码后的herf属性,来解决中文乱码问题
 function setHref(el, value) {
     //el document实例  value herf值
     //el 如var alib = document.getElementById("test");
     el.setAttribute("href", encodeURI(value));
 }
+
+
+//get请求
+// 获取数据, utl传入请求地址
+function getDate(Requesturl,updateUrl,deleteUrl,deleteByWhat,isDrug){
+    fetch(Requesturl,{
+        //使用get方法
+        method: 'GET',
+    })
+        .then((resp) => resp.json())
+        .then((resp) => {
+            showlist(datas,updateUrl,deleteUrl,deleteByWhat,isDrug);
+        })
+        .catch((error) => {
+            alert(error)
+        })
+}
+
+
+

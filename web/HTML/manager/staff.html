@@ -97,8 +97,6 @@
                         <td>操作</td>
                         <td class="insert"><a href="./staff-insert.html">增加(<span>+</span>)</a></td>
 
-
-                        
                     </tr>
                </thead>
                <tbody>
@@ -111,16 +109,24 @@
         <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
         // table
-        var htmlTag = '<a href="./staff-update.html">编辑</a>';
-        var datas=[{
-            ID:'1',
-            Psd:'123456',
-            Name:'一二三',
-            Tel:'12345',
-            psn:'qqqqq'
-        }];
+        // var htmlTag = '<a href="./staff-update.html">编辑</a>';
+        // var datas=[{
+        //     ID:'1',
+        //     Psd:'123456',
+        //     Name:'一二三',
+        //     Tel:'12345',
+        //     psn:'qqqqq'
+        // }];
+        //
+        // showlist(datas,htmlTag);
 
-        showlist(datas,htmlTag);
+        let requestUrl = hostURL+"/manager/all/employee";
+        let deleteUrl = hostURL + "/manager/delete/employee";
+        let updateUrl = hostURL + "/HTML/manager/staff-update.html";
+        let deleteByWhat="employeesID";
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+
+
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件

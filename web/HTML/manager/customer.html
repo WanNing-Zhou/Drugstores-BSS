@@ -110,15 +110,23 @@
         // table
         
         
-        var datas=[{
-            ID:'1',
-            name:'一二三',
-            phone:'12345'
-        }];
-        var htmlTag = '<a href="./customer-update.html?name=李建昌&phone=l23456">编辑</a>';
-        
+        // var datas=[{
+        //     ID:'1',
+        //     name:'一二三',
+        //     phone:'12345'
+        // }];
+        // var htmlTag = '<a href="./customer-update.html?name=李建昌&phone=l23456">编辑</a>';
+        //
+        //
+        // showlistWithoutDel(datas,htmlTag);
 
-        showlistWithoutDel(datas,htmlTag);
+
+        let requestUrl = hostURL+"/all/customer";
+        let deleteUrl = hostURL + "/manager/delete/customer";
+        let updateUrl = hostURL + "HTML/manager/customer-update.html";
+        let deleteByWhat="phone";
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件
@@ -131,7 +139,7 @@
             }
         }
          // 删除弹窗
-         var dels = document.querySelectorAll('.del');
+        var dels = document.querySelectorAll('.del');
         var tbody =document.querySelector('tbody');
         for(var i=0;i<dels.length;i++){
             dels[i].addEventListener('click',function(){
