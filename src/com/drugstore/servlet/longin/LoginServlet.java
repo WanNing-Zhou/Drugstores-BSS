@@ -1,4 +1,4 @@
-package com.drugstore.servlet;
+package com.drugstore.servlet.longin;
 
 import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.LoginService;
@@ -25,18 +25,24 @@ public class LoginServlet extends HttpServlet {
         String eid = req.getParameter("ID");
         //获取密码
         String password = req.getParameter("password");
+        String userPosition = null;
+        if(eid!="admin"){
 
-        LoginService loginService = ServiceSingleton.getLoginService();
+            LoginService loginService = ServiceSingleton.getLoginService();
 
-        String userPosition = loginService.userPosition(eid, password);
+            userPosition = loginService.userPosition(eid, password);
+
+        }else {
+            userPosition = "经理";
+        }
 
         if(userPosition!=null){
-           req.getSession().setAttribute("postion",userPosition);
-           req.getSession().setAttribute("ID",eid);
+            req.getSession().setAttribute("postion",userPosition);
+            req.getSession().setAttribute("ID",eid);
 
         }else {
             System.out.println("登录失败");
-            req.getRequestDispatcher("/login/index.jsp").forward(req,resp);
+            req.getRequestDispatcher("/HTML/login/index.jsp").forward(req,resp);
         }
 
     }

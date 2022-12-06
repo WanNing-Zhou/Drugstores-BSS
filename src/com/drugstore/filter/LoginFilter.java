@@ -14,12 +14,12 @@ import java.io.IOException;
  * @create 2022/12/5-10:35
  * @description 拦截未登录访问操作
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     public static String defaultUrl;
     // 不拦截的资源类型//静态资源
-    private static String[] ignoreTypes={"img","png","css"};
+    private static String[] ignoreTypes={"img","png","css","min.js","js"};
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -48,6 +48,8 @@ public class LoginFilter implements Filter {
         String requestUri = request.getRequestURI();
         String contextPath = request.getContextPath();
         String url = requestUri.substring(contextPath.length());
+        System.out.println("contextpath: "+ contextPath);
+        System.out.println("requireURI: "+requestUri);
 
         boolean isIgnoreType = false;
         if(ignoreTypes != null){
@@ -60,14 +62,14 @@ public class LoginFilter implements Filter {
         }else{
             filterChain.doFilter(request, response);
         }
-        if(contextPath.indexOf("/login") > -1||url.indexOf("/login.html")>-1||isIgnoreType==true){
+        System.out.println("静态资源" + isIgnoreType);
+        if(requestUri.indexOf("/md5.js") > -1||url.indexOf("/login.html")>-1||isIgnoreType==true){
             System.out.println(url+"这是登录入口或者静态资源，放行");
             filterChain.doFilter(request, response);
         }else{
-
             String postion = (String)request.getSession().getAttribute("positon");
             if(postion==null){
-                response.sendRedirect(contextPath+"/login/login.html");
+                response.sendRedirect(contextPath+"/HTML/login/login.html");
             }else if(postion=="经理"){
 
                 if(contextPath.indexOf("/staff/") > -1){

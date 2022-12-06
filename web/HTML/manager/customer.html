@@ -93,7 +93,6 @@
                         <td>客户ID</td>
                         <td>姓名</td>
                         <td>联系方式</td>
-                        <td>操作</td>
                         <td class="insert"><a href="./customer-insert.html">增加(<span>+</span>)</a></td>
 
                         
@@ -106,199 +105,20 @@
            
             
         </div>
+        <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
-        // // table
-        // var datas=[{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },{
-        //     ID:'1',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'2',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'3',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'4',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // },
-        // {
-        //     ID:'5',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }, {
-        //     ID:'6',
-        //     Name:'一二三',
-        //     Tel:'12345'
-        // }];
-        var tbody = document.querySelector('tbody');
-        for(var i = 0;i<datas.length;i++){
-            //创建tr
-            var tr = document.createElement('tr');
-            tbody.appendChild(tr);
-            //行里面创建单元格td
-            for(var k in datas[i]){//遍历对象
-                var td = document.createElement('td');
-                td.innerHTML=datas[i][k];//
-                //k得到的是属性名 obj[k]得到的是属性值
-                tr.appendChild(td);
-            }
-            // 创建删除单元格
-            var td =document.createElement('td');
-            td.innerHTML= '<a class="del" herf=""> 删除 </a>';
-            tr.appendChild(td);
-            // 创建编辑
-            var td_2 = document.createElement('td');
-            td_2.innerHTML = '<a href="./customer-update.html">编辑</a>';
-            tr.appendChild(td_2);
-            
-        }
+        // table
+        
+        
+        var datas=[{
+            ID:'1',
+            name:'一二三',
+            phone:'12345'
+        }];
+        var htmlTag = '<a href="./customer-update.html?name=李建昌&phone=l23456">编辑</a>';
+        
+
+        showlistWithoutDel(datas,htmlTag);
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件
@@ -310,9 +130,8 @@
                 this.className = '';//鼠标离开
             }
         }
-
-        // 删除弹窗
-        var dels = document.querySelectorAll('.del');
+         // 删除弹窗
+         var dels = document.querySelectorAll('.del');
         var tbody =document.querySelector('tbody');
         for(var i=0;i<dels.length;i++){
             dels[i].addEventListener('click',function(){
@@ -341,9 +160,8 @@
              });
            
         }
-      
-        //退出页面
-        var exit = document.querySelector('.exit');
+          //退出页面
+          var exit = document.querySelector('.exit');
         exit.onclick = function(){
             var yes = confirm('确认退出到登录界面吗？')
             if(yes){
@@ -351,6 +169,7 @@
             }
             
         }
+        
         </script>
 </body>
 </html>

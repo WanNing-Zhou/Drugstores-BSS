@@ -16,52 +16,53 @@
 	</div>
 	<div class="out">
 		<form>
+
 			<div>
 				<label><span>*</span>药品名称：</label>
 				<div>
-					<input type="text" class="input-text" >
-				</div>
-			</div>
-			<div>
-				<label><span>*</span>生产批号：</label>
-				<div>
-					<input type="text" class="input-text" >
+					<input id="name" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>产地：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="placeOfOrigin" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>所属类型：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="categoryOfOwnership" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>进价：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="purchasingPrice" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>单价：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="unitPrice" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>库存：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="inventory" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
-				<label><span>*</span>图片：</label>
+				<label><span>*</span>生产日期：</label>
 				<div>
-					<input type="file" class="img" >
+					<input id="dateOfProduction" type="date" class="input-text" >
+				</div>
+			</div>
+			<div>
+				<label><span>*</span>保质期至：</label>
+				<div>
+					<input id="dateOfExpiry" type="date" class="input-text" >
 				</div>
 			</div>
 
@@ -75,7 +76,25 @@
 			</div>
 		</form>
 	</div>
+	<script src="../../js/datas.js"></script>
 	<script>
+
+		let obj = getURLParams();
+		
+		var name = document.querySelector('#name');
+		var placeOfOrigin = document.querySelector('#placeOfOrigin');
+		var categoryOfOwnership = document.querySelector('#categoryOfOwnership');
+		var purchasingPrice = document.querySelector('#purchasingPrice');
+		var unitPrice = document.querySelector('#unitPrice');
+		var inventory = document.querySelector('#inventory');
+		
+		
+		name.placeholder = obj.name;
+		placeOfOrigin.placeholder = obj.placeOfOrigin;
+		categoryOfOwnership.placeholder = obj.categoryOfOwnership;
+		purchasingPrice.placeholder = obj.purchasingPrice;
+		unitPrice.placeholder = obj.unitPrice;
+		inventory.placeholder = obj.inventory;
 		// 设置input高亮
 		var form = document.querySelector('form');
 		var btns = form.querySelector('button');
@@ -98,7 +117,7 @@
 				alert('提交成功');
 			}
 
-		})
+		});
 
 	</script>
 </body>

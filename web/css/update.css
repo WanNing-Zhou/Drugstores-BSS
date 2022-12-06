@@ -29,12 +29,12 @@ label{
     float: left;
     display: inline-block;
     width: 200px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 form{
-    height: 600px;
-    width: 1500px;
+    height: 800px;
+    width: 1400px;
     margin: auto;
     text-align: center;
 }

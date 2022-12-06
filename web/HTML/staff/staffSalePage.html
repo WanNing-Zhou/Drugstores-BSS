@@ -86,8 +86,10 @@
            
             
         </div>
+        <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
         // table
+
         var datas=[{
             ID:'1',
             Name:'一二三',
@@ -257,28 +259,7 @@
             Name:'一二三',
             Tel:'12345'
         }];
-        var tbody = document.querySelector('tbody');
-        for(var i = 0;i<datas.length;i++){
-            //创建tr
-            var tr = document.createElement('tr');
-            tbody.appendChild(tr);
-            //行里面创建单元格td
-            for(var k in datas[i]){//遍历对象
-                var td = document.createElement('td');
-                td.innerHTML=datas[i][k];//
-                //k得到的是属性名 obj[k]得到的是属性值
-                tr.appendChild(td);
-            }
-            // // 创建删除单元格
-            // var td =document.createElement('td');
-            // td.innerHTML= '<a class="del"> 删除 </a>';
-            // tr.appendChild(td);
-            // 创建编辑
-            // var td_2 = document.createElement('td');
-            // td_2.innerHTML = '<a href="../manager/customer-update.html">编辑</a>';
-            // tr.appendChild(td_2);
-            
-        }
+
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件
@@ -291,19 +272,7 @@
             }
         }
 
-        // 删除弹窗
-        // var dels = document.querySelectorAll('.del');
-        // var tbody =document.querySelector('tbody');
-        // for(var i=0;i<dels.length;i++){
-        //     dels[i].addEventListener('click',function(){
-        //         var yes = confirm('确定删除吗');
-        //         if(yes){
-        //              tbody.removeChild(this.parentNode.parentNode);
-        //             //点击a删除a所在的行 a的爸爸是单元格td 爷爷是tr 要删除tr
-        //             alert('删除成功');
-        //         }
-        //     });
-        // }
+  
 
 
 

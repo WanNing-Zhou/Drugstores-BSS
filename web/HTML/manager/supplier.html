@@ -109,8 +109,10 @@
            
             
         </div>
+        <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
         // table
+        var htmlTag = '<a href="./supplier-update.html">编辑</a>';
         var datas=[{
             ID:'1',
             Psd:'123456',
@@ -118,28 +120,8 @@
             Tel:'12345',
             psn:'qqqqq'
         }];
-        var tbody = document.querySelector('tbody');
-        for(var i = 0;i<datas.length;i++){
-            //创建tr
-            var tr = document.createElement('tr');
-            tbody.appendChild(tr);
-            //行里面创建单元格td
-            for(var k in datas[i]){//遍历对象
-                var td = document.createElement('td');
-                td.innerHTML=datas[i][k];//
-                //k得到的是属性名 obj[k]得到的是属性值
-                tr.appendChild(td);
-            }
-            // 创建删除单元格
-            var td =document.createElement('td');
-            td.innerHTML= '<a class="del"> 删除 </a>';
-            tr.appendChild(td);
-            
-            var td_2 = document.createElement('td');
-            td_2.innerHTML = '<a href="./supplier-update.html">编辑</a>';
-            tr.appendChild(td_2);
-            
-        }
+
+        showlist(datas,htmlTag);
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件

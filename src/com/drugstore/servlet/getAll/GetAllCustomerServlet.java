@@ -1,12 +1,12 @@
 package com.drugstore.servlet.getAll;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.drugstore.bean.CustomerInfo;
 import com.drugstore.factory.ServiceSingleton;
 import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +25,20 @@ public class GetAllCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println("/all/customer被请求");
+
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
+
         GetForListService sev = ServiceSingleton.getGetForListService();
 
         List<CustomerInfo> allCustomerInfo = sev.getAllCustomerInfo();
-        String re = JSON.toJSONString(allCustomerInfo);
+        String re = JSON.toJSONString(allCustomerInfo, SerializerFeature.WriteMapNullValue);
 
+
+        System.out.println(re);
         resp.getWriter().write(re);
-
 
     }
 }
+

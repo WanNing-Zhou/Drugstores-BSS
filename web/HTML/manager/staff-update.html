@@ -21,13 +21,13 @@
 			<div>
 				<label><span>*</span>姓名：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="name" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>密码：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="password" type="password" class="input-text" >
 				</div>
 			</div>
 		
@@ -35,7 +35,7 @@
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="phone" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
@@ -58,7 +58,18 @@
 			</div>
 		</form>
 	</div>
+	<script src="../../js/datas.js"></script>
 	<script>
+
+		let obj = getURLParams();
+	
+		var name = document.querySelector('#name');
+		var password = document.querySelector('#passord');
+		var phone = document.querySelector('#phone');
+
+		name.placeholder = obj.name;
+		phone.placeholder = obj.phone;
+
 		// 设置input高亮
 		var form = document.querySelector('form');
 		var btns = form.querySelector('button');
@@ -72,6 +83,7 @@
              });
 		}
         //提交弹窗
+		//这里有bug
 		var sub = document.querySelector('.submit');
 		sub.addEventListener('click',function(){
 			var yes = confirm('确认提交吗？');
@@ -80,7 +92,7 @@
 				alert('提交成功');
 			}
 
-		})
+		});
 
 	</script>
 </body>

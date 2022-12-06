@@ -20,13 +20,13 @@
 			<div>
 				<label><span>*</span>姓名：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input   id="name" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input id="phone" type="text" class="input-text" >
 				</div>
 			</div>
 			
@@ -41,7 +41,18 @@
 			</div>
 		</form>
 	</div>
+	<script src="../../js/datas.js"></script>
 	<script>
+		// input默认内容
+		let obj = getURLParams();
+		
+		var name = document.querySelector('#name');
+		var phone = document.querySelector('#phone');
+		
+		name.placeholder = obj.name;
+		phone.placeholder = obj.phone;
+		document.write(obj.name);
+		
 		// 设置input高亮
 		var form = document.querySelector('form');
 		var btns = form.querySelector('button');

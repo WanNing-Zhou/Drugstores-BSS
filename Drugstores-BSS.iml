@@ -21,7 +21,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-dbutils-1.6" level="project" />
-    <orderEntry type="library" name="fastjson-2.0.20.graal" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -32,5 +31,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="fastjson-1.2.79" level="project" />
   </component>
 </module>
