@@ -140,6 +140,7 @@ public abstract class BaseDAO<T> {
                     field.setAccessible(true);
                     field.set(t, columValue);
                 }
+
                 list.add(t);
             }
 
@@ -148,7 +149,6 @@ public abstract class BaseDAO<T> {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(null, ps, rs);
-
         }
         return null;
     }

@@ -17,10 +17,12 @@ import java.io.IOException;
  * @create 2022/12/5-20:13
  * @description 添加出库信息
  */
-@WebServlet("/manager/add/outbound")
+@WebServlet("/manage/add/outbound")
 public class AddOutboundInfoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/manage/add/outbound被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
@@ -34,5 +36,8 @@ public class AddOutboundInfoServlet extends HttpServlet {
         boolean b = sev.addOutboundInfo(drugID,drugName,purchasingPrice,number,supplierID);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/issue.html");
+
     }
 }

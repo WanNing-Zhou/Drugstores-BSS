@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2022/12/5-15:35
  * @description 获取所有的收支记录
  */
-@WebServlet("/manager/all/frae")
+@WebServlet("/manage/all/frae")
 public class GetAllFinancialRevenueAndExpenditureInfoServlet extends HttpServlet {
 
     @Override
@@ -34,5 +34,7 @@ public class GetAllFinancialRevenueAndExpenditureInfoServlet extends HttpServlet
         String re = JSON.toJSONString(allFinancialRevenueAndExpenditureInfo);
 
         resp.getWriter().write(re);
+
+
     }
 }

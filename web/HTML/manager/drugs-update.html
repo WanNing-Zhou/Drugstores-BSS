@@ -15,54 +15,75 @@
 		<p>药品信息编辑</p>
 	</div>
 	<div class="out">
-		<form>
+		<form action="/manage/update/drug"  method="post">
+
+			<div>
+				<label><span>*</span>药品ID：</label>
+				<div>
+					<input name="drugID" id="drugID" type="text" class="input-text"  >
+				</div>
+			</div>
+
+			<div>
+				<label><span>*</span>药品批号：</label>
+				<div>
+					<input name="batchNumber" id="batchNumber" type="text" class="input-text"  >
+				</div>
+			</div>
+
+			<div>
+				<label><span>*</span>供应商ID：</label>
+				<div>
+					<input name="supplierID" id="supplierID" type="text" class="input-text"  >
+				</div>
+			</div>
 
 			<div>
 				<label><span>*</span>药品名称：</label>
 				<div>
-					<input id="name" type="text" class="input-text" >
+					<input name="name" id="name" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>产地：</label>
 				<div>
-					<input id="placeOfOrigin" type="text" class="input-text" >
+					<input name="placeOfOrigion" id="placeOfOrigion" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>所属类型：</label>
 				<div>
-					<input id="categoryOfOwnership" type="text" class="input-text" >
+					<input name="categoryOfOwnership" id="categoryOfOwnership" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>进价：</label>
 				<div>
-					<input id="purchasingPrice" type="text" class="input-text" >
+					<input name="purchasingPrice" id="purchasingPrice" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>单价：</label>
 				<div>
-					<input id="unitPrice" type="text" class="input-text" >
+					<input name="unitPrice" id="unitPrice" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>库存：</label>
 				<div>
-					<input id="inventory" type="text" class="input-text" >
+					<input name="inventory" id="inventory" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
 				<label><span>*</span>生产日期：</label>
 				<div>
-					<input id="dateOfProduction" type="date" class="input-text" >
+					<input name="dateOfProduction" id="dateOfProduction" type="date" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>保质期至：</label>
 				<div>
-					<input id="dateOfExpiry" type="date" class="input-text" >
+					<input name="dateOfExpiry" id="dateOfExpiry" type="date" class="input-text" >
 				</div>
 			</div>
 
@@ -80,21 +101,38 @@
 	<script>
 
 		let obj = getURLParams();
-		
-		var name = document.querySelector('#name');
-		var placeOfOrigin = document.querySelector('#placeOfOrigin');
+
+		var durgID = document.querySelector('#drugID');
+		var batchNumber = document.querySelector('#batchNumber');
+		var supplierID = document.querySelector('#supplierID');
+		var dname = document.querySelector('#name');
+		var placeOfOrigin = document.querySelector('#placeOfOrigion');
 		var categoryOfOwnership = document.querySelector('#categoryOfOwnership');
 		var purchasingPrice = document.querySelector('#purchasingPrice');
 		var unitPrice = document.querySelector('#unitPrice');
 		var inventory = document.querySelector('#inventory');
-		
-		
-		name.placeholder = obj.name;
-		placeOfOrigin.placeholder = obj.placeOfOrigin;
-		categoryOfOwnership.placeholder = obj.categoryOfOwnership;
-		purchasingPrice.placeholder = obj.purchasingPrice;
-		unitPrice.placeholder = obj.unitPrice;
-		inventory.placeholder = obj.inventory;
+		var dateOfProduction = document.querySelector("#dateOfProduction");
+		var dateOfExpiry = document.querySelector('#dateOfExpiry');
+
+		console.log(obj);
+
+		durgID.value = obj.drugID;
+		//将不可修改的值设置成为readOnly
+		durgID.setAttribute("readOnly",'true');
+		batchNumber.value = obj.batchNumber;
+		batchNumber.setAttribute("readOnly",'true');
+		supplierID.value = obj.supplierID;
+		supplierID.setAttribute("readOnly",'true');
+		dname.value = obj.name;
+		placeOfOrigin.value = obj.placeOfOrigion;
+		categoryOfOwnership.value =obj.categoryOfOwnership;
+		purchasingPrice.value = obj.purchasingPrice;
+		unitPrice.value=obj.unitPrice;
+		inventory.value=obj.inventory;
+		dateOfProduction.value = obj.dateOfProduction;
+		dateOfExpiry.value = obj.dateOfExpiry;
+
+
 		// 设置input高亮
 		var form = document.querySelector('form');
 		var btns = form.querySelector('button');

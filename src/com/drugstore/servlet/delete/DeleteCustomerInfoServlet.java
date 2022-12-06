@@ -18,10 +18,13 @@ import java.io.IOException;
  * @create 2022/12/5-20:28
  * @description 删除顾客接口
  */
-@WebServlet("/manager/delete/customer")
+@WebServlet("/manage/delete/customer")
 public class DeleteCustomerInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/manager/delete/customer被请求");
+
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         DeleteService sev = ServiceSingleton.getDeleteService();
@@ -31,5 +34,8 @@ public class DeleteCustomerInfoServlet extends HttpServlet {
         boolean b = sev.deleteCustomerInfoByPhone(phone);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+        System.out.println(re);
+        //删除后进行冲定向操作
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
     }
 }

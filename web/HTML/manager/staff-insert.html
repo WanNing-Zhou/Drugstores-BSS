@@ -17,17 +17,17 @@
 	</div>
 	<div class="out">
 
-		<form>
+		<form action="/manage/add/employee" method="post">
 			<div>
 				<label><span>*</span>姓名：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="name" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>密码：</label>
 				<div>
-					<input type="password" class="input-text" >
+					<input name="password" id="pwd"  type="password" class="input-text" >
 				</div>
 			</div>
 		
@@ -35,7 +35,7 @@
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="phone" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
@@ -43,21 +43,22 @@
 				<div>
 					<select name="position" id="">
 						<option value="">请选择</option>
-						<option value="manager">经理</option>
-						<option value="clerk">店员</option>
+						<option value="经理">经理</option>
+						<option value="店员">店员</option>
 					</select>
 				</div>
 			</div>
 					
 			<div>
 				<div >
-					<button type="submit"><i></i> 提交</button>
+					<button type="submit" class="submit"><i></i> 提交</button>
 					
 					<button  type="button"><a href="../manager/staff.html">取消</a></button>
 				</div>
 			</div>
 		</form>
 	</div>
+	<script src="/public/js/md5.min.js"></script>
 	<script>
 		// 设置input高亮
 		var form = document.querySelector('form');
@@ -74,6 +75,9 @@
         //提交弹窗
 		var sub = document.querySelector('.submit');
 		sub.addEventListener('click',function(){
+			var pwd = document.querySelector("#pwd");
+			pwd.value = md5(pwd.value);
+
 			var yes = confirm('确认提交吗？');
 			if(yes)
 			{

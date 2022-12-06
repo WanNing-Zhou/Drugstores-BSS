@@ -22,7 +22,7 @@ import java.util.List;
  * @description 获取所有的出库信息
  */
 
-@WebServlet("/manager/all/outbound")
+@WebServlet("/manage/all/outbound")
 public class GetAllOutboundInfoServiece extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

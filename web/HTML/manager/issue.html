@@ -114,15 +114,23 @@
         <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
         // table
-        var htmlTag = '<a href="./issue-update.html">编辑</a>';
-        var datas=[{
-            ID:'1',
-            Psd:'123456',
-            Name:'一二三',
-            Tel:'12345',
-            psn:'qqqqq'
-        }];
-        staffShowList(datas);
+        // var htmlTag = '<a href="./issue-update.html">编辑</a>';
+        // var datas=[{
+        //     ID:'1',
+        //     Psd:'123456',
+        //     Name:'一二三',
+        //     Tel:'12345',
+        //     psn:'qqqqq'
+        // }];
+        // staffShowList(datas);
+
+        let requestUrl = hostURL+"/manage/all/outbound";
+        let deleteUrl = "";
+        let updateUrl = "";
+        let deleteByWhat = "";
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+
+
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');
         for(var i = 0;i<trs.length;i++)//鼠标经过事件

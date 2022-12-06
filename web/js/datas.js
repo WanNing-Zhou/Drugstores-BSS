@@ -4,6 +4,12 @@
 // 表单操作++
 //第一个参数是数据, 参数二 编辑地址   参数三 删除地址 参数四根据什么删除
 function showListPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug){
+    console.log("进入showlist方法")
+    console.log(datas);
+    console.log(updateUrl);
+    console.log(deleteUrl);
+    console.log(deleteByWhat);
+    console.log(isdrug);
     //获取表单元素
     var tbody = document.querySelector('tbody');
     //将元素内得所有内容清空
@@ -21,15 +27,17 @@ function showListPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug){
             tr.appendChild(td);
         }
 
+        //药品的删除
         if (isdrug==true){
             var td =document.createElement('td');
-            td.innerHTML= `<a class="del" herf="${deleteUrl}?drugID=${datas[i]["drugID"]}&batchNumber=${datas[i]["batchNumber"]}> 删除 </a>`;
+            td.innerHTML= `<a class="del" href="${deleteUrl}?drugID=${datas[i]["drugID"]}&batchNumber=${datas[i]["batchNumber"]}"> 删除 </a>`;
             tr.appendChild(td);
         }
         else
         if(deleteUrl!=null && deleteUrl!=""){
+            console.log(deleteByWhat)
             var td =document.createElement('td');
-            td.innerHTML= `<a class="del" herf="${deleteUrl}?${deleteByWhat}=${datas[i][deleteByWhat]}"> 删除 </a>`;
+            td.innerHTML= `<a class="del" href="${deleteUrl}?${deleteByWhat}=${datas[i][deleteByWhat]}"> 删除 </a>`;
             tr.appendChild(td);
         }
 
@@ -37,13 +45,16 @@ function showListPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug){
         if (updateUrl!=null&&updateUrl!=""){
             // 创建编辑
             let td_2 = document.createElement('td');
-            let htmlTag = `<a href="${updateUrl}`;
+            let htmlTag = `<a href="${updateUrl}?`;
 
+            //构造参数
             for(let k in datas[i]){//遍历对象
                 htmlTag += `${k}=${datas[i][k]}&`
             }
 
-            htmlTag += ">编辑</a>";
+            htmlTag = htmlTag.substr(0, htmlTag.length - 1)
+            htmlTag += `">编辑</a>`;
+
             td_2.innerHTML = htmlTag;
             tr.appendChild(td_2);
         }
@@ -167,7 +178,7 @@ function getDate(Requesturl,updateUrl,deleteUrl,deleteByWhat,isDrug){
     })
         .then((resp) => resp.json())
         .then((resp) => {
-            showlist(datas,updateUrl,deleteUrl,deleteByWhat,isDrug);
+            showListPlus(resp,updateUrl,deleteUrl,deleteByWhat,isDrug);
         })
         .catch((error) => {
             alert(error)

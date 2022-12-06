@@ -16,24 +16,24 @@
 	</div>
 	<div class="out">
 
-		<form>
+		<form action="http://localhost:8080/add/customer" method="post">
 			<div>
 				<label><span>*</span>客户姓名：</label>
 				<div>
-					<input id="name" type="text" class="input-text" >
+					<input name="name" id="name" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input id="phone" type="text" class="input-text" >
+					<input name="phone" id="phone" type="text" class="input-text" >
 				</div>
 			</div>
 
 					
 			<div>
 				<div >
-					<button class="submit" type="submit"><i></i> 提交</button>
+					<button class="submit" type="submit"  ><i></i> 提交</button>
 					
 					<button  type="button"><a href="../manager/customer.html">取消</a></button>
 				</div>
@@ -42,18 +42,28 @@
 	</div>
 	<script src="../../js/datas.js"></script>
 	<script>
+
+
 		
 		// 设置input高亮
 		var form = document.querySelector('form');
 		var btns = form.querySelector('button');
 		var inputs = form.querySelectorAll('input');
-		for(var i=0;i<inputs.length;i++){
+		for(var let=0;i<inputs.length;i++){
 		inputs[i].addEventListener('click',function(){
-                for(var i=0;i<inputs.length;i++){
+                for(let i=0;i<inputs.length;i++){
                    inputs[i].className='';
                 }
                 this.className='checked';
              });
+		}
+
+		function validate() {
+			if (confirm( "提交表单?" )) {
+				return true;
+			} else {
+				return false ;
+			}
 		}
 		
 		//提交弹窗
@@ -63,9 +73,11 @@
 			if(yes)
 			{
 				alert('提交成功');
+				return true;
 			}
 
 		})
+
 
 	</script>
 </body>

@@ -17,20 +17,25 @@ import java.io.IOException;
  * @create 2022/12/5-19:44
  * @description 添加客户接口
  */
+
 @WebServlet("/add/customer")
 public class AddCustomerInfoServlet  extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
         String name = req.getParameter("name");
         String phone = req.getParameter("phone");
+        System.out.println(name);
+        System.out.println(phone);
+
 
         //将结果返回给前端页面
         boolean b = sev.addCustomerInfo(name, phone);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
 
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
     }
 }

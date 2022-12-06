@@ -17,11 +17,11 @@ import java.io.IOException;
  * @create 2022/12/5-21:03
  * @description 更改药品信息接口
  */
-@WebServlet("/manager/update/drug")
+@WebServlet("/manage/update/drug")
 public class UpdateDrugInfoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
@@ -42,5 +42,8 @@ public class UpdateDrugInfoServlet extends HttpServlet {
         boolean b = sev.updateDrugInfo(drugID,name,supplierID,batchNumber,placeOfOrigion,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/drugs.html");
+
     }
 }

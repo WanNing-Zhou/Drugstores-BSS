@@ -15,29 +15,37 @@
 		<p>出库信息添加</p>
 	</div>
 	<div class="out">
-		<form>
+		<form action="/manage/add/outbound" method="post">
+
+			<div>
+				<label><span>*</span>药品ID：</label>
+				<div>
+					<input name="drugID" type="text" class="input-text" >
+				</div>
+			</div>
+
 			<div>
 				<label><span>*</span>药品名称：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="drugName" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>进价：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="purchasingPrice" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>药品数量：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="number" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
-				<label><span>*</span>总金额：</label>
+				<label><span>*</span>供应商ID：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="supplierID" type="text" class="input-text" >
 				</div>
 			</div>
          

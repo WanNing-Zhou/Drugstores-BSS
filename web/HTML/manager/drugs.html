@@ -10,6 +10,7 @@
 </head>
 <style>
     tbody td{
+       
         height: 100px;
     }
 </style>
@@ -94,17 +95,17 @@
             <table>
                <thead>
                     <tr>
-                        <td>药品ID</td>
-                        <td>名称</td>
-                        <td>供应商ID</td>
                         <td>生产批号</td>
-                        <td>产地</td>
                         <td>所属类型</td>
-                        <td>进价</td>
-                        <td>单价</td>
-                        <td>库存</td>
-                        <td>生产日期</td>
                         <td>有效期至</td>
+                        <td>生产日期</td>
+                        <td>药品ID</td>
+                        <td>库存</td>
+                        <td>名称</td>
+                        <td>产地</td>
+                        <td>供应商ID</td>
+                        <td>单价</td>
+                        <td>进价</td>
                         <td>操作</td>
                         <td class="insert"><a href="./drugs-insert.html">增加(<span>+</span>)</a></td>
 
@@ -134,8 +135,8 @@
 
 
         let requestUrl = hostURL+"/all/drug";
-        let deleteUrl = hostURL + "/manager/delete/drug";
-        let updateUrl = hostURL + "HTML/manager/drugs-update.html";
+        let deleteUrl = hostURL + "/manage/delete/drug";
+        let updateUrl = hostURL + "/HTML/manager/drugs-update.html";
         let deleteByWhat="";
         getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,true);
 

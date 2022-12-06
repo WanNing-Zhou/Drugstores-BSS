@@ -20,6 +20,7 @@
   修改员工信息的时候,同样不展示员工密码,但是需要有密码输入框,方便修改员工密码
 
 
-
+7.请求 /manager/delete/customer 不合法
+   Tomcat服务器  /manager不允许请求
 
 

@@ -20,7 +20,7 @@ import java.io.IOException;
 @WebServlet("/add/returnInfo")
 public class AddReturnInfoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
@@ -35,5 +35,6 @@ public class AddReturnInfoServlet extends HttpServlet {
         boolean b = sev.addReturnInfo(drugID, drugName,purchasingPrice,number,customerId);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/returnGoods.html");
     }
 }

@@ -20,10 +20,12 @@ import java.util.List;
  * @description 响应所有员工信息
  */
 
-@WebServlet("/manager/all/employee")
+@WebServlet("/manage/all/employee")
 public class GetAllEmployeesInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("/manage/all/employee被访问");
+
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 

@@ -93,7 +93,7 @@
                         <td>客户ID</td>
                         <td>姓名</td>
                         <td>联系方式</td>
-                        <td class="insert"><a href="./customer-insert.html">增加(<span>+</span>)</a></td>
+                        <td class="insert"><a href="customer-insert.html">增加(<span>+</span>)</a></td>
 
                         
                     </tr>
@@ -122,8 +122,8 @@
 
 
         let requestUrl = hostURL+"/all/customer";
-        let deleteUrl = hostURL + "/manager/delete/customer";
-        let updateUrl = hostURL + "HTML/manager/customer-update.html";
+        let deleteUrl = hostURL + "/manage/delete/customer";
+        let updateUrl = hostURL + "/HTML/manager/customer-update.html";
         let deleteByWhat="phone";
         getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
 

@@ -17,14 +17,16 @@ import java.io.IOException;
  * @create 2022/12/5-19:53
  * @description 添加药品信息
  */
-@WebServlet("/manager/add/drug")
+@WebServlet("/manage/add/drug")
 public class AddDrugInfoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/manage/add/drug被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
-        String id = getInitParameter("ID");
+        String id = req.getParameter("drugID");
         String name = req.getParameter("name");
         String supplierID = req.getParameter("supplierID");
         String batchNumber = req.getParameter("batchNumber");
@@ -36,10 +38,17 @@ public class AddDrugInfoServlet extends HttpServlet {
         String dateOfProduction = req.getParameter("dateOfProduction");
         String dateOfExpiry = req.getParameter("dateOfExpiry");
 
+        System.out.println("生产日期"+dateOfProduction);
+        System.out.println("有效期至"+dateOfExpiry);
 
-        //将结果返回给前端页面
+
+//        添加药品出错
+//        将结果返回给前端页面
         boolean b = sev.addDrugInfo(id,name,supplierID,batchNumber,placeOfOrigion,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry);
+        System.out.println(b);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/drugs.html");
     }
 }

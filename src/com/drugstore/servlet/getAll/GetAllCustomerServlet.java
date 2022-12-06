@@ -35,8 +35,6 @@ public class GetAllCustomerServlet extends HttpServlet {
         List<CustomerInfo> allCustomerInfo = sev.getAllCustomerInfo();
         String re = JSON.toJSONString(allCustomerInfo, SerializerFeature.WriteMapNullValue);
 
-
-        System.out.println(re);
         resp.getWriter().write(re);
 
     }

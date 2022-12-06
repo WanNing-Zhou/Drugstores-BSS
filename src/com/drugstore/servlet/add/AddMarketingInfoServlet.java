@@ -21,19 +21,20 @@ import java.io.IOException;
 public class AddMarketingInfoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
         String drugID = req.getParameter("drugID");
         String drugName = req.getParameter("drugName");
         String unitPrice = req.getParameter("unitPrice");
-        String number = req.getParameter("unitPrice");
+        String number = req.getParameter("number");
         String customerID = req.getParameter("customerID");
 
         //将结果返回给前端页面
         boolean b = sev.addMarketingInfo(drugID,drugName,unitPrice,number,customerID);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/sale.html");
     }
 }

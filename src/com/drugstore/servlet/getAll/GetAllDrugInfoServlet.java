@@ -25,6 +25,7 @@ public class GetAllDrugInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println("/all/drug被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         GetForListService sev = ServiceSingleton.getGetForListService();
@@ -32,6 +33,7 @@ public class GetAllDrugInfoServlet extends HttpServlet {
         List<DrugInfo> allDrugInfo = sev.getAllDrugInfo();
         String re = JSON.toJSONString(allDrugInfo);
 
+        System.out.println(re);
         resp.getWriter().write(re);
 
     }
