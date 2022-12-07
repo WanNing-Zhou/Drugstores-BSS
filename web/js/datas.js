@@ -23,7 +23,7 @@ function showListEndPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug,params){
         //遍历字段集合
         for(let pa = 0; pa < params.length; pa++){//遍历对象
             var td = document.createElement('td');
-            console.log(params[pa])
+            // console.log(params[pa])
             td.innerHTML=datas[i][params[pa]];//
             //k得到的是属性名 obj[k]得到的是属性值
             tr.appendChild(td);
@@ -266,4 +266,18 @@ function getDate(Requesturl,updateUrl,deleteUrl,deleteByWhat,isDrug,params){
             alert(error)
         })
 }
+
+
+function EXITFN(){
+    fetch("/exit",{
+        method:'GET'
+    }).then((resp)=>{
+        location.replace("../login/login.html")
+    }).catch(error=>{
+        console.log(error)
+    })
+
+
+}
+
 

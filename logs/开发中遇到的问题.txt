@@ -27,8 +27,19 @@
   对showList方法进一步封装,将需要参数的按顺序封装到数组里,根据参数顺序对响应的数据进行获取
 
 9.关于数据库问题,如果出现too many connection问题
-两种选择 一种是调整数据库连接池的最大连接数
+两种选择 一种是调整数据库连接池的最大连接数(对于遇到的问题体,这个方法还是会出现,需要设置最大连接数不超过数据库的连接数,)
          另一种的调整数数据库的配置文件 my.ini ,将最大连接数进行修改,然后重启数据库服务
 
 我的选择:我全都要
+        把调整数据库连接池配置文件,讲最大连接数调高
+        调整my.ini的连接数,将最大连接数调高
 
+
+10.使用resp.setCharacterEncoding("UTF-8");后响应数据还是乱码,
+    这句话是设置服务字符集的,并没有告诉浏览器编码
+    可同时使用一下来解决
+            resp.setHeader("Content-type", "text/html;charset=UTF-8");
+            resp.setCharacterEncoding("UTF-8");
+
+    或者使用resp.setContentType("text/html; charset=UTF-8")
+    这句话可以同时设置浏响应头与服务器的字符集

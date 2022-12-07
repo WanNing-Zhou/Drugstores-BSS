@@ -42,13 +42,21 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
 
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
+        response.setHeader("Content-type", "text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+//      可以替代sethearder和setcharsetencoding来解决乱码问题
+//        resp.setContentType("text/html; charset=UTF-8");
+
         String requestUri = request.getRequestURI();
         String contextPath = request.getContextPath();
         String url = requestUri.substring(contextPath.length());
-        System.out.println("contextpath: "+ contextPath);
-        System.out.println("requireURI: "+requestUri);
+
+//        System.out.println("contextpath: "+ contextPath);
+//        System.out.println("requireURI: "+requestUri);
 
         boolean isIgnoreType = false;
         if(ignoreTypes != null){
@@ -61,28 +69,28 @@ public class LoginFilter implements Filter {
         }else{
             filterChain.doFilter(request, response);
         }
-        System.out.println("静态资源" + isIgnoreType);
-        if(requestUri.indexOf("/md5.js") > -1||url.indexOf("/login.html")>-1||isIgnoreType==true){
-            System.out.println(url+"这是登录入口或者静态资源，放行");
+        System.out.println(url+"静态资源" + isIgnoreType);
+        if(requestUri.indexOf("/login")>-1||url.indexOf("/login")>-1||isIgnoreType==true){
+//            System.out.println(url+"这是登录入口或者静态资源，放行");
             filterChain.doFilter(request, response);
         }else{
-            String postion = (String)request.getSession().getAttribute("positon");
-            if(postion==null){
+            String position = (String)request.getSession().getAttribute("position");
+            System.out.println("position"+position);
+            if(position==null||position==""){
                 response.sendRedirect(contextPath+"/HTML/login/login.html");
-            }else if(postion=="经理"){
+            }else if("经理".equals(position)){
 
-                if(contextPath.indexOf("/staff/") > -1){
+                if(requestUri.indexOf("/staff/") > -1){
                     response.getWriter().write("经理是不是被降职了??!!!");
                 }else {
-                    System.out.println("经理登录");
+
                     filterChain.doFilter(request,response);
                 }
 
-            }else if(postion=="员工"){
-                if(contextPath.indexOf("/manager/") > -1){
+            }else if("员工".equals(position)){
+                if(requestUri.indexOf("/manager/") > -1){
                     response.getWriter().write("抱歉,您无权访问");
                 }else {
-                    System.out.println("员工登录");
                     filterChain.doFilter(request,response);
                 }
             }

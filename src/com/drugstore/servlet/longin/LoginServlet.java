@@ -25,6 +25,7 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setHeader("Content-type", "text/html;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
@@ -39,7 +40,7 @@ public class LoginServlet extends HttpServlet {
         userPosition = loginService.userPosition(eid,password);
         System.out.println(userPosition);
         if("经理".equals(userPosition)){
-            req.getSession().setAttribute("postion",userPosition);
+            req.getSession().setAttribute("position",userPosition);
             req.getSession().setAttribute("ID",eid);
             resp.getWriter().write(JSON.toJSONString("经理"));
         }else if ("店员".equals(userPosition)){
