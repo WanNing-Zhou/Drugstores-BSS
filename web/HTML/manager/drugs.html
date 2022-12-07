@@ -34,7 +34,7 @@
          <p class="search">
         <input type="text" placeholder="在此搜索...">
         
-        <button><span class="t" type="submit"> 搜索</span></button>
+        <button><span id="searchInput" class="t" type="submit"> 搜索</span></button>
     </p>
     </div>
    
@@ -188,6 +188,14 @@
                 location.replace("../login/login.html")
             }
             
+        }
+
+        //搜索操作
+        let t = document.querySelector('.t');
+        let searchInput = document.querySelector('#searchInput');
+        t.onclick = function (){
+            let searchUrl =`${hostURL}/search/drug?searchstr=${searchInput.value}`
+            getDate(searchUrl, updateUrl, deleteUrl, deleteByWhat,true,params);
         }
 
         </script>

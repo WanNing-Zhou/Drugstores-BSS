@@ -14,7 +14,7 @@ import java.io.IOException;
  * @create 2022/12/5-10:35
  * @description 拦截未登录访问操作
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     public static String defaultUrl;

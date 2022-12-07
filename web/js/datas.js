@@ -268,16 +268,16 @@ function getDate(Requesturl,updateUrl,deleteUrl,deleteByWhat,isDrug,params){
 }
 
 
+//退出功能
 function EXITFN(){
+    //发动get请求
     fetch("/exit",{
         method:'GET'
     }).then((resp)=>{
-        location.replace("../login/login.html")
+        location.replace("/HTML/login/login.html")
     }).catch(error=>{
         console.log(error)
     })
-
-
 }
 
 

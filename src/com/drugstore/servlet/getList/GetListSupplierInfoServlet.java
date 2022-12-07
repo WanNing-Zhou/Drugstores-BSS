@@ -1,5 +1,7 @@
 package com.drugstore.servlet.getList;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,20 @@ import java.io.IOException;
 public class GetListSupplierInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        resp.setHeader("Content-type", "text/html;charset=UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        String searchstr = req.getParameter("searchstr");
+
+
+//        GetForListService sev = ServiceSingleton.getGetForListService();
+//
+//        List<DrugInfo> allDrugInfo = sev.getAllDrugInfo();
+
+        String re = JSON.toJSONString("");
+
+        System.out.println(re);
+        resp.getWriter().write(re);
     }
 }
