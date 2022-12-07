@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:38
  * @description 删除员工信息
  */
-@WebServlet("/manager/delete/employee")
+@WebServlet("/manage/delete/employee")
 public class DeleteEmployeesInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +29,9 @@ public class DeleteEmployeesInfoServlet extends HttpServlet {
         boolean b = sev.deleteEmployeesInfo(id);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        //删除后进行冲定向操作
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/staff.html");
     }
 
 }

@@ -31,5 +31,8 @@ public class DeleteSupplierInfoServlet extends HttpServlet {
         boolean b = sev.deleteSupplierInfo(id);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        //删除后进行冲定向操作
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/supplier.html");
     }
 }

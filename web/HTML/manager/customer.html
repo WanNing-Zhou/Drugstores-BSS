@@ -120,12 +120,12 @@
         //
         // showlistWithoutDel(datas,htmlTag);
 
-
+        let params = ['customerID','name','phone'];
         let requestUrl = hostURL+"/all/customer";
         let deleteUrl = hostURL + "/manage/delete/customer";
         let updateUrl = hostURL + "/HTML/manager/customer-update.html";
         let deleteByWhat="phone";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
 
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');

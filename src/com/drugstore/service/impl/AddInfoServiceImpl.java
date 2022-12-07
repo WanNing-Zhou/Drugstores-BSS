@@ -115,7 +115,7 @@ public class AddInfoServiceImpl implements AddInfoService {
         try {
             EmployeesInfoDAO dao = DAOSingleton.getEmployeesInfoDAO();
             conn = JDBCUtils.getConnection();
-            EmployeesInfo emp = new EmployeesInfo(name,password,postion,postion);
+            EmployeesInfo emp = new EmployeesInfo(name,password,postion,phone);
             num = dao.insert(conn,emp);
         } catch (Exception e) {
             e.printStackTrace();

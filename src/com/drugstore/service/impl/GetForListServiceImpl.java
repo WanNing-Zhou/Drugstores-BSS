@@ -166,7 +166,7 @@ public class GetForListServiceImpl implements GetForListService {
         try {
             conn = JDBCUtils.getConnection();
             OutboundInfoDAO dao = DAOSingleton.getOutboundInfoDAO();
-            dao.getALLObi(conn);
+            list = dao.getALLObi(conn);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

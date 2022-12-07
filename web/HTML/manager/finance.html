@@ -93,13 +93,10 @@
                         <td>财政收支ID</td>
                         <td>账单ID</td>
                         <td>账单类别</td>
-                        <td>流动金额</td>
                         <td>盈亏</td>
+                        <td>流动金额</td>
                         <td>时间</td>
-                        
 
-
-                        
                     </tr>
                </thead>
                <tbody>
@@ -121,13 +118,13 @@
         //     psn:'qqqqq'
         // }];
 
-      
+        let params = ['billID','typeOfBill','profitAndLoss','currentAmount','time'];
         // staffShowList(datas);
         let requestUrl = hostURL+"/manage/all/frae";
         let deleteUrl = "";
         let updateUrl = "";
         let deleteByWhat = "";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
 
 
         //表格hover

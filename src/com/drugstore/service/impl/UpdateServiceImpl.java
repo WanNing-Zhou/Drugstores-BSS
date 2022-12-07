@@ -115,6 +115,7 @@ public class UpdateServiceImpl implements UpdateService {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            JDBCUtils.closeResource(conn,null);
         }
 
         if (num>0){

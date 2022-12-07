@@ -17,7 +17,7 @@ import java.io.IOException;
  * @create 2022/12/5-20:33
  * @description 删除药品信息
  */
-@WebServlet("/manager/delete/drug")
+@WebServlet("/manage/delete/drug")
 public class DeleteDrugInfoServlet extends HttpServlet {
 
     @Override
@@ -32,5 +32,8 @@ public class DeleteDrugInfoServlet extends HttpServlet {
         boolean b = sev.deleteDrugInfo(id,batchNumber);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        //删除后进行冲定向操作
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/drugs.html");
     }
 }

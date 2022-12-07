@@ -74,6 +74,15 @@ public interface GetForListService {
      **/
     List<OutboundInfo> getALLOutboundInfo();
 
+    /**
+     * @MethodName getAllReturnInfo
+     * @Author 周万宁
+     * @Description 获取所有的退货信息
+     * @Date 16:22 2022/12/7
+     * @Param []
+     * @return java.util.List<com.drugstore.bean.ReturnInfo>
+     **/
+
     List<ReturnInfo> getAllReturnInfo();
 
     /**

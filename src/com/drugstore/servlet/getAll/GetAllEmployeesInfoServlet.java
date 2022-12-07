@@ -34,6 +34,7 @@ public class GetAllEmployeesInfoServlet extends HttpServlet {
         List<EmployeesInfo> allEmployeesInfo = sev.getAllEmployeesInfo();
 
         String re = JSON.toJSONString(allEmployeesInfo);
+        System.out.println(re);
         resp.getWriter().write(re);
 
     }

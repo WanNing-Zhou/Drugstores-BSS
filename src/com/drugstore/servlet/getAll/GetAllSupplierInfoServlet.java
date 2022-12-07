@@ -21,7 +21,7 @@ import java.util.List;
  * @description 获取所有供应商信息
  */
 
-@WebServlet("/manager/all/supplier")
+@WebServlet("/manage/all/supplier")
 public class GetAllSupplierInfoServlet extends HttpServlet {
 
     @Override
@@ -34,7 +34,7 @@ public class GetAllSupplierInfoServlet extends HttpServlet {
 
         List<SupplierInfo> infos = sev.getAllSupplierInfo();
         String re = JSON.toJSONString(infos);
-
+        System.out.println(re);
         resp.getWriter().write(re);
 
     }

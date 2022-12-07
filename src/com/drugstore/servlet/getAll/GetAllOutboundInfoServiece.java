@@ -26,12 +26,16 @@ import java.util.List;
 public class GetAllOutboundInfoServiece extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/manage/all/outbound被放访问");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         GetForListService sev = ServiceSingleton.getGetForListService();
 
-        List<OutboundInfo> Infos = sev.getALLOutboundInfo();
-        String re = JSON.toJSONString(Infos);
+        List<OutboundInfo> infos = sev.getALLOutboundInfo();
+
+        String re = JSON.toJSONString(infos);
+        System.out.println(re);
         resp.getWriter().write(re);
     }
 

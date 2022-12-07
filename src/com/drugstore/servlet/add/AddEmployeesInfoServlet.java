@@ -30,8 +30,10 @@ public class AddEmployeesInfoServlet extends HttpServlet {
         String position = req.getParameter("position");
         String phone = req.getParameter("phone");
 
-        System.out.println(name);
-        System.out.println(password);
+        System.out.println("passWord"+password);
+        System.out.println("name"+name);
+        System.out.println("phone"+phone);
+        System.out.println("position"+position);
 
 
         //将结果返回给前端页面

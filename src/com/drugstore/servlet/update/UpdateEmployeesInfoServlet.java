@@ -33,6 +33,10 @@ public class UpdateEmployeesInfoServlet extends HttpServlet {
         String position = req.getParameter("position");
         String phone = req.getParameter("phone");
 
+        System.out.println("emID"+employeesID);
+        System.out.println("name"+name);
+        System.out.println("phone"+phone);
+        System.out.println("position"+position);
 
         //将结果返回给前端页面
         boolean b = sev.updateEmployeesInfoDAO(employeesID,name,password,position,phone);

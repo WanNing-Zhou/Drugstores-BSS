@@ -95,22 +95,20 @@
             <table>
                <thead>
                     <tr>
-                        <td>生产批号</td>
-                        <td>所属类型</td>
-                        <td>有效期至</td>
-                        <td>生产日期</td>
                         <td>药品ID</td>
-                        <td>库存</td>
                         <td>名称</td>
-                        <td>产地</td>
                         <td>供应商ID</td>
-                        <td>单价</td>
+                        <td>生产批号</td>
+                        <td>产地</td>
+                        <td>所属类型</td>
                         <td>进价</td>
+                        <td>单价</td>
+                        <td>库存</td>
+                        <td>生产日期</td>
+                        <td>有效期至</td>
                         <td>操作</td>
                         <td class="insert"><a href="./drugs-insert.html">增加(<span>+</span>)</a></td>
 
-
-                        
                     </tr>
                </thead>
                <tbody>
@@ -133,12 +131,12 @@
         // }];
         // showlist(datas,htmlTag);
 
-
+        let params = ['drugID','name','supplierID','batchNumber','placeOfOrigion','categoryOfOwnership','purchasingPrice','unitPrice','inventory','dateOfProduction','dateOfExpiry'];
         let requestUrl = hostURL+"/all/drug";
         let deleteUrl = hostURL + "/manage/delete/drug";
         let updateUrl = hostURL + "/HTML/manager/drugs-update.html";
         let deleteByWhat="";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,true);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,true,params);
 
         //表格hover
         var trs = document.querySelector('tbody').querySelectorAll('tr');

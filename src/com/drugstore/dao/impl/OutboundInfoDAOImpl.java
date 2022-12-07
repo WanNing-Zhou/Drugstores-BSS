@@ -62,7 +62,7 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
 
     @Override
     public List<OutboundInfo> getALLObi(Connection connection) {
-        String sql = "select * from marketinginfo";
+        String sql = "select * from outboundinfo";
         List<OutboundInfo> forList = getForList(connection, sql);
         return forList;
     }
