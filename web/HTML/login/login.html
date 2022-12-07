@@ -26,27 +26,49 @@
             <last>———————药店进销存系统———————</last>
         </div>
       </div>
+
+      <script src="/public/js/md5.min.js"></script>
       <script>
           //登录弹窗
           var btn =document.querySelector('button');
           var id = document.querySelector('.id');
           var pwd = document.querySelector('.password');
-          btn.onclick = function(){
-              if(id.value == 'admin' && pwd.value == '123456')
-              {
-                alert('登录成功');
-                // 跳转经理页面
-                location.replace("../manager/customer.html")
-              }     
-              else if(id.value == 'staff' && pwd.value == '123456')
-              {
-                // 跳转员工页面
-                location.replace("../staff/staffCustomerPage.html");
-              }
-              else
-                alert('账号或密码错误，登陆失败');
 
-              
+
+          btn.onclick = function(){
+              let user = {ID:id.value,password:md5(pwd.value)}
+              fetch('/login/isuser', {
+                  method: 'post',
+                  body: JSON.stringify(user),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              }).then(resp =>resp.json()
+              ).then(resp=>{
+                  if ("经理"==resp){
+                      location.replace("../manager/customer.html")
+                  }else if("店员" == resp){
+                      location.replace("../staff/staffCustomerPage.html");
+                  }else{
+                      alert('账号或密码错误，登陆失败');
+                  }
+              }).catch(err=>{
+                  console.log(err)
+              })
+              // if(id.value == 'admin' && pwd.value == '123456')
+              // {
+              //     alert('登录成功');
+              //     // 跳转经理页面
+              //     location.replace("../manager/customer.html")
+              // }
+              // else if(id.value == 'staff' && pwd.value == '123456')
+              // {
+              //     // 跳转员工页面
+              //     location.replace("../staff/staffCustomerPage.html");
+              // }
+              // else
+              //     alert('账号或密码错误，登陆失败');
+
           }
       </script>
 </body>

@@ -57,7 +57,7 @@
                     <i class="iconfont">&#xe91d;</i><a href="../staff/staffReturnGoodsPage.html">退货管理</a>
                    </div>
               </li>
-              
+            </ul>
         </div>
         <!-- 表单 -->
         <div class="table">
@@ -84,7 +84,7 @@
                </tbody>
             </table>
            
-            
+        </div>
         </div>
         <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
@@ -262,11 +262,12 @@
         // staffShowList(datas);
         //表格hover
 
+        let params = ['returnID','drugID','drugName','unitPrice','number','amount','customerId','time']
         let requestUrl = hostURL+"/all/returninfo";
         let deleteUrl = "";
         let updateUrl = "";
         let deleteByWhat="";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
 
 
         var trs = document.querySelector('tbody').querySelectorAll('tr');

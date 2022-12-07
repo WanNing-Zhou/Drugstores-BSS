@@ -262,11 +262,12 @@
     //     Tel:'12345'
     // }];
 
+    let params = ['marketingID','drugID','drugName','unitPrice','number','amount','customerId','time']
     let requestUrl = hostURL + "/all/market";
     let deleteUrl = "";
     let updateUrl = "";
     let deleteByWhat = "";
-    getDate(requestUrl, updateUrl, deleteUrl, deleteByWhat, false);
+    getDate(requestUrl, updateUrl, deleteUrl, deleteByWhat, false,params);
 
     //表格hover
     var trs = document.querySelector('tbody').querySelectorAll('tr');

@@ -100,7 +100,6 @@
                         <td>入库时间</td>
                         <td class="insert"><a href="./warehousing-insert.html">增加(<span>+</span>)</a></td>
 
-
                         
                     </tr>
                </thead>
@@ -109,7 +108,7 @@
                </tbody>
             </table>
            
-            
+        </div>
         </div>
         <script type='text/javascript' src='../../js/datas.js'></script>
         <script>
@@ -125,11 +124,12 @@
         //
         // staffShowList(datas);
 
+        let params = ['storageEntryID','drugID','drugName','purchasingPrice','number','amount','supplierID','time']
         let requestUrl = hostURL+"/manage/all/storage";
         let deleteUrl = "";
         let updateUrl = "";
         let deleteByWhat="";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
 
 
         //表格hover
@@ -180,6 +180,8 @@
             if(yes){
                 location.replace("../login/login.html")
             }
+
+
             
         }
 

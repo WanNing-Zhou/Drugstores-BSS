@@ -102,7 +102,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
      **/
     @Override
     public EmployeesInfo getByIDAndPassword(Connection conn, String id, String password) {
-        String sql = "select employeesID,name,position,phone from employeesinfo where employeesID = ? and password = ?";
+        String sql = "select * from employeesinfo where employeesID = ? and password = ?";
         EmployeesInfo instance = getInstance(conn, sql, id, password);
         return instance;
     }

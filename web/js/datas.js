@@ -3,12 +3,13 @@
 // 表单操作最终版本
 //第一个参数是数据, 参数二 编辑地址   参数三 删除地址 参数四根据什么删除
 function showListEndPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug,params){
-    console.log("进入showlist方法")
-    console.log(datas);
-    console.log(updateUrl);
-    console.log(deleteUrl);
-    console.log(deleteByWhat);
-    console.log(isdrug);
+    // console.log("进入showlist方法")
+    // console.log(datas);
+    // console.log(updateUrl);
+    // console.log(deleteUrl);
+    // console.log(deleteByWhat);
+    // console.log(isdrug);
+    console.log("params",params);
     //获取表单元素
     var tbody = document.querySelector('tbody');
     //将元素内得所有内容清空
@@ -19,11 +20,11 @@ function showListEndPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug,params){
         var tr = document.createElement('tr');
         tbody.appendChild(tr);
         //行里面创建单元格td
-
         //遍历字段集合
-        for(let k in params){//遍历对象
+        for(let pa = 0; pa < params.length; pa++){//遍历对象
             var td = document.createElement('td');
-            td.innerHTML=datas[i][k];//
+            console.log(params[pa])
+            td.innerHTML=datas[i][params[pa]];//
             //k得到的是属性名 obj[k]得到的是属性值
             tr.appendChild(td);
         }
@@ -36,7 +37,7 @@ function showListEndPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug,params){
         }
         else
         if(deleteUrl!=null && deleteUrl!=""){
-            console.log(deleteByWhat)
+            // console.log(deleteByWhat)
             var td =document.createElement('td');
             td.innerHTML= `<a class="del" href="${deleteUrl}?${deleteByWhat}=${datas[i][deleteByWhat]}"> 删除 </a>`;
             tr.appendChild(td);

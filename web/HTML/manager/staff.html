@@ -92,8 +92,8 @@
                        
                         <td>员工ID</td>
                         <td>姓名</td>
-                        <td>联系方式</td>
                         <td>职位</td>
+                        <td>联系方式</td>
                         <td>操作</td>
                         <td class="insert"><a href="./staff-insert.html">增加(<span>+</span>)</a></td>
 
@@ -119,11 +119,12 @@
         //
         // showlist(datas,htmlTag);
 
+        let params =['employeesID','name','position','phone']
         let requestUrl = hostURL+"/manage/all/employee";
         let deleteUrl = hostURL + "/manage/delete/employee";
         let updateUrl = hostURL + "/HTML/manager/staff-update.html";
         let deleteByWhat="employeesID";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false);
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
 
 
         //表格hover
@@ -174,7 +175,6 @@
             if(yes){
                 location.replace("../login/login.html")
             }
-            
         }
 
         </script>
