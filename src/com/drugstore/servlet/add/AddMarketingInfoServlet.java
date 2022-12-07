@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -22,6 +23,8 @@ public class AddMarketingInfoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/add/market被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
@@ -36,5 +39,16 @@ public class AddMarketingInfoServlet extends HttpServlet {
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
         resp.sendRedirect(req.getContextPath()+"/HTML/manager/sale.html");
+
+
+        //通过获取session域内的position来获取用户的职位重定向到指定页面
+        HttpSession session = req.getSession();
+        String position =(String)session.getAttribute("position");
+        if(position=="经理"){
+            resp.sendRedirect(req.getContextPath()+"/HTML/manager/returnGoods.html");
+        }else{
+            resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffSalePage.html");
+        }
+
     }
 }

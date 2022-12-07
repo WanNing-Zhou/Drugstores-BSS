@@ -16,6 +16,14 @@
 	</div>
 	<div class="out">
 		<form>
+
+			<div>
+				<label><span>*</span>名称：</label>
+				<div>
+					<input id="supplierID" type="text" class="input-text" >
+				</div>
+			</div>
+
 			<div>
 				<label><span>*</span>名称：</label>
 				<div>
@@ -55,16 +63,18 @@
 	<script src="../../js/datas.js"></script>
 	<script>
 		let obj = getURLParams();
-		
-		var name = document.querySelector('#name');
+
+		var supplierID = document('#supplierID');
+		var sname = document.querySelector('#sname');
 		var agent = document.querySelector('#agent');
 		var phone = document.querySelector('#phone');
 		var address = document.querySelector('#address');
-		
-		name.placeholder = obj.name;
-		agent.placeholder = obj.agent;
-		phone.placeholder = obj.phone;
-		address.placeholder = obj.address;
+
+		supplierID.value = obj.supplierID;
+		sname.value = obj.name;
+		agent.value = obj.agent;
+		phone.value = obj.phone;
+		address.value = obj.address;
 
 		// 设置input高亮
 		var form = document.querySelector('form');

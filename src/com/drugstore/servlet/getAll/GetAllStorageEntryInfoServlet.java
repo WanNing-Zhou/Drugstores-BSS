@@ -21,11 +21,13 @@ import java.util.List;
  * @description 获取所有入库信息
  */
 
-@WebServlet("/manager/all/storage")
+@WebServlet("/manage/all/storage")
 public class GetAllStorageEntryInfoServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("/manage/all/storage被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         GetForListService sev = ServiceSingleton.getGetForListService();

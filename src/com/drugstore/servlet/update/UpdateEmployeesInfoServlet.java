@@ -18,10 +18,10 @@ import java.io.IOException;
  * @description 更改员工信息接口
  */
 
-@WebServlet("/manager/update/employee")
+@WebServlet("/manage/update/employee")
 public class UpdateEmployeesInfoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
@@ -38,5 +38,8 @@ public class UpdateEmployeesInfoServlet extends HttpServlet {
         boolean b = sev.updateEmployeesInfoDAO(employeesID,name,password,position,phone);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+" /HTML/manager/staff.html");
+
     }
 }

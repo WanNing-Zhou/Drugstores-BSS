@@ -16,17 +16,17 @@
 	</div>
 	<div class="out">
 
-		<form>
+		<form action="/update/customer" method="post">
 			<div>
 				<label><span>*</span>姓名：</label>
 				<div>
-					<input   id="name" type="text" class="input-text" >
+					<input  name="name"  id="cname" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input id="phone" type="text" class="input-text" >
+					<input name="phone" id="phone" type="text" class="input-text" >
 				</div>
 			</div>
 
@@ -45,11 +45,11 @@
 
 		let obj = getURLParams();
 		
-		var name = document.querySelector('#name');
+		var cname = document.querySelector('#cname');
 		var phone = document.querySelector('#phone');
 		
-		name.placeholder = obj.name;
-		phone.placeholder = obj.phone;
+		cname.value = obj.name;
+		phone.value = obj.phone;
 		document.write(obj.name);
 		// 设置input高亮
 		var form = document.querySelector('form');

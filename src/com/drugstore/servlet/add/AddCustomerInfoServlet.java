@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -36,6 +37,27 @@ public class AddCustomerInfoServlet  extends HttpServlet {
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
 
-        resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
+
+        //通过获取session域内的position来获取用户的职位
+        HttpSession session = req.getSession();
+        String position =(String)session.getAttribute("position");
+        if(position=="经理"){
+            resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
+        }else{
+            resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffCustomerPage.html");
+        }
+
+        //同过获取请求源地址的方法来判断是否是用户
+
+//        String fromURL = req.getHeader("Referer");
+//        if(fromURL.indexOf("manager")>-1){
+//            resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
+//        }
+//        else{
+//            resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffCustomerPage.html");
+//        }
+
+
+
     }
 }

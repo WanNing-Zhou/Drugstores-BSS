@@ -26,6 +26,8 @@ public class GetAllSupplierInfoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("/manager/all/supplier被访问");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         GetForListService sev = ServiceSingleton.getGetForListService();

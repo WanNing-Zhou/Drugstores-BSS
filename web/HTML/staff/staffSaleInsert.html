@@ -15,35 +15,38 @@
 		<p>销售信息添加</p>
 	</div>
 	<div class="out">
-		<form>
+		<form action="/add/market" method="post">
+			<div>
+				<label><span>*</span>药品ID：</label>
+				<div>
+					<input name="drugID" type="text" class="input-text" >
+				</div>
+			</div>
 			<div>
 				<label><span>*</span>药品名称：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="drugName" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>单价：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="unitPrice" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>药品数量：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="number" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
-				<label><span>*</span>总金额：</label>
+				<label><span>*</span>顾客ID：</label>
 				<div>
-					<input type="text" class="input-text" >
+					<input name="customerID" type="text" class="input-text" >
 				</div>
 			</div>
 
-			
-			
-					
 			<div>
 				<div >
 					<button class="submit" type="submit"><i></i> 提交</button>
@@ -53,6 +56,7 @@
 			</div>
 		</form>
 	</div>
+
 	<script>
 		// 设置input高亮
 		var form = document.querySelector('form');

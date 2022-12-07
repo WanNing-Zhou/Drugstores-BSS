@@ -17,10 +17,12 @@ import java.io.IOException;
  * @create 2022/12/5-20:20
  * @description 添加入库信息接口
  */
-@WebServlet("/manager/add/entry")
+@WebServlet("/manage/add/entry")
 public class AddStorageEntryInfoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("被访问");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         AddInfoService sev = ServiceSingleton.getAddInfoService();
@@ -34,6 +36,8 @@ public class AddStorageEntryInfoServlet extends HttpServlet {
         boolean b = sev.addStorageEntryInfo(drugID,drugName,purchasingPrice,number,supplierID);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/warehousing.html");
 
     }
 }

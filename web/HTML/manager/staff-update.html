@@ -17,17 +17,25 @@
 	</div>
 	<div class="out">
 
-		<form>
+		<form action="/manage/update/employee" method="post">
+
+			<div>
+				<label><span>*</span>员工ID：</label>
+				<div>
+					<input id="employeesID" type="text" class="input-text" >
+				</div>
+			</div>
+
 			<div>
 				<label><span>*</span>姓名：</label>
 				<div>
-					<input id="name" type="text" class="input-text" >
+					<input name="name" id="ename" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>密码：</label>
 				<div>
-					<input id="password" type="password" class="input-text" >
+					<input name="password" id="password" type="password" class="input-text" >
 				</div>
 			</div>
 		
@@ -35,23 +43,23 @@
 			<div>
 				<label><span>*</span>联系方式：</label>
 				<div>
-					<input id="phone" type="text" class="input-text" >
+					<input name="phone" id="phone" type="text" class="input-text" >
 				</div>
 			</div>
 			<div>
 				<label><span>*</span>职位：</label>
 				<div>
-					<select name="position" id="">
+					<select name="position" id="position">
 						<option value="">请选择</option>
-						<option value="manager">经理</option>
-						<option value="clerk">店员</option>
+						<option value="经理">经理</option>
+						<option value="店员">店员</option>
 					</select>
 				</div>
 			</div>
 					
 			<div>
 				<div >
-					<button type="submit"><i></i> 提交</button>
+					<button type="submit" class="submit"><i></i> 提交</button>
 					
 					<button  type="button"><a href="../manager/staff.html">取消</a></button>
 				</div>
@@ -62,13 +70,19 @@
 	<script>
 
 		let obj = getURLParams();
-	
-		var name = document.querySelector('#name');
-		var password = document.querySelector('#passord');
-		var phone = document.querySelector('#phone');
 
-		name.placeholder = obj.name;
-		phone.placeholder = obj.phone;
+		let employeesID = document.querySelector('#employeesID');
+		employeesID.setAttribute("readOnly",'true');
+		let ename = document.querySelector('e#name');
+		let password = document.querySelector('#passord');
+		let phone = document.querySelector('#phone');
+		let position = document.querySelector("#position");
+
+		employeesID.value =obj.employeesID;
+		ename.value = obj.name;
+		password.value = obj.password;
+		phone.value = obj.phone;
+		position.value = obj.position;
 
 		// 设置input高亮
 		var form = document.querySelector('form');
@@ -82,6 +96,8 @@
                 this.className='checked';
              });
 		}
+
+
         //提交弹窗
 		//这里有bug
 		var sub = document.querySelector('.submit');

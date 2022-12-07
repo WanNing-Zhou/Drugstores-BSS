@@ -17,11 +17,11 @@ import java.io.IOException;
  * @create 2022/12/5-20:22
  * @description 添加供应商接口
  */
-@WebServlet("/manager/add/supplier")
+@WebServlet("/manage/add/supplier")
 public class AddSupplierInfoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
@@ -35,6 +35,9 @@ public class AddSupplierInfoServlet extends HttpServlet {
         boolean b = sev.addSupplierInfo(name,agent,phone,address);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
+
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/supplier.html");
+
 
     }
 }
