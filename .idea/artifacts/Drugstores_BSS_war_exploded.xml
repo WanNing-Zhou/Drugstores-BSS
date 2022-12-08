@@ -7,6 +7,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Drugstores-BSS" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="fastjson-1.2.79" />
+        </element>
       </element>
     </root>
   </artifact>
