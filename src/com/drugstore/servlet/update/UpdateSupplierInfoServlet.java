@@ -41,6 +41,6 @@ public class UpdateSupplierInfoServlet  extends HttpServlet {
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
 
-        resp.sendRedirect(req.getContextPath()+"/HTML/manager/staff-update.html");
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/supplier.html");
     }
 }
