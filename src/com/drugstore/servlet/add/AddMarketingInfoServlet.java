@@ -43,7 +43,7 @@ public class AddMarketingInfoServlet extends HttpServlet {
         HttpSession session = req.getSession();
         String position =(String)session.getAttribute("position");
         if(position.equals("经理")){
-            resp.sendRedirect(req.getContextPath()+"/HTML/manager/returnGoods.html");
+            resp.sendRedirect(req.getContextPath()+"/HTML/manager/sale.html");
         }else{
             resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffSalePage.html");
         }
