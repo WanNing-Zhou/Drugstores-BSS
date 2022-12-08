@@ -4,6 +4,8 @@ import com.drugstore.bean.DrugInfo;
 import com.drugstore.bean.MarketingInfo;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -45,6 +47,8 @@ public interface MarketingInfoDAO {
 
     MarketingInfo getByID(Connection conn,int id);
 
+    int getTheLastListNumber(Connection conn);
+
 
 
     /**
@@ -56,6 +60,8 @@ public interface MarketingInfoDAO {
      * @return java.util.List<com.drugstore.bean.MarketingInfo>
      **/
     List<MarketingInfo> getAllMkt(Connection conn);
+
+    List<MarketingInfo> getAllMktWithFuzzySearch(Connection conn, String incompleteName, int customerID);
 
 
 

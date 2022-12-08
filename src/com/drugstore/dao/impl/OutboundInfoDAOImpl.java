@@ -2,6 +2,7 @@ package com.drugstore.dao.impl;
 
 import com.drugstore.bean.MarketingInfo;
 import com.drugstore.bean.OutboundInfo;
+import com.drugstore.bean.ReturnInfo;
 import com.drugstore.dao.BaseDAO;
 import com.drugstore.dao.OutboundInfoDAO;
 
@@ -51,6 +52,15 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
         OutboundInfo instance = getInstance(conn, sql, id);
         return instance;
     }
+
+    @Override
+    public int getTheLastListNumber(Connection conn) {
+        int num = 0;
+        String sql = "select * from storageentryinfo";
+        num = getForLastListNumber(conn, sql);
+        return num;
+    }
+
     /**
      * @MethodName getALLObi
      * @Author 周万宁
@@ -64,6 +74,13 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
     public List<OutboundInfo> getALLObi(Connection connection) {
         String sql = "select * from outboundinfo";
         List<OutboundInfo> forList = getForList(connection, sql);
+        return forList;
+    }
+
+    @Override
+    public List<OutboundInfo> getALLObiWithFuzzySearch(Connection conn, String incompleteName, int supplierID) {
+        String sql = "select * from outboundinfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or supplierID like \'" + "%" + supplierID + "%" + "\'";
+        List<OutboundInfo> forList = getForList(conn, sql);
         return forList;
     }
 }

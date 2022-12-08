@@ -60,7 +60,6 @@ public interface CustomerInfoDAO {
      **/
     List<CustomerInfo> getAllCust(Connection conn);
 
-
-
+    List<CustomerInfo> getAllCustWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone);
 
 }

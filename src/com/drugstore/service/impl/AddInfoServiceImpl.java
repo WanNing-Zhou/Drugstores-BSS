@@ -8,10 +8,12 @@ import com.drugstore.utils.JDBCUtils;
 
 import javax.xml.crypto.Data;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.List;
 
 /**
  * @author 周万宁
@@ -19,6 +21,7 @@ import java.text.SimpleDateFormat;
  * @create 2022/12/3-20:18
  * @description 添加接口的具体实现
  */
+
 public class AddInfoServiceImpl implements AddInfoService {
 
     /**
@@ -34,7 +37,7 @@ public class AddInfoServiceImpl implements AddInfoService {
 
         CustomerInfoDAO customerInfoDAO=null;
         Connection conn =null;
-        int insert = 0;
+        int num = 0;
         try {
             //获取DAO实例
             customerInfoDAO = DAOSingleton.getCustomerInfoDAO();
@@ -44,13 +47,13 @@ public class AddInfoServiceImpl implements AddInfoService {
             customerInfo.setName(name);
             customerInfo.setPhone(phone);
             //返回影响数据的条数
-            insert = customerInfoDAO.insert(conn, customerInfo);
+            num = customerInfoDAO.insert(conn, customerInfo);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn,null);
         }
-        if(insert>0){
+        if(num>0){
             return true; //表示添加成功
         }
 
@@ -66,7 +69,7 @@ public class AddInfoServiceImpl implements AddInfoService {
      * @return boolean
      **/
     @Override
-    public boolean addDrugInfo(String drugID, String name, String supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, String purchasingPrice, String unitPrice, String inventory, String dateOfProduction, String dateOfExpiry) {
+    public boolean addDrugInfo(String drugID, String name, String supplierID, String batchNumber, String placeOfOrigin, String categoryOfOwnership, String purchasingPrice, String unitPrice, String inventory, String dateOfProduction, String dateOfExpiry) {
         Connection conn = null;
         int num = 0;
 
@@ -84,7 +87,7 @@ public class AddInfoServiceImpl implements AddInfoService {
             Date dop = new Date(sdf.parse(dateOfProduction).getTime());
             Date doe = new Date(sdf.parse(dateOfExpiry).getTime());
 
-            DrugInfo drug = new DrugInfo(drugID,name,sID,batchNumber,placeOfOrigion,categoryOfOwnership,pp,up,inv,dop,doe);
+            DrugInfo drug = new DrugInfo(drugID,name,sID,batchNumber,placeOfOrigin,categoryOfOwnership,pp,up,inv,dop,doe);
             num = drugInfoDAO.insert(conn,drug);
 
         } catch (Exception e) {
@@ -115,7 +118,7 @@ public class AddInfoServiceImpl implements AddInfoService {
         try {
             EmployeesInfoDAO dao = DAOSingleton.getEmployeesInfoDAO();
             conn = JDBCUtils.getConnection();
-            EmployeesInfo emp = new EmployeesInfo(name,password,postion,phone);
+            EmployeesInfo emp = new EmployeesInfo(name,password,postion,postion);
             num = dao.insert(conn,emp);
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,22 +185,64 @@ public class AddInfoServiceImpl implements AddInfoService {
     public boolean addMarketingInfo(String drugID, String drugName,String unitPrice, String number,  String customerID) {
         Connection conn = null;
         int num = 0;
-
+        int newlyIncreasedInfoNum = 0;
+        List<DrugInfo> list = null;
+        BigDecimal newlyCurrentAmount = null;
         try {
             conn = JDBCUtils.getConnection();
-            MarketingInfoDAO dao = DAOSingleton.getMarketingInfoDAO();
-
+            MarketingInfoDAO marketingInfoDAO = DAOSingleton.getMarketingInfoDAO();
             BigDecimal up = new BigDecimal(unitPrice);
             int numb = Integer.parseInt(number);
             BigDecimal amount = up.multiply(new BigDecimal(numb));
             int cid = Integer.parseInt(customerID);
             //获取系统时间
             Timestamp nowtime = new Timestamp(System.currentTimeMillis());
-
             MarketingInfo marketingInfo = new MarketingInfo(drugID, drugName, up, numb, amount, cid, nowtime);
-            num = dao.insert(conn,marketingInfo);
-
-        } catch (Exception e) {
+            num = marketingInfoDAO.insert(conn, marketingInfo);
+            System.out.println(num);
+            //获取最新信息ID
+            newlyIncreasedInfoNum = marketingInfoDAO.getTheLastListNumber(conn);
+            System.out.println(newlyIncreasedInfoNum);
+            //获取最新财政收支流水金额
+            FinancialRevenueAndExpenditureInfoDAO financialRevenueAndExpenditureInfoDAO = DAOSingleton.getFinancialRevenueAndExpenditureInfoDAO();
+            newlyCurrentAmount = financialRevenueAndExpenditureInfoDAO.getTheLastCurrentAmount(conn);
+            //计算现流水金额
+            BigDecimal currentAmount = newlyCurrentAmount.add(amount);
+            //获取系统时间
+            nowtime = new Timestamp(System.currentTimeMillis());
+            FinancialRevenueAndExpenditureInfo fre = new FinancialRevenueAndExpenditureInfo(newlyIncreasedInfoNum, "marketing", amount, currentAmount, nowtime);
+            //新增财政收支信息
+            num = financialRevenueAndExpenditureInfoDAO.insert(conn, fre);
+            System.out.println(num);
+            //更新药品库存
+            num = 0;
+            DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
+            list = drugInfoDAO.getByID(conn, drugID);
+            while (numb > 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    DrugInfo drugInfo = list.get(i);
+                    Date ED = drugInfo.getDateOfExpiry();
+                    int inventory = drugInfo.getInventory();
+                    LocalDate date = LocalDate.now();
+                    if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory > 0) {
+                        DrugInfo drugInfo1 = list.get(i);
+                        String nearBatchNumber = drugInfo1.getBatchNumber();
+                        if (numb <= drugInfo1.getInventory()) {
+                            num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() - numb);
+                            numb = 0;
+                            break;
+                        }
+                        if (numb > drugInfo1.getInventory()) {
+                            num = drugInfoDAO.DeleteByIDAndBatch(conn, drugID, nearBatchNumber);
+                            numb = numb - drugInfo1.getInventory();
+                        }
+                    }
+                }
+                if (num == 0) {
+                    break;
+                }
+            }
+        }  catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn,null);
@@ -222,6 +267,7 @@ public class AddInfoServiceImpl implements AddInfoService {
     public boolean addOutboundInfo(String drugID, String drugName, String purchasingPrice, String number,  String supplierID) {
         Connection conn = null;
         int num = 0;
+        List<DrugInfo> list = null;
 
         try {
             conn = JDBCUtils.getConnection();
@@ -236,6 +282,34 @@ public class AddInfoServiceImpl implements AddInfoService {
 
             OutboundInfo outboundInfo = new OutboundInfo(drugID,drugName,pp,numb,amount,sid,nowtime);
             num = dao.insert(conn,outboundInfo);
+            //更新药品库存
+            num = 0;
+            DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
+            list = drugInfoDAO.getByID(conn, drugID);
+            while (numb > 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    DrugInfo drugInfo = list.get(i);
+                    Date ED = drugInfo.getDateOfExpiry();
+                    int inventory = drugInfo.getInventory();
+                    LocalDate date = LocalDate.now();
+                    if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory > 0) {
+                        DrugInfo drugInfo1 = list.get(i);
+                        String nearBatchNumber = drugInfo1.getBatchNumber();
+                        if (numb <= drugInfo1.getInventory()) {
+                            num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() - numb);
+                            numb = 0;
+                            break;
+                        }
+                        if (numb > drugInfo1.getInventory()) {
+                            num = drugInfoDAO.DeleteByIDAndBatch(conn, drugID, nearBatchNumber);
+                            numb = numb - drugInfo1.getInventory();
+                        }
+                    }
+                }
+                if (num == 0) {
+                    break;
+                }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -264,27 +338,57 @@ public class AddInfoServiceImpl implements AddInfoService {
     public boolean addReturnInfo(String drugID, String drugName, String purchasingPrice, String number,  String customerId) {
         Connection conn = null;
         int num = 0;
-
+        int newlyIncreasedInfoNum = 0;
+        BigDecimal newlyCurrentAmount = null;
+        List<DrugInfo> list = null;
         try {
             conn = JDBCUtils.getConnection();
-            ReturnInfoDAO dao = DAOSingleton.getReturnInfoDAO();
-
+            ReturnInfoDAO returnInfoDAO = DAOSingleton.getReturnInfoDAO();
             BigDecimal pp = new BigDecimal(purchasingPrice);
             int numb = Integer.parseInt(number);
+            int cid = Integer.parseInt(customerId);
             BigDecimal amount = pp.multiply(new BigDecimal(numb));
             //获取系统时间
             Timestamp nowtime = new Timestamp(System.currentTimeMillis());
-            int cid = Integer.parseInt(customerId);
-
             ReturnInfo returnInfo = new ReturnInfo(drugID, drugName, pp, numb, amount, cid, nowtime);
-            num = dao.insert(conn,returnInfo);
-
+            num = returnInfoDAO.insert(conn,returnInfo);
+            System.out.println(num);
+            //获取最新消息ID
+            newlyIncreasedInfoNum = returnInfoDAO.getTheLastListNumber(conn);
+            System.out.println(newlyIncreasedInfoNum);
+            //获取最新财政收支流水金额
+            FinancialRevenueAndExpenditureInfoDAO financialRevenueAndExpenditureInfoDAO = DAOSingleton.getFinancialRevenueAndExpenditureInfoDAO();
+            newlyCurrentAmount = financialRevenueAndExpenditureInfoDAO.getTheLastCurrentAmount(conn);
+            System.out.println(newlyCurrentAmount);
+            //计算现流水金额
+            BigDecimal currentAmount = newlyCurrentAmount.subtract(amount);
+            //获取系统时间
+            nowtime = new Timestamp(System.currentTimeMillis());
+            FinancialRevenueAndExpenditureInfo fre = new FinancialRevenueAndExpenditureInfo(newlyIncreasedInfoNum, "return", amount, currentAmount, nowtime);
+            //新增财政收支信息
+            num = financialRevenueAndExpenditureInfoDAO.insert(conn,fre);
+            //更新药品库存
+            num = 0;
+            DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
+            list = drugInfoDAO.getByID(conn, drugID);
+            for (int i = 0; i < list.size(); i++) {
+                DrugInfo drugInfo = list.get(i);
+                Date ED = drugInfo.getDateOfExpiry();
+                int inventory = drugInfo.getInventory();
+                LocalDate date = LocalDate.now();
+                if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory >= 0) {
+                    DrugInfo drugInfo1 = list.get(i);
+                    String nearBatchNumber = drugInfo1.getBatchNumber();
+                    num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() + numb);
+                    break;
+                }
+            }
+            System.out.println(num);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn,null);
         }
-
 
         if(num>0){
             return true;
@@ -305,22 +409,48 @@ public class AddInfoServiceImpl implements AddInfoService {
     public boolean addStorageEntryInfo(String drugID, String drugName, String purchasingPrice, String number, String supplierID) {
         Connection conn = null;
         int num = 0;
-
+        int newlyIncreasedInfoNum = 0;
+        BigDecimal newlyCurrentAmount = null;
+        List<DrugInfo> list = null;
         try {
             conn = JDBCUtils.getConnection();
-            StorageEntryInfoDAO dao = DAOSingleton.getStorageEntryInfoDAO();
-
+            StorageEntryInfoDAO storageEntryInfoDAO = DAOSingleton.getStorageEntryInfoDAO();
             BigDecimal pp = new BigDecimal(purchasingPrice);
             int numb = Integer.parseInt(number);
             BigDecimal amount = pp.multiply(new BigDecimal(numb));
             //获取系统时间
             Timestamp nowtime = new Timestamp(System.currentTimeMillis());
             int sid = Integer.parseInt(supplierID);
-
             StorageEntryInfo storageEntryInfo = new StorageEntryInfo(drugID, drugName, pp, numb, amount, sid, nowtime);
-            dao.insert(conn,storageEntryInfo);
-
-
+            num = storageEntryInfoDAO.insert(conn,storageEntryInfo);
+            //获取最新消息ID
+            newlyIncreasedInfoNum = storageEntryInfoDAO.getTheLastListNumber(conn);
+            //获取最新财政收支流水金额
+            FinancialRevenueAndExpenditureInfoDAO financialRevenueAndExpenditureInfoDAO = DAOSingleton.getFinancialRevenueAndExpenditureInfoDAO();
+            newlyCurrentAmount = financialRevenueAndExpenditureInfoDAO.getTheLastCurrentAmount(conn);
+            //计算现流水金额
+            BigDecimal currentAmount = newlyCurrentAmount.subtract(amount);
+            //获取系统时间
+            nowtime = new Timestamp(System.currentTimeMillis());
+            FinancialRevenueAndExpenditureInfo fre = new FinancialRevenueAndExpenditureInfo(newlyIncreasedInfoNum, "storageEntry", amount, currentAmount, nowtime);
+            //新增财政收支信息
+            num = financialRevenueAndExpenditureInfoDAO.insert(conn,fre);
+            //更新药品库存
+            num = 0;
+            DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
+            list = drugInfoDAO.getByID(conn, drugID);
+            for (int i = 0; i < list.size(); i++) {
+                DrugInfo drugInfo = list.get(i);
+                Date ED = drugInfo.getDateOfExpiry();
+                int inventory = drugInfo.getInventory();
+                LocalDate date = LocalDate.now();
+                if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory >= 0) {
+                    DrugInfo drugInfo1 = list.get(i);
+                    String nearBatchNumber = drugInfo1.getBatchNumber();
+                    num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() + numb);
+                    break;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -344,15 +474,13 @@ public class AddInfoServiceImpl implements AddInfoService {
             SupplierInfoDAO dao = DAOSingleton.getSupplierInfoDAO();
 
             SupplierInfo supplierInfo = new SupplierInfo(name, agent, phone, address);
-            dao.insert(conn,supplierInfo);
+            num = dao.insert(conn,supplierInfo);
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn,null);
         }
-
-
 
         if(num>0){
             return true;

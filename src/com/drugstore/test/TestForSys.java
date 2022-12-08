@@ -1,6 +1,5 @@
 package com.drugstore.test;
 
-import com.drugstore.bean.EmployeesInfo;
 import com.drugstore.dao.EmployeesInfoDAO;
 import com.drugstore.factory.DAOSingleton;
 import com.drugstore.utils.JDBCUtils;

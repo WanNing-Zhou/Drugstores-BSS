@@ -24,7 +24,7 @@ public interface UpdateService {
      * @Param [drugID, name, supplierID, batchNumber, placeOfOrigion, categoryOfOwnership, purchasingPrice, unitPrice, inventory, dateOfProduction, dateOfExpiry]
      * @return boolean
      **/
-    boolean updateDrugInfo(String drugID,String name,String supplierID,String batchNumber,String placeOfOrigion,String categoryOfOwnership,String purchasingPrice,String unitPrice,String inventory,String dateOfProduction,String dateOfExpiry);
+    boolean updateDrugInfo(String drugID, String unitPrice);
 
     /**
      * @MethodName updateEmployeesInfoDAO
@@ -35,5 +35,16 @@ public interface UpdateService {
      * @return boolean
      **/
     boolean updateEmployeesInfoDAO(String employeesID,String name,String password,String position,String phone);
+
+    /**
+     * @MethodName updateSupplierInfoDAO
+     * @Author 周万宁
+     * @Description 更改供应商信息
+     * @Date 15:35 2022/12/8
+     * @Param [supplierID, name, agent, phone, address]
+     * @return boolean
+     **/
+
+    boolean updateSupplierInfoDAO(String supplierID, String name, String agent, String phone, String address);
 
 }

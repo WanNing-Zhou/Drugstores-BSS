@@ -1,6 +1,5 @@
 package com.drugstore.dao;
 
-import com.drugstore.bean.CustomerInfo;
 import com.drugstore.bean.EmployeesInfo;
 
 import java.sql.Connection;
@@ -54,6 +53,7 @@ public interface EmployeesInfoDAO {
      **/
     List<EmployeesInfo> getAllEmpl(Connection conn);
 
+    List<EmployeesInfo> getAllWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone);
 
     /**
      * @MethodName deleteByID

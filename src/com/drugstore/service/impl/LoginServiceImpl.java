@@ -34,9 +34,7 @@ public class LoginServiceImpl implements LoginService {
             conn = JDBCUtils.getConnection();
             emplDAO= DAOSingleton.getEmployeesInfoDAO();
             empl = emplDAO.getByIDAndPassword(conn, id, password);
-            if (empl!=null){
-                postion = empl.getPosition();
-            }
+            postion = empl.getPosition();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

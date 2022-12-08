@@ -43,3 +43,7 @@
 
     或者使用resp.setContentType("text/html; charset=UTF-8")
     这句话可以同时设置浏响应头与服务器的字符集
+
+
+11.后端关于出库入库,销售,退货,收支信息的时间的为Timestamp格式,这个格式在tostring的时候是时间戳
+在传递到前端页面前需要将其转换格式

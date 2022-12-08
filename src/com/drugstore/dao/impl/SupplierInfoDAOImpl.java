@@ -27,8 +27,15 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
      **/
     @Override
     public int insert(Connection conn, SupplierInfo supplierInfo) {
-        String sql ="insert into supplierinfo (name,agent,phone,address) values(?,?,?,?)";
+        String sql = "insert into supplierinfo (name,agent,phone,address) values(?,?,?,?)";
         int num = update(conn,sql,supplierInfo.getName(),supplierInfo.getAgent(),supplierInfo.getPhone(),supplierInfo.getAddress());
+        return num;
+    }
+
+    @Override
+    public int update(Connection conn, SupplierInfo supplierInfo) {
+        String sql = "update supplierinfo set name = ? ,agent = ?,phone = ?,address = ?  where supplierID= ? ";
+        int num = update(conn, sql, supplierInfo.getName(),supplierInfo.getAgent(),supplierInfo.getPhone(),supplierInfo.getAddress(), supplierInfo.getSupplierID());
         return num;
     }
 
@@ -73,6 +80,12 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
     @Override
     public List<SupplierInfo> getAllSupplier(Connection conn) {
         String sql = "select * from supplierinfo";
+        List<SupplierInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
+    public List<SupplierInfo> getAllSupplierWithFuzzySearch(Connection conn, String incompleteName, String incompleteAgent, String incompletePhone, String incompleteAddress) {
+        String sql = "select * from supplierinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or agent like \'" + "%" + incompleteAgent + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'" + "or address like \'" + "%" + incompleteAddress + "%" + "\'";
         List<SupplierInfo> forList = getForList(conn, sql);
         return forList;
     }

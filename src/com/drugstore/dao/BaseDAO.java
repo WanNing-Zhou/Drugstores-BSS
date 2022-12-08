@@ -5,11 +5,11 @@ import com.drugstore.utils.JDBCUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.math.BigDecimal;
+import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 /**
@@ -116,7 +116,7 @@ public abstract class BaseDAO<T> {
             for (int i = 0; i < args.length; i++) {
                 ps.setObject(i + 1, args[i]);
             }
-
+            System.out.println();
             rs = ps.executeQuery();
             // 获取结果集的元数据 :ResultSetMetaData
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -140,7 +140,6 @@ public abstract class BaseDAO<T> {
                     field.setAccessible(true);
                     field.set(t, columValue);
                 }
-
                 list.add(t);
             }
 
@@ -149,9 +148,80 @@ public abstract class BaseDAO<T> {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(null, ps, rs);
+
         }
         return null;
     }
 
+    public BigDecimal getForLastListCurrentAmount(Connection conn, String sql, Object... args) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        BigDecimal newlyCurrentAmount = null;
+        try {
+
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            System.out.println();
+            rs = ps.executeQuery();
+            rs.last();
+            newlyCurrentAmount = (BigDecimal) rs.getObject(5);
+            return newlyCurrentAmount;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps, rs);
+
+        }
+        return null;
+    }
+
+    public BigDecimal getForSDrugNumber(Connection conn, String sql, Object... args) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        BigDecimal newlyCurrentAmount = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            System.out.println();
+            rs = ps.executeQuery();
+            rs.last();
+            newlyCurrentAmount = (BigDecimal) rs.getObject(5);
+            return newlyCurrentAmount;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps, rs);
+
+        }
+        return null;
+    }
+
+    public int getForLastListNumber(Connection conn, String sql, Object... args) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int num = 0;
+        try {
+
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            System.out.println();
+            rs = ps.executeQuery();
+            rs.last();
+            num = rs.getRow();
+            return num;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps, rs);
+
+        }
+        return 0;
+    }
 
 }

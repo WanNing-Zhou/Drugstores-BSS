@@ -97,7 +97,7 @@ public class GetInstanceServiceImpl implements GetInstanceService {
     /**
      * @MethodName getMarketingInfo
      * @Author 周万宁
-     * @Description TODO
+     * @Description 根据id获取销售信息实例
      * @Date 22:39 2022/12/4
      * @Param [id]
      * @return com.drugstore.bean.MarketingInfo

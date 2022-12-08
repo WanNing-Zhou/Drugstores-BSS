@@ -45,6 +45,24 @@ public class GetForListServiceImpl implements GetForListService {
         return list;
     }
 
+    public List<CustomerInfo> getAllCustInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<CustomerInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            CustomerInfoDAO dao = DAOSingleton.getCustomerInfoDAO();
+            list = dao.getAllCustWithFuzzySearch(conn, str, str);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
     /**
      * @MethodName getAllDrugInfo
      * @Author 周万宁
@@ -70,6 +88,25 @@ public class GetForListServiceImpl implements GetForListService {
 
         return list;
     }
+
+    @Override
+    public List<DrugInfo> getAllDrugInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<DrugInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            DrugInfoDAO dao = DAOSingleton.getDrugInfoDAO();
+            list = dao.getAllDrugWithFuzzySearch(conn, str, str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
 
     /**
      * @MethodName getAllEmployeesInfo
@@ -98,10 +135,29 @@ public class GetForListServiceImpl implements GetForListService {
         return list;
     }
 
+    @Override
+    public List<EmployeesInfo> getAllEmployeesInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<EmployeesInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            EmployeesInfoDAO dao = DAOSingleton.getEmployeesInfoDAO();
+            list =  dao.getAllWithFuzzySearch(conn, str, str);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
     /**
      * @MethodName getAllFinancialRevenueAndExpenditureInfo
      * @Author 周万宁
-     * @Description 获取所有收支表单
+     * @Description 获取所有财政收支表单
      * @Date 10:02 2022/12/5
      * @Param []
      * @return java.util.List<com.drugstore.bean.FinancialRevenueAndExpenditureInfo>
@@ -150,6 +206,25 @@ public class GetForListServiceImpl implements GetForListService {
         return list;
     }
 
+    @Override
+    public List<MarketingInfo> getAllMarketingInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<MarketingInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            MarketingInfoDAO dao = DAOSingleton.getMarketingInfoDAO();
+            int cid= Integer.parseInt(str);
+            list = dao.getAllMktWithFuzzySearch(conn, str, cid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
     /**
      * @MethodName getALLOutboundInfo
      * @Author 周万宁
@@ -175,6 +250,26 @@ public class GetForListServiceImpl implements GetForListService {
 
         return list;
     }
+
+    @Override
+    public List<OutboundInfo> getALLOutboundInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<OutboundInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            OutboundInfoDAO dao = DAOSingleton.getOutboundInfoDAO();
+            int sid = Integer.parseInt(str);
+            list = dao.getALLObiWithFuzzySearch(conn, str, sid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
     /**
      * @MethodName getAllReturnInfo
      * @Author 周万宁
@@ -193,6 +288,25 @@ public class GetForListServiceImpl implements GetForListService {
             conn = JDBCUtils.getConnection();
             ReturnInfoDAO dao = DAOSingleton.getReturnInfoDAO();
             list = dao.getAllRet(conn);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<ReturnInfo> getAllReturnInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<ReturnInfo> list = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            ReturnInfoDAO dao = DAOSingleton.getReturnInfoDAO();
+            int cid = Integer.parseInt(str);
+            list = dao.getAllRetWithFuzzySearch(conn, str, cid);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,6 +344,25 @@ public class GetForListServiceImpl implements GetForListService {
         return list;
     }
 
+    @Override
+    public List<StorageEntryInfo> getAllStorageEntryInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<StorageEntryInfo> list = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            StorageEntryInfoDAO dao = DAOSingleton.getStorageEntryInfoDAO();
+            int sid = Integer.parseInt(str);
+            list = dao.getAllSteWithFuzzySearch(conn, str, sid);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
     /**
      * @MethodName getAllSupplierInfo
      * @Author 周万宁
@@ -248,6 +381,24 @@ public class GetForListServiceImpl implements GetForListService {
             conn = JDBCUtils.getConnection();
             SupplierInfoDAO dao = DAOSingleton.getSupplierInfoDAO();
             list = dao.getAllSupplier(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<SupplierInfo> getAllSupplierInfoWithFuzzySearch(String str) {
+        Connection conn = null;
+        List<SupplierInfo> list = null;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            SupplierInfoDAO dao = DAOSingleton.getSupplierInfoDAO();
+            list = dao.getAllSupplierWithFuzzySearch(conn, str, str, str, str);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

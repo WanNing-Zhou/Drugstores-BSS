@@ -1,6 +1,10 @@
 package com.drugstore.servlet.getList;
 
 import com.alibaba.fastjson.JSON;
+import com.drugstore.bean.DrugInfo;
+import com.drugstore.bean.SupplierInfo;
+import com.drugstore.factory.ServiceSingleton;
+import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author 周万宁
@@ -26,11 +31,11 @@ public class GetListSupplierInfoServlet extends HttpServlet {
         String searchstr = req.getParameter("searchstr");
 
 
-//        GetForListService sev = ServiceSingleton.getGetForListService();
-//
-//        List<DrugInfo> allDrugInfo = sev.getAllDrugInfo();
+        GetForListService sev = ServiceSingleton.getGetForListService();
 
-        String re = JSON.toJSONString("");
+        List<SupplierInfo> allInfo = sev.getAllSupplierInfo();
+
+        String re = JSON.toJSONString(allInfo);
 
         System.out.println(re);
         resp.getWriter().write(re);

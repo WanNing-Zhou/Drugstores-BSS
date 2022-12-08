@@ -1,11 +1,12 @@
 package com.drugstore.dao.impl;
 
-import com.drugstore.bean.CustomerInfo;
 import com.drugstore.bean.EmployeesInfo;
 import com.drugstore.dao.BaseDAO;
 import com.drugstore.dao.EmployeesInfoDAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
     @Override
     public int insert(Connection conn, EmployeesInfo empl) {
         String sql ="insert into employeesinfo (name,password,position,phone) values(?,?,?,?)";
-        int num = update(conn,sql,empl.getName(),empl.getPassword(),empl.getPosition(),empl.getPhone());
+        int num = update(conn,sql,empl.getName(),empl.getName(),empl.getPosition(),empl.getPhone());
         return num;
     }
 
@@ -77,6 +78,13 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
         return  forList;
     }
 
+    @Override
+    public List<EmployeesInfo> getAllWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone) {
+        String sql = "select employeesID,name,position,phone from employeesinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'";
+        List<EmployeesInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
     /**
      * @MethodName deleteByID
      * @Author 周万宁
@@ -88,7 +96,8 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
     @Override
     public int deleteByID(Connection conn, int id) {
         String sql="delete from employeesinfo where employeesID = ?";
-        int num = update(conn,sql,id);
+        System.out.println(sql);
+        int num = update(conn, sql, id);
         return num;
     }
 
@@ -102,7 +111,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
      **/
     @Override
     public EmployeesInfo getByIDAndPassword(Connection conn, String id, String password) {
-        String sql = "select * from employeesinfo where employeesID = ? and password = ?";
+        String sql = "select employeesID,name,position,phone from employeesinfo where employeesID = ? and password = ?";
         EmployeesInfo instance = getInstance(conn, sql, id, password);
         return instance;
     }

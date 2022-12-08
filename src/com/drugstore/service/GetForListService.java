@@ -21,6 +21,7 @@ public interface GetForListService {
      * @return java.util.List<com.drugstore.bean.CustomerInfo>
      **/
     List<CustomerInfo> getAllCustomerInfo();
+    List<CustomerInfo> getAllCustInfoWithFuzzySearch(String str);
 
     /**
      * @MethodName getAllDrugInfo
@@ -33,6 +34,8 @@ public interface GetForListService {
 
     List<DrugInfo> getAllDrugInfo();
 
+    List<DrugInfo> getAllDrugInfoWithFuzzySearch(String str);
+
     /**
      * @MethodName getAllEmployeesInfo
      * @Author 周万宁
@@ -44,6 +47,7 @@ public interface GetForListService {
     List<EmployeesInfo> getAllEmployeesInfo();
 
 
+    List<EmployeesInfo> getAllEmployeesInfoWithFuzzySearch(String str);
     /**
      * @MethodName getAllFinancialRevenueAndExpenditureInfo
      * @Author 周万宁
@@ -52,6 +56,7 @@ public interface GetForListService {
      * @Param []
      * @return java.util.List<com.drugstore.bean.FinancialRevenueAndExpenditureInfo>
      **/
+
     List<FinancialRevenueAndExpenditureInfo> getAllFinancialRevenueAndExpenditureInfo();
 
     /**
@@ -63,6 +68,7 @@ public interface GetForListService {
      * @return java.util.List<com.drugstore.bean.MarketingInfo>
      **/
     List<MarketingInfo> getAllMarketingInfo();
+    List<MarketingInfo> getAllMarketingInfoWithFuzzySearch(String str);
 
     /**
      * @MethodName getALLOutboundInfo
@@ -74,16 +80,10 @@ public interface GetForListService {
      **/
     List<OutboundInfo> getALLOutboundInfo();
 
-    /**
-     * @MethodName getAllReturnInfo
-     * @Author 周万宁
-     * @Description 获取所有的退货信息
-     * @Date 16:22 2022/12/7
-     * @Param []
-     * @return java.util.List<com.drugstore.bean.ReturnInfo>
-     **/
+    List<OutboundInfo> getALLOutboundInfoWithFuzzySearch(String str);
 
     List<ReturnInfo> getAllReturnInfo();
+    List<ReturnInfo> getAllReturnInfoWithFuzzySearch(String str);
 
     /**
      * @MethodName getAllStorageEntryInfo
@@ -95,7 +95,7 @@ public interface GetForListService {
      **/
     List<StorageEntryInfo> getAllStorageEntryInfo();
 
-
+    List<StorageEntryInfo> getAllStorageEntryInfoWithFuzzySearch(String str);
     /**
      * @MethodName getAllSupplierInfo
      * @Author 周万宁
@@ -106,6 +106,6 @@ public interface GetForListService {
      **/
     List<SupplierInfo> getAllSupplierInfo();
 
-
+    List<SupplierInfo> getAllSupplierInfoWithFuzzySearch(String str);
 
 }

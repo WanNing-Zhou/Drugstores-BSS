@@ -7,6 +7,9 @@ import com.drugstore.dao.MarketingInfoDAO;
 
 import javax.xml.validation.Validator;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -26,8 +29,9 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
      **/
     @Override
     public int insert(Connection conn, MarketingInfo mkt) {
-        String sql ="insert into marketinginfo (drugID,drugName,unitPrice,amount,customerID,time) values(?,?,?,?,?,?)";
+        String sql ="insert into marketinginfo (drugID,drugName,unitPrice,number, amount,customerID,time) values(?,?,?,?,?,?,?)";
         int num = update(conn,sql,mkt.getDrugID(),mkt.getDrugName(),mkt.getUnitPrice(),mkt.getNumber(),mkt.getAmount(),mkt.getCustomerID(),mkt.getTime());
+
         return num;
     }
 
@@ -58,6 +62,15 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
         MarketingInfo instance = getInstance(conn, sql, id);
         return instance;
     }
+
+    @Override
+    public int getTheLastListNumber(Connection conn) {
+        int num = 0;
+        String sql = "select * from marketinginfo";
+        num = getForLastListNumber(conn, sql);
+        return num;
+    }
+
     /**
      * @MethodName getAllMkt
      * @Author 周万宁
@@ -70,6 +83,13 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
     @Override
     public List<MarketingInfo> getAllMkt(Connection conn) {
         String sql = "select * from marketinginfo";
+        List<MarketingInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
+    @Override
+    public List<MarketingInfo> getAllMktWithFuzzySearch(Connection conn, String incompleteName, int customerID) {
+        String sql = "select * from marketinginfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or customerID like \'" + "%" + customerID + "%" + "\'";
         List<MarketingInfo> forList = getForList(conn, sql);
         return forList;
     }

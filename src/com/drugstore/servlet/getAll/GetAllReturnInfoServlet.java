@@ -1,10 +1,7 @@
 package com.drugstore.servlet.getAll;
 
 import com.alibaba.fastjson.JSON;
-import com.drugstore.bean.MarketingInfo;
-import com.drugstore.bean.ReturnInfo;
 import com.drugstore.factory.ServiceSingleton;
-import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

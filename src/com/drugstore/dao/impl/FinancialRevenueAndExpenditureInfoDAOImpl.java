@@ -5,6 +5,7 @@ import com.drugstore.bean.FinancialRevenueAndExpenditureInfo;
 import com.drugstore.dao.BaseDAO;
 import com.drugstore.dao.FinancialRevenueAndExpenditureInfoDAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.List;
 
@@ -60,4 +61,13 @@ public class FinancialRevenueAndExpenditureInfoDAOImpl extends BaseDAO<Financial
         List<FinancialRevenueAndExpenditureInfo> forList = getForList(conn, sql);
         return forList;
     }
+
+    @Override
+    public BigDecimal getTheLastCurrentAmount(Connection conn) {
+        String sql = "select * from financialrevenueandexpenditureinfo";
+        BigDecimal newlyCurrentAmount = getForLastListCurrentAmount(conn, sql);
+        return newlyCurrentAmount;
+    }
+
+
 }

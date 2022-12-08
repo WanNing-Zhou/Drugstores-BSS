@@ -1,6 +1,7 @@
 package com.drugstore.dao;
 
 import com.drugstore.bean.OutboundInfo;
+import com.drugstore.bean.ReturnInfo;
 
 import java.sql.Connection;
 import java.util.List;
@@ -42,7 +43,7 @@ public interface OutboundInfoDAO {
      * @return com.drugstore.bean.OutboundInfo
      **/
     OutboundInfo getByID(Connection conn,int id);
-
+    int getTheLastListNumber(Connection conn);
     /**
      * @MethodName getALLObi
      * @Author 周万宁
@@ -53,6 +54,6 @@ public interface OutboundInfoDAO {
      **/
     List<OutboundInfo> getALLObi(Connection connection);
 
-
+    List<OutboundInfo> getALLObiWithFuzzySearch(Connection conn, String incompleteName, int supplierID);
 
 }

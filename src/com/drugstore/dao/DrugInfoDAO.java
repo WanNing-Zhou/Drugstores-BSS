@@ -2,7 +2,9 @@ package com.drugstore.dao;
 
 import com.drugstore.bean.DrugInfo;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -29,7 +31,8 @@ public interface DrugInfoDAO {
      * @Param [conn, drug]
      * @return int
      **/
-    int update(Connection conn,DrugInfo drug);
+    int update(Connection conn, String drugID, BigDecimal unitPrice);
+    int updateInventory(Connection conn, String drugID, String batchNumber, int invenyory);
 
     /**
      * @Author 周万宁
@@ -67,6 +70,8 @@ public interface DrugInfoDAO {
      * @return java.util.List<com.drugstore.bean.DrugInfo>
      **/
     List<DrugInfo> getAllDrug(Connection conn);
+
+    List<DrugInfo> getAllDrugWithFuzzySearch(Connection conn, String incompleteName, String incompleteCategoryOfOwnership);
 
 
     /**

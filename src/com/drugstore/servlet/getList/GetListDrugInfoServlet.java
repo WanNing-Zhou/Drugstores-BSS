@@ -24,19 +24,22 @@ public class GetListDrugInfoServlet  extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         resp.setHeader("Content-type", "text/html;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
+        System.out.println("/search/drug被访问");
         String searchstr = req.getParameter("searchstr");
 
 
-//        GetForListService sev = ServiceSingleton.getGetForListService();
+        GetForListService sev = ServiceSingleton.getGetForListService();
 //
-//        List<DrugInfo> allDrugInfo = sev.getAllDrugInfo();
-        String re = JSON.toJSONString("");
+        List<DrugInfo> allInfo = sev.getAllDrugInfoWithFuzzySearch(searchstr);
+        String re = JSON.toJSONString(allInfo);
 
-        System.out.println(re);
+//        System.out.println(re);
         resp.getWriter().write(re);
     }
 }

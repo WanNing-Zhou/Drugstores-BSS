@@ -2,6 +2,7 @@ package com.drugstore.dao;
 
 import com.drugstore.bean.FinancialRevenueAndExpenditureInfo;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.List;
 
@@ -43,6 +44,6 @@ public interface FinancialRevenueAndExpenditureInfoDAO {
      * @return java.util.List<com.drugstore.bean.FinancialRevenueAndExpenditureInfo>
      **/
     List<FinancialRevenueAndExpenditureInfo> getAllFre(Connection conn);
-
+    BigDecimal getTheLastCurrentAmount(Connection conn);
 
 }

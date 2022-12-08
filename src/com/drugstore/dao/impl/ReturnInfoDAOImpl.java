@@ -59,6 +59,14 @@ public class ReturnInfoDAOImpl extends BaseDAO<ReturnInfo> implements ReturnInfo
         return instance;
     }
 
+    @Override
+    public int getTheLastListNumber(Connection conn) {
+        int num = 0;
+        String sql = "select * from returninfo";
+        num = getForLastListNumber(conn, sql);
+        return num;
+    }
+
     /**
      * @MethodName getAllRet
      * @Author 周万宁
@@ -70,6 +78,13 @@ public class ReturnInfoDAOImpl extends BaseDAO<ReturnInfo> implements ReturnInfo
     @Override
     public List<ReturnInfo> getAllRet(Connection conn) {
         String sql = "select * from returninfo";
+        List<ReturnInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
+    @Override
+    public List<ReturnInfo> getAllRetWithFuzzySearch(Connection conn, String incompleteName, int customerID) {
+        String sql = "select * from returninfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or customerID like \'" + "%" + customerID + "%" + "\'";
         List<ReturnInfo> forList = getForList(conn, sql);
         return forList;
     }

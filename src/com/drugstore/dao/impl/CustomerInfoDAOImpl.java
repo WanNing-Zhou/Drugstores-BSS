@@ -95,5 +95,10 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
         return forList;
     }
 
-
+    @Override
+    public List<CustomerInfo> getAllCustWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone) {
+        String sql = "select * from customerinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'";
+        List<CustomerInfo> forList = getForList(conn, sql);
+        return forList;
+    }
 }

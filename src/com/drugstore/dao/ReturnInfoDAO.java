@@ -43,6 +43,7 @@ public interface ReturnInfoDAO {
      **/
     ReturnInfo getByID(Connection conn,int id);
 
+    int getTheLastListNumber(Connection conn);
 
     /**
      * @MethodName getAllRet
@@ -54,6 +55,7 @@ public interface ReturnInfoDAO {
      **/
     List<ReturnInfo> getAllRet(Connection conn);
 
+    List<ReturnInfo> getAllRetWithFuzzySearch(Connection conn, String incompleteName, int customerID);
 
 
 }

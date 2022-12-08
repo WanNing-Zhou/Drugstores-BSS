@@ -23,6 +23,7 @@ public interface SupplierInfoDAO {
      **/
     int insert(Connection conn, SupplierInfo supplierInfo);
 
+    int update(Connection conn, SupplierInfo supplierInfo);
     /**
      * @MethodName delete
      * @Author 周万宁
@@ -54,5 +55,6 @@ public interface SupplierInfoDAO {
      **/
     List<SupplierInfo> getAllSupplier(Connection conn);
 
+    List<SupplierInfo> getAllSupplierWithFuzzySearch(Connection conn, String incompleteName, String incompleteAgent, String incompletePhone, String incompleteAddress);
 
 }

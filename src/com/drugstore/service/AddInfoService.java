@@ -42,7 +42,7 @@ public interface AddInfoService {
     /**
      * @MethodName addFinancialRevenueAndExpenditureInfo
      * @Author 周万宁
-     * @Description 添加财政收支西悉尼,返回一个bool值代表是否添加成功,需要对部分参数进行转型
+     * @Description 添加财政收支信息,返回一个bool值代表是否添加成功,需要对部分参数进行转型
      * @Date 14:59 2022/12/3
      * @Param [billID, typeOfBill, profitAndLoss, currentAmount, time]
      * @return boolean

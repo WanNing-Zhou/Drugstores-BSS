@@ -74,4 +74,19 @@ public class StorageEntryInfoDAOImpl extends BaseDAO<StorageEntryInfo> implement
         List<StorageEntryInfo> forList = getForList(conn, sql);
         return forList;
     }
+
+    @Override
+    public List<StorageEntryInfo> getAllSteWithFuzzySearch(Connection conn, String incompleteName, int supplierID) {
+        String sql = "select * from storageentryinfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or supplierID like \'" + "%" + supplierID + "%" + "\'";
+        List<StorageEntryInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
+    @Override
+    public int getTheLastListNumber(Connection conn) {
+        int num = 0;
+        String sql = "select * from storageentryinfo";
+        num = getForLastListNumber(conn, sql);
+        return num;
+    }
 }

@@ -4,6 +4,7 @@ import com.drugstore.bean.DrugInfo;
 import com.drugstore.dao.BaseDAO;
 import com.drugstore.dao.DrugInfoDAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
     @Override
     public int insert(Connection conn, DrugInfo drug) {
 
-        String sql ="insert into druginfo (name,supplierID,batchNumber,placeOfOrigion,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry) values(?,?,?,?,?,?,?,?,?,?)";
-        int num = update(conn,sql,drug.getName(),drug.getSupplierID(),drug.getBatchNumber(),drug.getPlaceOfOrigion(),drug.getCategoryOfOwnership(),drug.getPurchasingPrice(),drug.getInventory(),drug.getDateOfProduction(),drug.getDateOfExpiry());
+        String sql ="insert into druginfo (drugID, name,supplierID,batchNumber,placeOfOrigin,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry) values(?,?,?,?,?,?,?,?,?,?, ?)";
+        int num = update(conn,sql,drug.getDrugID(), drug.getName(),drug.getSupplierID(),drug.getBatchNumber(),drug.getPlaceOfOrigin(),drug.getCategoryOfOwnership(),drug.getPurchasingPrice(),drug.getUnitPrice(),drug.getInventory(),drug.getDateOfProduction(),drug.getDateOfExpiry());
         return num;
     }
 
@@ -40,9 +41,16 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
      * @return int
      **/
     @Override
-    public int update(Connection conn, DrugInfo drug) {
+    public int update(Connection conn, String drugID, BigDecimal unitPrice) {
         String sql ="update druginfo set unitPrice = ?  where drugID = ? ";
-        int num = update(conn,sql,drug.getUnitPrice(),drug.getDrugID());
+        int num = update(conn,sql, unitPrice, drugID);
+        return num;
+    }
+
+    @Override
+    public int updateInventory(Connection conn, String drugID, String batchNumber, int inventory) {
+        String sql ="update druginfo set inventory = ?  where drugID = ? and batchNumber = ?";
+        int num = update(conn,sql, inventory, drugID, batchNumber);
         return num;
     }
 
@@ -102,6 +110,13 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
     @Override
     public List<DrugInfo> getAllDrug(Connection conn) {
         String sql = "select * from druginfo  ";
+        List<DrugInfo> forList = getForList(conn, sql);
+        return forList;
+    }
+
+    @Override
+    public List<DrugInfo> getAllDrugWithFuzzySearch(Connection conn, String incompleteName, String incompleteCategoryOfOwnership) {
+        String sql = "select * from druginfo  where name like \'" + "%" + incompleteName + "%" + "\'" + "or categoryOfOwnership like \'" + "%" + incompleteCategoryOfOwnership + "%" + "\'";
         List<DrugInfo> forList = getForList(conn, sql);
         return forList;
     }

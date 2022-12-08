@@ -14,7 +14,7 @@ public class DrugInfo {
     private String name;//药品名称
     private int supplierID;//供应商ID
     private String batchNumber;//生产批号
-    private String placeOfOrigion;//产地
+    private String placeOfOrigin;//产地
     private String categoryOfOwnership;//所属类别
     private BigDecimal purchasingPrice;//进价
     private BigDecimal unitPrice;//单价
@@ -26,12 +26,12 @@ public class DrugInfo {
     public DrugInfo() {
     }
 
-    public DrugInfo(String drugID, String name, int supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
+    public DrugInfo(String drugID, String name, int supplierID, String batchNumber, String placeOfOrigin, String categoryOfOwnership, BigDecimal purchasingPrice, BigDecimal unitPrice, int inventory, Date dateOfProduction, Date dateOfExpiry) {
         this.drugID = drugID;
         this.name = name;
         this.supplierID = supplierID;
         this.batchNumber = batchNumber;
-        this.placeOfOrigion = placeOfOrigion;
+        this.placeOfOrigin = placeOfOrigin;
         this.categoryOfOwnership = categoryOfOwnership;
         this.purchasingPrice = purchasingPrice;
         this.unitPrice = unitPrice;
@@ -72,12 +72,12 @@ public class DrugInfo {
         this.batchNumber = batchNumber;
     }
 
-    public String getPlaceOfOrigion() {
-        return placeOfOrigion;
+    public String getPlaceOfOrigin() {
+        return placeOfOrigin;
     }
 
-    public void setPlaceOfOrigion(String placeOfOrigion) {
-        this.placeOfOrigion = placeOfOrigion;
+    public void setPlaceOfOrigin(String placeOfOrigion) {
+        this.placeOfOrigin = placeOfOrigion;
     }
 
     public String getCategoryOfOwnership() {
@@ -135,7 +135,7 @@ public class DrugInfo {
                 ", name='" + name + '\'' +
                 ", supplierID='" + supplierID + '\'' +
                 ", batchNumber='" + batchNumber + '\'' +
-                ", placeOfOrigion='" + placeOfOrigion + '\'' +
+                ", placeOfOrigion='" + placeOfOrigin + '\'' +
                 ", categoryOfOwnership='" + categoryOfOwnership + '\'' +
                 ", purchasingPrice=" + purchasingPrice +
                 ", unitPrice=" + unitPrice +

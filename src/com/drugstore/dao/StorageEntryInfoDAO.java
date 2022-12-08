@@ -42,7 +42,7 @@ public interface StorageEntryInfoDAO {
      * @return com.drugstore.bean.StorageEntryInfo
      **/
     StorageEntryInfo getByID(Connection conn,int id);
-
+    int getTheLastListNumber(Connection conn);
 
     /**
      * @MethodName getAllSte
@@ -53,6 +53,8 @@ public interface StorageEntryInfoDAO {
      * @return java.util.List<com.drugstore.bean.StorageEntryInfo>
      **/
     List<StorageEntryInfo> getAllSte(Connection conn);
+
+    List<StorageEntryInfo> getAllSteWithFuzzySearch(Connection conn, String incompleteName, int supplierID);
 
 
 

@@ -17,7 +17,7 @@ public class ReturnInfo {
     private BigDecimal unitPrice;//单价
     private int number;//数量
     private BigDecimal amount;//总金额
-    private int customerId;//顾客ID
+    private int customerID;//顾客ID
     private Timestamp time;//退货时间
 
     public ReturnInfo() {
@@ -30,7 +30,7 @@ public class ReturnInfo {
         this.unitPrice = unitPrice;
         this.number = number;
         this.amount = amount;
-        this.customerId = customerId;
+        this.customerID = customerId;
         this.time = time;
     }
 
@@ -41,7 +41,7 @@ public class ReturnInfo {
         this.unitPrice = unitPrice;
         this.number = number;
         this.amount = amount;
-        this.customerId = customerId;
+        this.customerID = customerId;
         this.time = time;
     }
 
@@ -94,11 +94,11 @@ public class ReturnInfo {
     }
 
     public int getCustomerId() {
-        return customerId;
+        return customerID;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        this.customerID = customerId;
     }
 
     public Timestamp getTime() {
@@ -118,7 +118,7 @@ public class ReturnInfo {
                 ", unitPrice=" + unitPrice +
                 ", number=" + number +
                 ", amount=" + amount +
-                ", customerId='" + customerId + '\'' +
+                ", customerId='" + customerID + '\'' +
                 ", time=" + time +
                 '}';
     }

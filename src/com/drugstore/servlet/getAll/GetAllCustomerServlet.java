@@ -2,9 +2,7 @@ package com.drugstore.servlet.getAll;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.drugstore.bean.CustomerInfo;
 import com.drugstore.factory.ServiceSingleton;
-import com.drugstore.service.GetForListService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

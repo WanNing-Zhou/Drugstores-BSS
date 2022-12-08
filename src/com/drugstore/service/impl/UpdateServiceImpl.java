@@ -3,8 +3,10 @@ package com.drugstore.service.impl;
 import com.drugstore.bean.CustomerInfo;
 import com.drugstore.bean.DrugInfo;
 import com.drugstore.bean.EmployeesInfo;
+import com.drugstore.bean.SupplierInfo;
 import com.drugstore.dao.DrugInfoDAO;
 import com.drugstore.dao.EmployeesInfoDAO;
+import com.drugstore.dao.SupplierInfoDAO;
 import com.drugstore.factory.DAOSingleton;
 import com.drugstore.service.UpdateService;
 import com.drugstore.utils.JDBCUtils;
@@ -60,28 +62,19 @@ public class UpdateServiceImpl implements UpdateService {
      * @return boolean
      **/
     @Override
-    public boolean updateDrugInfo(String drugID, String name, String supplierID, String batchNumber, String placeOfOrigion, String categoryOfOwnership, String purchasingPrice, String unitPrice, String inventory, String dateOfProduction, String dateOfExpiry) {
+    public boolean updateDrugInfo(String drugID, String unitPrice) {
         Connection conn = null;
         int num = 0;
 
         try {
             conn = JDBCUtils.getConnection();
             DrugInfoDAO dao = DAOSingleton.getDrugInfoDAO();
-            //            格式转换
-            int sID = Integer.parseInt(supplierID);
-            BigDecimal pp = new BigDecimal(purchasingPrice);
             BigDecimal up = new BigDecimal(unitPrice);
-            int inv = Integer.parseInt(inventory);
-            //确定日期格式
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date dop = new Date(sdf.parse(dateOfProduction).getTime());
-            Date doe = new Date(sdf.parse(dateOfExpiry).getTime());
-
-            DrugInfo drug = new DrugInfo(drugID,name,sID,batchNumber,placeOfOrigion,categoryOfOwnership,pp,up,inv,dop,doe);
-            num = dao.update(conn,drug);
+            num = dao.update(conn,drugID, up);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            JDBCUtils.closeResource(conn,null);
         }
 
         if(num>0){
@@ -110,7 +103,7 @@ public class UpdateServiceImpl implements UpdateService {
             int id = Integer.parseInt(employeesID);
             EmployeesInfo empl = new EmployeesInfo(id,name,password,position,phone);
 
-            dao.update(conn,empl);
+            num = dao.update(conn,empl);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,6 +115,31 @@ public class UpdateServiceImpl implements UpdateService {
             return true;
         }
 
+        return false;
+    }
+
+    @Override
+    public boolean updateSupplierInfoDAO(String supplierID, String name, String agent, String phone, String address) {
+        Connection conn = null;
+        int num = 0;
+
+        try {
+            conn = JDBCUtils.getConnection();
+            SupplierInfoDAO dao = DAOSingleton.getSupplierInfoDAO();
+            int id = Integer.parseInt(supplierID);
+            SupplierInfo supp = new SupplierInfo(id, name, agent, phone, address);
+
+            num = dao.update(conn,supp);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn,null);
+        }
+
+        if (num>0){
+            return true;
+        }
         return false;
     }
 }
