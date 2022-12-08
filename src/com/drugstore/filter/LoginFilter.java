@@ -14,7 +14,7 @@ import java.io.IOException;
  * @create 2022/12/5-10:35
  * @description 拦截未登录访问操作
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     public static String defaultUrl;
@@ -42,12 +42,11 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
 
-
-
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
-        response.setContentType("text/html; charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+//        request.setCharacterEncoding("utf-8");
+//        response.setCharacterEncoding("utf-8");
+//        response.setContentType("text/html;charset=UTF-8");
 
 //      可以替代sethearder和setcharsetencoding来解决乱码问题
 //        resp.setContentType("text/html; charset=UTF-8");
@@ -88,7 +87,7 @@ public class LoginFilter implements Filter {
                     filterChain.doFilter(request,response);
                 }
 
-            }else if("员工".equals(position)){
+            }else if("店员".equals(position)){
                 if(requestUri.indexOf("/manager/") > -1){
                     response.getWriter().write("抱歉,您无权访问");
                 }else {

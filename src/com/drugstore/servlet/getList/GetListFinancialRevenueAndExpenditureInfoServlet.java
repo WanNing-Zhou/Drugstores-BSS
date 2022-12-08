@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2022/12/5-21:37
  * @description 搜索财政收支接口
  */
-@WebServlet("/manager/search/frae")
+@WebServlet("/manage/search/frae")
 public class GetListFinancialRevenueAndExpenditureInfoServlet extends HttpServlet {
 
     @Override

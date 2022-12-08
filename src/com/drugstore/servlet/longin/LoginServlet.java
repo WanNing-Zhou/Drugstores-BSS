@@ -32,9 +32,10 @@ public class LoginServlet extends HttpServlet {
         LoginService loginService = ServiceSingleton.getLoginService();
         JSONObject date = HttpGetJson.getJson(req);
 
-
         String eid = String.valueOf(date.get("ID"));
         String password = String.valueOf(date.get("password"));
+        System.out.println("ID"+eid);
+        System.out.println("password"+password);
 
         String userPosition = null;
         userPosition = loginService.userPosition(eid,password);
@@ -51,8 +52,6 @@ public class LoginServlet extends HttpServlet {
             boolean b = false;
             resp.getWriter().write(JSON.toJSONString(b));
         }
-
-
 //        if(eid!="admin"){
 //
 //            LoginService loginService = ServiceSingleton.getLoginService();
@@ -71,6 +70,5 @@ public class LoginServlet extends HttpServlet {
 //            System.out.println("登录失败");
 //            req.getRequestDispatcher("/HTML/login/index.jsp").forward(req,resp);
 //        }
-
     }
 }

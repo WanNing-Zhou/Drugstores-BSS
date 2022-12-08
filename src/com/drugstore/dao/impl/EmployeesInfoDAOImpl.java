@@ -28,7 +28,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
     @Override
     public int insert(Connection conn, EmployeesInfo empl) {
         String sql ="insert into employeesinfo (name,password,position,phone) values(?,?,?,?)";
-        int num = update(conn,sql,empl.getName(),empl.getName(),empl.getPosition(),empl.getPhone());
+        int num = update(conn,sql,empl.getName(),empl.getPassword(),empl.getPosition(),empl.getPhone());
         return num;
     }
 

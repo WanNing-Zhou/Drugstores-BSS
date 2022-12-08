@@ -135,7 +135,7 @@ function showListPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug){
 }
 
 
-const hostURL = "http://localhost:8080"
+const hostURL = "";
 
 //获取域名地址
 function getHostURl(){

@@ -30,7 +30,7 @@ public class GetListDrugInfoServlet  extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        System.out.println("/search/drug被访问");
+
         String searchstr = req.getParameter("searchstr");
 
 
@@ -39,6 +39,7 @@ public class GetListDrugInfoServlet  extends HttpServlet {
         List<DrugInfo> allInfo = sev.getAllDrugInfoWithFuzzySearch(searchstr);
         String re = JSON.toJSONString(allInfo);
 
+        System.out.println(re);
 //        System.out.println(re);
         resp.getWriter().write(re);
     }

@@ -5,6 +5,7 @@ import com.drugstore.dao.*;
 import com.drugstore.factory.DAOSingleton;
 import com.drugstore.service.GetForListService;
 import com.drugstore.utils.JDBCUtils;
+import com.drugstore.utils.STRisINT;
 import netscape.javascript.JSException;
 
 import java.sql.Connection;
@@ -206,6 +207,14 @@ public class GetForListServiceImpl implements GetForListService {
         return list;
     }
 
+    /**
+     * @MethodName getAllMarketingInfoWithFuzzySearch
+     * @Author 周万宁
+     * @Description 根据搜索内容,获取域搜索内同匹配得数据
+     * @Date 19:21 2022/12/8
+     * @Param [str]
+     * @return java.util.List<com.drugstore.bean.MarketingInfo>
+     **/
     @Override
     public List<MarketingInfo> getAllMarketingInfoWithFuzzySearch(String str) {
         Connection conn = null;
@@ -214,7 +223,14 @@ public class GetForListServiceImpl implements GetForListService {
         try {
             conn = JDBCUtils.getConnection();
             MarketingInfoDAO dao = DAOSingleton.getMarketingInfoDAO();
-            int cid= Integer.parseInt(str);
+
+            //这里不能转换成为int类型可以先去判断是否是数字,如果是就转换成int类型
+            int cid= 0;
+            if (STRisINT.isNumeric(str)){
+                Integer.parseInt(str);
+            }
+
+
             list = dao.getAllMktWithFuzzySearch(conn, str, cid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -259,7 +275,11 @@ public class GetForListServiceImpl implements GetForListService {
         try {
             conn = JDBCUtils.getConnection();
             OutboundInfoDAO dao = DAOSingleton.getOutboundInfoDAO();
-            int sid = Integer.parseInt(str);
+            int sid = 0;
+            if(STRisINT.isNumeric(str)){
+              sid  = Integer.parseInt(str);
+            }
+
             list = dao.getALLObiWithFuzzySearch(conn, str, sid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -305,7 +325,13 @@ public class GetForListServiceImpl implements GetForListService {
         try {
             conn = JDBCUtils.getConnection();
             ReturnInfoDAO dao = DAOSingleton.getReturnInfoDAO();
-            int cid = Integer.parseInt(str);
+
+            int cid = 0;
+            //如过str是数字则转换类型
+            if(STRisINT.isNumeric(str)){
+                cid = Integer.parseInt(str);
+            }
+
             list = dao.getAllRetWithFuzzySearch(conn, str, cid);
 
         } catch (Exception e) {
@@ -351,7 +377,11 @@ public class GetForListServiceImpl implements GetForListService {
         try {
             conn = JDBCUtils.getConnection();
             StorageEntryInfoDAO dao = DAOSingleton.getStorageEntryInfoDAO();
-            int sid = Integer.parseInt(str);
+            int sid = 0;
+            if(STRisINT.isNumeric(str)){
+                sid  = Integer.parseInt(str);
+            }
+
             list = dao.getAllSteWithFuzzySearch(conn, str, sid);
 
         } catch (Exception e) {

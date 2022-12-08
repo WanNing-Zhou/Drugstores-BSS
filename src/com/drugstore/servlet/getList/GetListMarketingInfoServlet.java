@@ -30,12 +30,11 @@ public class GetListMarketingInfoServlet extends HttpServlet {
 
         String searchstr = req.getParameter("searchstr");
 
-
+        System.out.println(searchstr);
         GetForListService sev = ServiceSingleton.getGetForListService();
 
         List<MarketingInfo> allInfo = sev.getAllMarketingInfoWithFuzzySearch(searchstr);
         String re = JSON.toJSONString(allInfo);
-        System.out.println(searchstr);
         System.out.println(re);
         resp.getWriter().write(re);
     }

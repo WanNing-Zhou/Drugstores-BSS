@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2022/12/5-21:51
  * @description 搜索供应商信息
  */
-@WebServlet("/manager/search/supplier")
+@WebServlet("/manage/search/supplier")
 public class GetListSupplierInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class GetListSupplierInfoServlet extends HttpServlet {
 
         GetForListService sev = ServiceSingleton.getGetForListService();
 
-        List<SupplierInfo> allInfo = sev.getAllSupplierInfo();
+        List<SupplierInfo> allInfo = sev.getAllSupplierInfoWithFuzzySearch(searchstr);
 
         String re = JSON.toJSONString(allInfo);
 
