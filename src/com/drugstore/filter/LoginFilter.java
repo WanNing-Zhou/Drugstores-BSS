@@ -45,8 +45,8 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
 //        request.setCharacterEncoding("utf-8");
-//        response.setCharacterEncoding("utf-8");
-//        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=UTF-8");
 
 //      可以替代sethearder和setcharsetencoding来解决乱码问题
 //        resp.setContentType("text/html; charset=UTF-8");
