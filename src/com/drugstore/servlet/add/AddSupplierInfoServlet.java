@@ -25,11 +25,14 @@ public class AddSupplierInfoServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+
         AddInfoService sev = ServiceSingleton.getAddInfoService();
         String name = req.getParameter("name");
         String agent = req.getParameter("agent");
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
+        System.out.println(name);
+        System.out.println(agent);
 
         //将结果返回给前端页面
         boolean b = sev.addSupplierInfo(name,agent,phone,address);

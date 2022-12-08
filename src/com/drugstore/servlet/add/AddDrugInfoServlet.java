@@ -30,7 +30,7 @@ public class AddDrugInfoServlet extends HttpServlet {
         String name = req.getParameter("name");
         String supplierID = req.getParameter("supplierID");
         String batchNumber = req.getParameter("batchNumber");
-        String placeOfOrigion = req.getParameter("placeOfOrigion");
+        String placeOfOrigin = req.getParameter("placeOfOrigin");
         String categoryOfOwnership = req.getParameter("categoryOfOwnership");
         String purchasingPrice = req.getParameter("purchasingPrice");
         String unitPrice = req.getParameter("unitPrice");
@@ -44,7 +44,7 @@ public class AddDrugInfoServlet extends HttpServlet {
 
 //        添加药品出错
 //        将结果返回给前端页面
-        boolean b = sev.addDrugInfo(id,name,supplierID,batchNumber,placeOfOrigion,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry);
+        boolean b = sev.addDrugInfo(id,name,supplierID,batchNumber,placeOfOrigin,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry);
         System.out.println(b);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);

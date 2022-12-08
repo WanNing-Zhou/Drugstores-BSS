@@ -18,7 +18,7 @@ import java.io.IOException;
  * @description 删除供应商接口
  */
 
-@WebServlet("/manager/delete/supplier")
+@WebServlet("/manage/delete/supplier")
 public class DeleteSupplierInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

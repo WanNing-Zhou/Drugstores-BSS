@@ -88,6 +88,7 @@ public class AddInfoServiceImpl implements AddInfoService {
             Date doe = new Date(sdf.parse(dateOfExpiry).getTime());
 
             DrugInfo drug = new DrugInfo(drugID,name,sID,batchNumber,placeOfOrigin,categoryOfOwnership,pp,up,inv,dop,doe);
+//            System.out.println(drug);
             num = drugInfoDAO.insert(conn,drug);
 
         } catch (Exception e) {
@@ -118,7 +119,7 @@ public class AddInfoServiceImpl implements AddInfoService {
         try {
             EmployeesInfoDAO dao = DAOSingleton.getEmployeesInfoDAO();
             conn = JDBCUtils.getConnection();
-            EmployeesInfo emp = new EmployeesInfo(name,password,postion,postion);
+            EmployeesInfo emp = new EmployeesInfo(name,password,postion,phone);
             num = dao.insert(conn,emp);
         } catch (Exception e) {
             e.printStackTrace();

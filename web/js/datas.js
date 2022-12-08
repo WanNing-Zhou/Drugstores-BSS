@@ -24,7 +24,14 @@ function showListEndPlus(datas,updateUrl,deleteUrl,deleteByWhat,isdrug,params){
         for(let pa = 0; pa < params.length; pa++){//遍历对象
             var td = document.createElement('td');
             // console.log(params[pa])
-            td.innerHTML=datas[i][params[pa]];//
+
+            if (params[pa].indexOf("time")>-1){
+                td.innerHTML = parseTime(datas[i][params[pa]])
+            }else{
+                td.innerHTML=datas[i][params[pa]];//
+            }
+
+
             //k得到的是属性名 obj[k]得到的是属性值
             tr.appendChild(td);
         }
@@ -265,6 +272,22 @@ function getDate(Requesturl,updateUrl,deleteUrl,deleteByWhat,isDrug,params){
         .catch((error) => {
             alert(error)
         })
+}
+
+
+//将字符串时间戳转换为时间
+function parseTime(timpstamp) {
+
+    var date = new Date(parseInt(timpstamp));
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+
+    var h = (date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()) + ':';
+    var m = (date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()) + ':';
+    var s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
+    var strDate = Y + M + D + h + m + s;
+    return strDate;
 }
 
 

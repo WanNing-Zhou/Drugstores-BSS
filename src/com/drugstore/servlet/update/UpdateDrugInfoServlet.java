@@ -30,7 +30,7 @@ public class UpdateDrugInfoServlet extends HttpServlet {
         String name = req.getParameter("name");
         String supplierID = req.getParameter("supplierID");
         String batchNumber = req.getParameter("batchNumber");
-        String placeOfOrigion = req.getParameter("placeOfOrigion");
+        String placeOfOrigion = req.getParameter("placeOfOrigin");
         String categoryOfOwnership = req.getParameter("categoryOfOwnership");
         String purchasingPrice = req.getParameter("purchasingPrice");
         String unitPrice = req.getParameter("unitPrice");

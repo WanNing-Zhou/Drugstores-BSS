@@ -38,8 +38,6 @@ public class AddMarketingInfoServlet extends HttpServlet {
         boolean b = sev.addMarketingInfo(drugID,drugName,unitPrice,number,customerID);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
-        resp.sendRedirect(req.getContextPath()+"/HTML/manager/sale.html");
-
 
         //通过获取session域内的position来获取用户的职位重定向到指定页面
         HttpSession session = req.getSession();

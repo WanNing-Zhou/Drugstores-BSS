@@ -100,6 +100,7 @@ public class UpdateServiceImpl implements UpdateService {
         try {
             conn = JDBCUtils.getConnection();
             EmployeesInfoDAO dao = DAOSingleton.getEmployeesInfoDAO();
+            System.out.println(employeesID);
             int id = Integer.parseInt(employeesID);
             EmployeesInfo empl = new EmployeesInfo(id,name,password,position,phone);
 

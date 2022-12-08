@@ -43,7 +43,7 @@ public class UpdateEmployeesInfoServlet extends HttpServlet {
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
 
-        resp.sendRedirect(req.getContextPath()+" /HTML/manager/staff.html");
+        resp.sendRedirect(req.getContextPath()+"/HTML/manager/staff.html");
 
     }
 }

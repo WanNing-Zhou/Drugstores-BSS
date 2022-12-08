@@ -57,20 +57,19 @@
                     <i class="iconfont">&#xe91d;</i><a href="../staff/staffReturnGoodsPage.html">退货管理</a>
                    </div>
               </li>
-              
+            </ul>
         </div>
         <!-- 表单 -->
         <div class="table">
             <table>
                <thead>
                     <tr>
-
                         <td>药品ID</td>
                         <td>名称</td>
                         <td>供应商ID</td>
                         <td>生产批号</td>
-                        <td>产地</td>
-                        <td>所属类型</td>
+                        <td >产地</td>
+                        <td >所属类型</td>
                         <td>进价</td>
                         <td>单价</td>
                         <td>库存</td>
@@ -78,8 +77,6 @@
                         <td>有效期至</td>
                         <!-- <td>操作</td>
                         <td class="insert"><a href="../manager/customer-insert.html">增加(<span>+</span>)</a></td> -->
-
-                        
                     </tr>
                </thead>
                <tbody>
@@ -285,14 +282,12 @@
         // }
         //表格hover
 
-        let params = ['drugID','name','supplierID','batchNumber','placeOfOrigion','categoryOfOwnership','purchasingPrice','unitPrice','inventory','dateOfProduction','dateOfExpiry']
-        let requestUrl = hostURL+"/manager/all/drug";
+        let params = ['drugID','name','supplierID','batchNumber','placeOfOrigin','categoryOfOwnership','purchasingPrice','unitPrice','inventory','dateOfProduction','dateOfExpiry']
+        let requestUrl = hostURL+"/all/drug";
         let deleteUrl = "";
         let updateUrl = "";
         let deleteByWhat="";
-        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,false,params);
-
-
+        getDate(requestUrl,updateUrl,deleteUrl,deleteByWhat,true,params);
 
 
 

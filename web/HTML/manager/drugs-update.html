@@ -47,7 +47,7 @@
             <div>
 				<label><span>*</span>产地：</label>
 				<div>
-					<input name="placeOfOrigion" id="placeOfOrigion" type="text" class="input-text" >
+					<input name="placeOfOrigin" id="placeOfOrigin" type="text" class="input-text" >
 				</div>
 			</div>
             <div>
@@ -103,16 +103,33 @@
 		let obj = getURLParams();
 
 		var durgID = document.querySelector('#drugID');
+		drugID.setAttribute("readOnly",'true');
 		var batchNumber = document.querySelector('#batchNumber');
+		batchNumber.setAttribute("readOnly",'true');
 		var supplierID = document.querySelector('#supplierID');
+		batchNumber.setAttribute("readOnly",'true');
 		var dname = document.querySelector('#name');
-		var placeOfOrigin = document.querySelector('#placeOfOrigion');
+		batchNumber.setAttribute("readOnly",'true');
+
+		var placeOfOrigin = document.querySelector('#placeOfOrigin');
+		placeOfOrigin.setAttribute("readOnly",'true');
+
 		var categoryOfOwnership = document.querySelector('#categoryOfOwnership');
+		categoryOfOwnership.setAttribute("readOnly",'true');
+
 		var purchasingPrice = document.querySelector('#purchasingPrice');
+		purchasingPrice.setAttribute("readOnly",'true');
+
 		var unitPrice = document.querySelector('#unitPrice');
 		var inventory = document.querySelector('#inventory');
+		inventory.setAttribute("readOnly",'true');
+
 		var dateOfProduction = document.querySelector("#dateOfProduction");
+		dateOfProduction.setAttribute("readOnly",'true');
+
 		var dateOfExpiry = document.querySelector('#dateOfExpiry');
+		dateOfExpiry.setAttribute("readOnly",'true');
+
 
 		console.log(obj);
 
@@ -124,7 +141,7 @@
 		supplierID.value = obj.supplierID;
 		supplierID.setAttribute("readOnly",'true');
 		dname.value = obj.name;
-		placeOfOrigin.value = obj.placeOfOrigion;
+		placeOfOrigin.value = obj.placeOfOrigin;
 		categoryOfOwnership.value =obj.categoryOfOwnership;
 		purchasingPrice.value = obj.purchasingPrice;
 		unitPrice.value=obj.unitPrice;
