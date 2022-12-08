@@ -41,7 +41,7 @@ public class AddReturnInfoServlet extends HttpServlet {
         //通过获取session域内的position来获取用户的职位重定向到指定页面
         HttpSession session = req.getSession();
         String position =(String)session.getAttribute("position");
-        if(position=="经理"){
+        if(position.equals("经理")){
             resp.sendRedirect(req.getContextPath()+"/HTML/manager/returnGoods.html");
         }else{
             resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffReturnGoodsPage.html");
