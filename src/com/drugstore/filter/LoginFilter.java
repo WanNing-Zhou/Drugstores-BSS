@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author 周万宁
  * @className LoginFilter
  * @create 2022/12/5-10:35
- * @description 拦截未登录访问操作
+ * @description 拦截未登录访问操作,权限验证操作
  */
 //@WebFilter("/*")
 public class LoginFilter implements Filter {
@@ -81,7 +81,7 @@ public class LoginFilter implements Filter {
             }else if("经理".equals(position)){
 
                 if(requestUri.indexOf("/staff/") > -1){
-                    response.getWriter().write("经理是不是被降职了??!!!");
+                    response.getWriter().write("404");
                 }else {
 
                     filterChain.doFilter(request,response);
@@ -89,7 +89,7 @@ public class LoginFilter implements Filter {
 
             }else if("店员".equals(position)){
                 if(requestUri.indexOf("/manager/") > -1){
-                    response.getWriter().write("抱歉,您无权访问");
+                    response.getWriter().write("404");
                 }else {
                     filterChain.doFilter(request,response);
                 }
