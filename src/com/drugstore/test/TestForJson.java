@@ -2,7 +2,9 @@ package com.drugstore.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.drugstore.bean.CustomerInfo;
 import com.drugstore.factory.ServiceSingleton;
+import com.drugstore.service.GetForListService;
 import org.junit.Test;
 
 import java.util.List;

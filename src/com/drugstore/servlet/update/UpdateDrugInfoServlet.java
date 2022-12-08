@@ -39,7 +39,7 @@ public class UpdateDrugInfoServlet extends HttpServlet {
         String dateOfExpiry = req.getParameter("dateOfExpiry");
 
         //将结果返回给前端页面
-        boolean b = sev.updateDrugInfo(drugID,name,supplierID,batchNumber,placeOfOrigion,categoryOfOwnership,purchasingPrice,unitPrice,inventory,dateOfProduction,dateOfExpiry);
+        boolean b = sev.updateDrugInfo(drugID,unitPrice);
         String re = JSON.toJSONString(b);
         resp.getWriter().write(re);
 
