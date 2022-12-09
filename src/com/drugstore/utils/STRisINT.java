@@ -1,7 +1,7 @@
 package com.drugstore.utils;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className STRisINT
  * @create 2022/12/8-19:19
  * @description 判断字符串是否是数字

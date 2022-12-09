@@ -59,6 +59,14 @@ public class ReturnInfoDAOImpl extends BaseDAO<ReturnInfo> implements ReturnInfo
         return instance;
     }
 
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 周万宁
+     * @Description 获取最后一条数据的id
+     * @Date 12:50 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     @Override
     public int getTheLastListNumber(Connection conn) {
         int num = 0;
@@ -81,6 +89,14 @@ public class ReturnInfoDAOImpl extends BaseDAO<ReturnInfo> implements ReturnInfo
         List<ReturnInfo> forList = getForList(conn, sql);
         return forList;
     }
+/**
+ * @MethodName getAllRetWithFuzzySearch
+ * @Author 卢明德
+ * @Description 搜索退货西信息
+ * @Date 12:50 2022/12/9
+ * @Param [conn, incompleteName, customerID]
+ * @return java.util.List<com.drugstore.bean.ReturnInfo>
+ **/
 
     @Override
     public List<ReturnInfo> getAllRetWithFuzzySearch(Connection conn, String incompleteName, int customerID) {

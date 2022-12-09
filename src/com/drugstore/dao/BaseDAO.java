@@ -153,6 +153,7 @@ public abstract class BaseDAO<T> {
         return null;
     }
 
+
     public BigDecimal getForLastListCurrentAmount(Connection conn, String sql, Object... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;

@@ -47,13 +47,22 @@ public interface MarketingInfoDAO {
 
     MarketingInfo getByID(Connection conn,int id);
 
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description 获取销售表的最后一个ID
+     * @Date 11:32 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
+
     int getTheLastListNumber(Connection conn);
 
 
 
     /**
      * @MethodName getAllMkt
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有销售信息,用于展示
      * @Date 17:34 2022/12/2
      * @Param [conn]
@@ -61,6 +70,14 @@ public interface MarketingInfoDAO {
      **/
     List<MarketingInfo> getAllMkt(Connection conn);
 
+    /**
+     * @MethodName getAllMktWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索销售信息
+     * @Date 11:33 2022/12/9
+     * @Param [conn, incompleteName, customerID]
+     * @return java.util.List<com.drugstore.bean.MarketingInfo>
+     **/
     List<MarketingInfo> getAllMktWithFuzzySearch(Connection conn, String incompleteName, int customerID);
 
 

@@ -9,7 +9,7 @@ import java.util.List;
  * @author 周万宁
  * @className getInstanceService
  * @create 2022/12/3-17:24
- * @description 信息查询操作接口,用于返回实例
+ * @description 信息查询操作接口,用于返回实例(经商议取消该服务)
  */
 public interface GetInstanceService {
     /**

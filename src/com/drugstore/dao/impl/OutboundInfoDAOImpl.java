@@ -18,6 +18,15 @@ import java.util.List;
 public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements OutboundInfoDAO {
 
 
+    /**
+     * @MethodName insert
+     * @Author 周万宁
+     * @Description 新增出库信息
+     * @Date 12:44 2022/12/9
+     * @Param [conn, outboundInfo]
+     * @return int
+     **/
+
     @Override
     public int insert(Connection conn, OutboundInfo outboundInfo) {
         String sql ="insert into outboundinfo (drugID,drugName,purchasingPrice,number,amount,supplierID,time) values(?,?,?,?,?,?,?)";
@@ -53,6 +62,14 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
         return instance;
     }
 
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description 获取出库信息最后一条id
+     * @Date 12:45 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     @Override
     public int getTheLastListNumber(Connection conn) {
         int num = 0;
@@ -63,7 +80,7 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
 
     /**
      * @MethodName getALLObi
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有出库信息,用来展示
      * @Date 21:45 2022/12/2
      * @Param [connection]
@@ -77,6 +94,14 @@ public class OutboundInfoDAOImpl extends BaseDAO<OutboundInfo> implements Outbou
         return forList;
     }
 
+    /**
+     * @MethodName getALLObiWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索出库信息
+     * @Date 12:45 2022/12/9
+     * @Param [conn, incompleteName, supplierID]
+     * @return java.util.List<com.drugstore.bean.OutboundInfo>
+     **/
     @Override
     public List<OutboundInfo> getALLObiWithFuzzySearch(Connection conn, String incompleteName, int supplierID) {
         String sql = "select * from outboundinfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or supplierID like \'" + "%" + supplierID + "%" + "\'";

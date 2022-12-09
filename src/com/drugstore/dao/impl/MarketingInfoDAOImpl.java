@@ -63,6 +63,14 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
         return instance;
     }
 
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description  获取销售信息最后一条ID
+     * @Date 12:39 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     @Override
     public int getTheLastListNumber(Connection conn) {
         int num = 0;
@@ -73,7 +81,7 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
 
     /**
      * @MethodName getAllMkt
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有销售信息表用于展示
      * @Date 21:35 2022/12/2
      * @Param [conn]
@@ -87,6 +95,14 @@ public class MarketingInfoDAOImpl extends BaseDAO<MarketingInfo> implements Mark
         return forList;
     }
 
+    /**
+     * @MethodName getAllMktWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索销售信息
+     * @Date 12:43 2022/12/9
+     * @Param [conn, incompleteName, customerID]
+     * @return java.util.List<com.drugstore.bean.MarketingInfo>
+     **/
     @Override
     public List<MarketingInfo> getAllMktWithFuzzySearch(Connection conn, String incompleteName, int customerID) {
         String sql = "select * from marketinginfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or customerID like \'" + "%" + customerID + "%" + "\'";

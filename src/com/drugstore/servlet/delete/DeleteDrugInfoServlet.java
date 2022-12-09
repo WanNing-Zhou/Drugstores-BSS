@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className DeleteDrugInfoServlet
  * @create 2022/12/5-20:33
  * @description 删除药品信息

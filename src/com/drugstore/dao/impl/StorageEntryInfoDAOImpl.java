@@ -62,7 +62,7 @@ public class StorageEntryInfoDAOImpl extends BaseDAO<StorageEntryInfo> implement
 
     /**
      * @MethodName getAllSte
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有入库信息用于展示
      * @Date 22:07 2022/12/2
      * @Param [conn]
@@ -75,12 +75,29 @@ public class StorageEntryInfoDAOImpl extends BaseDAO<StorageEntryInfo> implement
         return forList;
     }
 
+    /**
+     * @MethodName getAllSteWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索入库西信息
+     * @Date 12:52 2022/12/9
+     * @Param [conn, incompleteName, supplierID]
+     * @return java.util.List<com.drugstore.bean.StorageEntryInfo>
+     **/
     @Override
     public List<StorageEntryInfo> getAllSteWithFuzzySearch(Connection conn, String incompleteName, int supplierID) {
         String sql = "select * from storageentryinfo where drugName like \'" + "%" + incompleteName + "%" + "\'" + "or supplierID like \'" + "%" + supplierID + "%" + "\'";
         List<StorageEntryInfo> forList = getForList(conn, sql);
         return forList;
     }
+
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description 获取最后一条入库id
+     * @Date 12:53 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
 
     @Override
     public int getTheLastListNumber(Connection conn) {

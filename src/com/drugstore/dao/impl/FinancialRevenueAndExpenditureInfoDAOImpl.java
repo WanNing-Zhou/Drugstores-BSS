@@ -49,7 +49,7 @@ public class FinancialRevenueAndExpenditureInfoDAOImpl extends BaseDAO<Financial
 
     /**
      * @MethodName getAllFre
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有财政收支记录,用于展示
      * @Date 21:23 2022/12/2
      * @Param [conn]
@@ -62,6 +62,14 @@ public class FinancialRevenueAndExpenditureInfoDAOImpl extends BaseDAO<Financial
         return forList;
     }
 
+    /**
+     * @MethodName getTheLastCurrentAmount
+     * @Author 卢明德
+     * @Description 获取最后的金额
+     * @Date 12:39 2022/12/9
+     * @Param [conn]
+     * @return java.math.BigDecimal
+     **/
     @Override
     public BigDecimal getTheLastCurrentAmount(Connection conn) {
         String sql = "select * from financialrevenueandexpenditureinfo";

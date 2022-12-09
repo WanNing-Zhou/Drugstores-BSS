@@ -45,7 +45,7 @@ public interface EmployeesInfoDAO {
 
     /**
      * @MethodName getAllEmpl
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有员工信息,用于在经历页面展示员工信息
      * @Date 16:15 2022/12/2
      * @Param [connection]
@@ -53,11 +53,20 @@ public interface EmployeesInfoDAO {
      **/
     List<EmployeesInfo> getAllEmpl(Connection conn);
 
+    /**
+     * @MethodName getAllWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索员工
+     * @Date 11:30 2022/12/9
+     * @Param [conn, incompleteName, incompletePhone]
+     * @return java.util.List<com.drugstore.bean.EmployeesInfo>
+     **/
+
     List<EmployeesInfo> getAllWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone);
 
     /**
      * @MethodName deleteByID
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据员工ID删除员工信息
      * @Date 16:18 2022/12/2
      * @Param [conn, id]
@@ -65,9 +74,10 @@ public interface EmployeesInfoDAO {
      **/
     int deleteByID(Connection conn,int id);
 
+
     /**
      * @MethodName getByIDAndPassword
-     * @Author 周万宁
+     * @Author 李建昌
      * @Description 根据id和密码获取员工,用于验证员工用户是否存在
      * @Date 16:21 2022/12/2
      * @Param [conn, id, password]

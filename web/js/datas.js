@@ -291,9 +291,10 @@ function parseTime(timpstamp) {
 }
 
 
+
 //退出功能
 function EXITFN(){
-    //发动get请求
+    //向服务器发动get请求
     fetch("/exit",{
         method:'GET'
     }).then((resp)=>{

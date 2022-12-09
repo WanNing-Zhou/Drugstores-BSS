@@ -43,6 +43,14 @@ public interface ReturnInfoDAO {
      **/
     ReturnInfo getByID(Connection conn,int id);
 
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 周万宁
+     * @Description 获取退货表单的最后一个ID
+     * @Date 11:34 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     int getTheLastListNumber(Connection conn);
 
     /**
@@ -54,6 +62,15 @@ public interface ReturnInfoDAO {
      * @return java.util.List<com.drugstore.bean.ReturnInfo>
      **/
     List<ReturnInfo> getAllRet(Connection conn);
+
+    /**
+     * @MethodName getAllRetWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索退货信息
+     * @Date 11:34 2022/12/9
+     * @Param [conn, incompleteName, customerID]
+     * @return java.util.List<com.drugstore.bean.ReturnInfo>
+     **/
 
     List<ReturnInfo> getAllRetWithFuzzySearch(Connection conn, String incompleteName, int customerID);
 

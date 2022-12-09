@@ -136,12 +136,11 @@ public class AddInfoServiceImpl implements AddInfoService {
     /**
      * @MethodName addFinancialRevenueAndExpenditureInfo
      * @Author 周万宁
-     * @Description
+     * @Description添加财政收支信息
      * @Date 21:07 2022/12/3
      * @Param [billID, typeOfBill, profitAndLoss, currentAmount, time]
      * @return boolean
      **/
-
     @Override
     public boolean addFinancialRevenueAndExpenditureInfo(String billID, String typeOfBill, String profitAndLoss, String currentAmount) {
         Connection conn = null;
@@ -181,7 +180,6 @@ public class AddInfoServiceImpl implements AddInfoService {
      * @return boolean
      **/
 
-
     @Override
     public boolean addMarketingInfo(String drugID, String drugName,String unitPrice, String number,  String customerID) {
         Connection conn = null;
@@ -214,31 +212,41 @@ public class AddInfoServiceImpl implements AddInfoService {
             FinancialRevenueAndExpenditureInfo fre = new FinancialRevenueAndExpenditureInfo(newlyIncreasedInfoNum, "marketing", amount, currentAmount, nowtime);
             //新增财政收支信息
             num = financialRevenueAndExpenditureInfoDAO.insert(conn, fre);
-            System.out.println(num);
+//            System.out.println(num);
             //更新药品库存
             num = 0;
+
             DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
+            //获取药品列表
             list = drugInfoDAO.getByID(conn, drugID);
             while (numb > 0) {
+                //遍历列表
                 for (int i = 0; i < list.size(); i++) {
                     DrugInfo drugInfo = list.get(i);
+                    //有效期至
                     Date ED = drugInfo.getDateOfExpiry();
+                    //获取库存数量
                     int inventory = drugInfo.getInventory();
                     LocalDate date = LocalDate.now();
+                    //用ed时间于我国得现在时间做比较
                     if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory > 0) {
+                        //获取药品
                         DrugInfo drugInfo1 = list.get(i);
                         String nearBatchNumber = drugInfo1.getBatchNumber();
+                        //如果库存数量不够,销售库存数量的药品
                         if (numb <= drugInfo1.getInventory()) {
                             num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() - numb);
                             numb = 0;
                             break;
                         }
+                        //如果够的话就卖出销售数量的药品
                         if (numb > drugInfo1.getInventory()) {
                             num = drugInfoDAO.DeleteByIDAndBatch(conn, drugID, nearBatchNumber);
                             numb = numb - drugInfo1.getInventory();
                         }
                     }
                 }
+                //如果没有药品就跳出
                 if (num == 0) {
                     break;
                 }
@@ -334,7 +342,6 @@ public class AddInfoServiceImpl implements AddInfoService {
      * @Param [drugID, drugName, purchasingPrice, number, customerId]
      * @return boolean
      **/
-
     @Override
     public boolean addReturnInfo(String drugID, String drugName, String purchasingPrice, String number,  String customerId) {
         Connection conn = null;
@@ -372,19 +379,21 @@ public class AddInfoServiceImpl implements AddInfoService {
             num = 0;
             DrugInfoDAO drugInfoDAO = DAOSingleton.getDrugInfoDAO();
             list = drugInfoDAO.getByID(conn, drugID);
+            //遍历全部药品
             for (int i = 0; i < list.size(); i++) {
                 DrugInfo drugInfo = list.get(i);
                 Date ED = drugInfo.getDateOfExpiry();
                 int inventory = drugInfo.getInventory();
                 LocalDate date = LocalDate.now();
+                //如果没过期
                 if (ED.compareTo(java.util.Date.from(date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant())) > 0 && inventory >= 0) {
                     DrugInfo drugInfo1 = list.get(i);
                     String nearBatchNumber = drugInfo1.getBatchNumber();
+                    //更新药品信息
                     num = drugInfoDAO.updateInventory(conn, drugID, nearBatchNumber, drugInfo1.getInventory() + numb);
                     break;
                 }
             }
-            System.out.println(num);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -465,6 +474,14 @@ public class AddInfoServiceImpl implements AddInfoService {
         return false;
     }
 
+    /**
+     * @MethodName addSupplierInfo
+     * @Author 周万宁
+     * @Description 添加供应商信息
+     * @Date 13:19 2022/12/9
+     * @Param [name, agent, phone, address]
+     * @return boolean
+     **/
     @Override
     public boolean addSupplierInfo(String name, String agent, String phone, String address) {
         Connection conn = null;

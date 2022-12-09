@@ -12,14 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className DeleteSupplierInfoServlet
  * @create 2022/12/5-20:40
  * @description 删除供应商接口
  */
 
+//请求路径
 @WebServlet("/manage/delete/supplier")
+//继承HTTPSevlet类
 public class DeleteSupplierInfoServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

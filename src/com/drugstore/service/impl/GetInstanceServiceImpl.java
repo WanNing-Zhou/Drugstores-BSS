@@ -12,7 +12,7 @@ import java.sql.Connection;
  * @author 周万宁
  * @className GetInstanceServiceImpl
  * @create 2022/12/3-21:57
- * @description 获取实例服务具体实现
+ * @description 获取实例服务具体实现(经商议取消该服务)
  */
 public class GetInstanceServiceImpl implements GetInstanceService {
     /**

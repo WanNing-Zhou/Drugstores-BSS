@@ -9,7 +9,7 @@ import com.drugstore.utils.JDBCUtils;
 import java.sql.Connection;
 
 /**
- * @author 周万宁
+ * @author 李建昌
  * @className LoginService
  * @create 2022/12/3-12:33
  * @description 用于登录验证
@@ -31,13 +31,19 @@ public class LoginServiceImpl implements LoginService {
         EmployeesInfo empl = null;
         String postion = null;
         try {
+            //获取数据库连接(Connection实例)
             conn = JDBCUtils.getConnection();
+            //获取一个dao实例
             emplDAO= DAOSingleton.getEmployeesInfoDAO();
+            //调用dao内的这个方法,获取员工信息(getByIDAndPassword会返回一个员工实例)
             empl = emplDAO.getByIDAndPassword(conn, id, password);
+
+            //获取职位
             postion = empl.getPosition();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            //关闭数据库连接
             JDBCUtils.closeResource(conn,null);
         }
         return postion;

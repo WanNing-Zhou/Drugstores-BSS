@@ -101,7 +101,7 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
 
     /**
      * @MethodName getAllDrug
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有药品用于展示
      * @Date 20:52 2022/12/2
      * @Param [conn]
@@ -109,10 +109,18 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
      **/
     @Override
     public List<DrugInfo> getAllDrug(Connection conn) {
-        String sql = "select * from druginfo  ";
+        String sql = "select * from druginfo";
         List<DrugInfo> forList = getForList(conn, sql);
         return forList;
     }
+    /**
+     * @MethodName getAllDrugWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索药品信息
+     * @Date 12:36 2022/12/9
+     * @Param [conn, incompleteName, incompleteCategoryOfOwnership]
+     * @return java.util.List<com.drugstore.bean.DrugInfo>
+    **/
 
     @Override
     public List<DrugInfo> getAllDrugWithFuzzySearch(Connection conn, String incompleteName, String incompleteCategoryOfOwnership) {
@@ -123,7 +131,7 @@ public class DrugInfoDAOImpl extends BaseDAO<DrugInfo> implements DrugInfoDAO {
 
     /**
      * @MethodName DeleteByIDAndBatch
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据ID以及药品批次号删除药品
      * @Date 20:53 2022/12/2
      * @Param [conn, ID, batchNumber]

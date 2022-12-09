@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className GetListSupplierInfoServlet
  * @create 2022/12/5-21:51
  * @description 搜索供应商信息

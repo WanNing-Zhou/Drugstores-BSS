@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className GetListMarketingInfoServlet
  * @create 2022/12/5-21:38
  * @description 搜索销售信息接口

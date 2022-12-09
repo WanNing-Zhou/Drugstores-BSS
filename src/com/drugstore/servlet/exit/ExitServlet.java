@@ -9,18 +9,24 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @author 周万宁
+ * @author 李建昌
  * @className ExitServlet
  * @create 2022/12/8-2:53
  * @description 退出功能
  */
+
+
+//请求地址
 @WebServlet("/exit")
 public class ExitServlet extends HttpServlet {
+    //请求method
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //清除session域
+
+        //获取session实例
         HttpSession session = req.getSession();
+        //根据key值清除session中的信息
         session.removeAttribute("position");
         session.removeAttribute("ID");
     }

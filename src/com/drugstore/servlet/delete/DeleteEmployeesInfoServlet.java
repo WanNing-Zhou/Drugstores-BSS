@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className DeleteEmployeesInfoServlet
  * @create 2022/12/5-20:38
  * @description 删除员工信息

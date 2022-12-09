@@ -42,6 +42,14 @@ public interface StorageEntryInfoDAO {
      * @return com.drugstore.bean.StorageEntryInfo
      **/
     StorageEntryInfo getByID(Connection conn,int id);
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description 获取入库表单的最后一条id
+     * @Date 11:35 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     int getTheLastListNumber(Connection conn);
 
     /**
@@ -54,6 +62,14 @@ public interface StorageEntryInfoDAO {
      **/
     List<StorageEntryInfo> getAllSte(Connection conn);
 
+    /**
+     * @MethodName getAllSteWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索入库信息
+     * @Date 11:35 2022/12/9
+     * @Param [conn, incompleteName, supplierID]
+     * @return java.util.List<com.drugstore.bean.StorageEntryInfo>
+     **/
     List<StorageEntryInfo> getAllSteWithFuzzySearch(Connection conn, String incompleteName, int supplierID);
 
 

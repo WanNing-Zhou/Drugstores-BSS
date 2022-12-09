@@ -23,6 +23,14 @@ public interface SupplierInfoDAO {
      **/
     int insert(Connection conn, SupplierInfo supplierInfo);
 
+    /**
+     * @MethodName update
+     * @Author 卢明德
+     * @Description 更改销售信息
+     * @Date 11:36 2022/12/9
+     * @Param [conn, supplierInfo]
+     * @return int
+     **/
     int update(Connection conn, SupplierInfo supplierInfo);
     /**
      * @MethodName delete
@@ -54,6 +62,14 @@ public interface SupplierInfoDAO {
      * @return com.drugstore.bean.SupplierInfo
      **/
     List<SupplierInfo> getAllSupplier(Connection conn);
+    /**
+     * @MethodName getAllSupplierWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索供应商信息
+     * @Date 11:36 2022/12/9
+     * @Param [conn, incompleteName, incompleteAgent, incompletePhone, incompleteAddress]
+     * @return java.util.List<com.drugstore.bean.SupplierInfo>
+     **/
 
     List<SupplierInfo> getAllSupplierWithFuzzySearch(Connection conn, String incompleteName, String incompleteAgent, String incompletePhone, String incompleteAddress);
 

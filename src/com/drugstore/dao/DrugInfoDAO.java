@@ -63,20 +63,28 @@ public interface DrugInfoDAO {
 
     /**
      * @MethodName getAllDrug
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有药品信息
      * @Date 16:16 2022/12/2
      * @Param [conn]
      * @return java.util.List<com.drugstore.bean.DrugInfo>
      **/
     List<DrugInfo> getAllDrug(Connection conn);
+    /**
+     * @MethodName getAllDrugWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索药品信息
+     * @Date 11:29 2022/12/9
+     * @Param [conn, incompleteName, incompleteCategoryOfOwnership]
+     * @return java.util.List<com.drugstore.bean.DrugInfo>
+     **/
 
     List<DrugInfo> getAllDrugWithFuzzySearch(Connection conn, String incompleteName, String incompleteCategoryOfOwnership);
 
 
     /**
      * @MethodName DeleteByIDAndBatch
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据ID与批次号删除药品信息
      * @Date 18:09 2022/12/2
      * @Param [conn, ID, batchNumber]

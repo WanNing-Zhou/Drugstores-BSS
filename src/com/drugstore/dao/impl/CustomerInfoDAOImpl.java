@@ -34,14 +34,12 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
     
     /**
      * @MethodName deleteByPhone
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 删除一条数据,返回影响数据的条数,如果条数为0,则删除失败, >0删除成功
      * @Date 20:04 2022/12/2
      * @Param [conn, phone]
      * @return int
      **/
-
-
     @Override
     public int deleteByPhone(Connection conn, String phone) {
         String sql="delete from customerinfo where phone = ?";
@@ -82,7 +80,7 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
 
     /**
      * @MethodName getAllCust
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 返回所有用户信息,用于显示
      * @Date 20:16 2022/12/2
      * @Param [conn]
@@ -91,10 +89,20 @@ public class CustomerInfoDAOImpl extends BaseDAO<CustomerInfo> implements Custom
     @Override
     public List<CustomerInfo> getAllCust(Connection conn) {
         String sql = "select * from customerinfo";
+        //getForList会获取列表实例
         List<CustomerInfo> forList = getForList(conn, sql);
+        //将查询到的结果返回
         return forList;
     }
 
+    /**
+     * @MethodName getAllCustWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索用户信息
+     * @Date 12:35 2022/12/9
+     * @Param [conn, incompleteName, incompletePhone]
+     * @return java.util.List<com.drugstore.bean.CustomerInfo>
+     **/
     @Override
     public List<CustomerInfo> getAllCustWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone) {
         String sql = "select * from customerinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'";

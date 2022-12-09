@@ -32,6 +32,14 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
         return num;
     }
 
+    /**
+     * @MethodName update
+     * @Author 周万宁
+     * @Description 更改供应商信息
+     * @Date 12:56 2022/12/9
+     * @Param [conn, supplierInfo]
+     * @return int
+     **/
     @Override
     public int update(Connection conn, SupplierInfo supplierInfo) {
         String sql = "update supplierinfo set name = ? ,agent = ?,phone = ?,address = ?  where supplierID= ? ";
@@ -41,7 +49,7 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
 
     /**
      * @MethodName delete
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据ID删除供应商信息
      * @Date 18:05 2022/12/2
      * @Param [conn, id]
@@ -71,7 +79,7 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
 
     /**
      * @MethodName getAllSupplier
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有供应商实例,为了展示
      * @Date 22:17 2022/12/2
      * @Param [conn]
@@ -83,6 +91,15 @@ public class SupplierInfoDAOImpl extends BaseDAO<SupplierInfo> implements Suppli
         List<SupplierInfo> forList = getForList(conn, sql);
         return forList;
     }
+
+    /**
+     * @MethodName getAllSupplierWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索供应商
+     * @Date 12:57 2022/12/9
+     * @Param [conn, incompleteName, incompleteAgent, incompletePhone, incompleteAddress]
+     * @return java.util.List<com.drugstore.bean.SupplierInfo>
+     **/
 
     public List<SupplierInfo> getAllSupplierWithFuzzySearch(Connection conn, String incompleteName, String incompleteAgent, String incompletePhone, String incompleteAddress) {
         String sql = "select * from supplierinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or agent like \'" + "%" + incompleteAgent + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'" + "or address like \'" + "%" + incompleteAddress + "%" + "\'";

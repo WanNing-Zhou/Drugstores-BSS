@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 董超群
  * @className GetAllOutboundInfoServiece
  * @create 2022/12/5-15:46
  * @description 获取所有的出库信息

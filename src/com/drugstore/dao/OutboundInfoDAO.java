@@ -43,10 +43,18 @@ public interface OutboundInfoDAO {
      * @return com.drugstore.bean.OutboundInfo
      **/
     OutboundInfo getByID(Connection conn,int id);
+    /**
+     * @MethodName getTheLastListNumber
+     * @Author 卢明德
+     * @Description 获取出库表单的最后一个ID
+     * @Date 11:33 2022/12/9
+     * @Param [conn]
+     * @return int
+     **/
     int getTheLastListNumber(Connection conn);
     /**
      * @MethodName getALLObi
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有的出库信息用于展示
      * @Date 17:56 2022/12/2
      * @Param [connection]
@@ -54,6 +62,14 @@ public interface OutboundInfoDAO {
      **/
     List<OutboundInfo> getALLObi(Connection connection);
 
+    /**
+     * @MethodName getALLObiWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索出库信息
+     * @Date 11:34 2022/12/9
+     * @Param [conn, incompleteName, supplierID]
+     * @return java.util.List<com.drugstore.bean.OutboundInfo>
+     **/
     List<OutboundInfo> getALLObiWithFuzzySearch(Connection conn, String incompleteName, int supplierID);
 
 }

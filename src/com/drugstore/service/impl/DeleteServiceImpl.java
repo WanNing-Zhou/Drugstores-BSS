@@ -20,7 +20,7 @@ public class DeleteServiceImpl implements DeleteService {
 
     /**
      * @MethodName deleteCustomerInfoByPhone
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据phone删除顾客(这个功能有待争议)
      * @Date 18:39 2022/12/4
      * @Param [phone]
@@ -34,7 +34,6 @@ public class DeleteServiceImpl implements DeleteService {
         try {
             conn = JDBCUtils.getConnection();
             CustomerInfoDAO dao = DAOSingleton.getCustomerInfoDAO();
-
             num = dao.deleteByPhone(conn,phone);
 
         } catch (Exception e) {
@@ -42,6 +41,7 @@ public class DeleteServiceImpl implements DeleteService {
         } finally {
             JDBCUtils.closeResource(conn,null);
         }
+
         if(num>0){
             return true;
         }
@@ -50,7 +50,7 @@ public class DeleteServiceImpl implements DeleteService {
 
     /**
      * @MethodName deleteDrugInfo
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据药品Id和批次号删除药品
      * @Date 18:46 2022/12/4
      * @Param [id, batchNumber]
@@ -84,7 +84,7 @@ public class DeleteServiceImpl implements DeleteService {
 
     /**
      * @MethodName deleteEmployeesInfo
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据ID删除员工
      * @Date 18:55 2022/12/4
      * @Param [id]
@@ -118,7 +118,7 @@ public class DeleteServiceImpl implements DeleteService {
 
     /**
      * @MethodName deleteSupplierInfo
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据id删除供应商信息
      * @Date 19:00 2022/12/4
      * @Param [id]

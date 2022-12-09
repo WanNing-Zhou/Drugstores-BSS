@@ -119,6 +119,15 @@ public class UpdateServiceImpl implements UpdateService {
         return false;
     }
 
+    /**
+     * @MethodName updateSupplierInfoDAO
+     * @Author 周万宁
+     * @Description 更改供应商信息
+     * @Date 13:24 2022/12/9
+     * @Param [supplierID, name, agent, phone, address]
+     * @return boolean
+     **/
+
     @Override
     public boolean updateSupplierInfoDAO(String supplierID, String name, String agent, String phone, String address) {
         Connection conn = null;

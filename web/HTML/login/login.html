@@ -37,17 +37,23 @@
 
           btn.onclick = function(){
               let user = {ID:id.value,password:md5(pwd.value)}
+              //fetch请求
               fetch('/login/isuser', {
                   method: 'post',
+                  //调用json.stringify 将一个对象=>json串
                   body: JSON.stringify(user),
                   headers: {
                       'Content-Type': 'application/json'
                   }
+                  //将响应信息转换为json格式
               }).then(resp =>resp.json()
               ).then(resp=>{
+
                   if ("经理"==resp){
+                      //跳转到经理页面
                       location.replace("../manager/customer.html")
                   }else if("店员" == resp){
+                      //跳转到店员也买你
                       location.replace("../staff/staffCustomerPage.html");
                   }else{
                       alert('账号或密码错误，登陆失败');
@@ -55,19 +61,6 @@
               }).catch(err=>{
                   console.log(err)
               })
-              // if(id.value == 'admin' && pwd.value == '123456')
-              // {
-              //     alert('登录成功');
-              //     // 跳转经理页面
-              //     location.replace("../manager/customer.html")
-              // }
-              // else if(id.value == 'staff' && pwd.value == '123456')
-              // {
-              //     // 跳转员工页面
-              //     location.replace("../staff/staffCustomerPage.html");
-              // }
-              // else
-              //     alert('账号或密码错误，登陆失败');
 
           }
       </script>

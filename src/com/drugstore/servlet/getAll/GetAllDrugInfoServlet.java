@@ -14,11 +14,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 董超群
  * @className GetAllDrugInfo
  * @create 2022/12/5-15:31
  * @description 获取所有的药品信息
  */
+//请求路径
 @WebServlet("/all/drug")
 public class GetAllDrugInfoServlet extends HttpServlet {
     @Override
@@ -27,13 +28,16 @@ public class GetAllDrugInfoServlet extends HttpServlet {
         System.out.println("/all/drug被请求");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
+
         GetForListService sev = ServiceSingleton.getGetForListService();
 
         List<DrugInfo> allDrugInfo = sev.getAllDrugInfo();
+        //转换成json格式
         String re = JSON.toJSONString(allDrugInfo);
-
+        //[{"user":"董超群",age:20},{"user":"ljc",age:"22}]
         System.out.println(re);
-        resp.getWriter().write(re);
+
+        resp.getWriter().write(re);//将获取到的数据响应给服务器
 
     }
 }

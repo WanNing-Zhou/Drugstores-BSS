@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className GetListDrugInfoServlet
  * @create 2022/12/5-21:33
  * @description 搜索药品接口
@@ -39,8 +39,7 @@ public class GetListDrugInfoServlet  extends HttpServlet {
         List<DrugInfo> allInfo = sev.getAllDrugInfoWithFuzzySearch(searchstr);
         String re = JSON.toJSONString(allInfo);
 
-        System.out.println(re);
-//        System.out.println(re);
+
         resp.getWriter().write(re);
     }
 }

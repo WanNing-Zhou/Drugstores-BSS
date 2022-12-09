@@ -9,6 +9,11 @@ import netscape.javascript.JSException;
 
 import java.sql.Connection;
 import java.util.List;
+/**
+ * @Author 卢明德,获取最后一条ID
+ * @Description TODO
+ * @Date 13:23 2022/12/9
+ **/
 
 public class GetTheLastListNumberImpl implements GetTheLastListNumber {
 

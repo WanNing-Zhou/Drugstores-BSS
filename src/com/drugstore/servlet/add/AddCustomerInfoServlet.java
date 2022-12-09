@@ -47,16 +47,6 @@ public class AddCustomerInfoServlet  extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffCustomerPage.html");
         }
 
-        //同过获取请求源地址的方法来判断是否是用户
-
-//        String fromURL = req.getHeader("Referer");
-//        if(fromURL.indexOf("manager")>-1){
-//            resp.sendRedirect(req.getContextPath()+"/HTML/manager/customer.html");
-//        }
-//        else{
-//            resp.sendRedirect(req.getContextPath()+"/HTML/staff/staffCustomerPage.html");
-//        }
-
 
 
     }

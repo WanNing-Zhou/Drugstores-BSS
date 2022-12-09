@@ -65,7 +65,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
 
     /**
      * @MethodName getAllEmpl
-     * @Author 周万宁
+     * @Author 董超群
      * @Description 获取所有的员工信息用于展示
      * @Date 21:10 2022/12/2
      * @Param [conn]
@@ -78,6 +78,14 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
         return  forList;
     }
 
+    /**
+     * @MethodName getAllWithFuzzySearch
+     * @Author 卢明德
+     * @Description 搜索员工信息
+     * @Date 12:38 2022/12/9
+     * @Param [conn, incompleteName, incompletePhone]
+     * @return java.util.List<com.drugstore.bean.EmployeesInfo>
+     **/
     @Override
     public List<EmployeesInfo> getAllWithFuzzySearch(Connection conn, String incompleteName, String incompletePhone) {
         String sql = "select employeesID,name,position,phone from employeesinfo where name like \'" + "%" + incompleteName + "%" + "\'" + "or phone like \'" + "%" + incompletePhone + "%" + "\'";
@@ -87,7 +95,7 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
 
     /**
      * @MethodName deleteByID
-     * @Author 周万宁
+     * @Author 卢明德
      * @Description 根据ID删除员工信息
      * @Date 21:13 2022/12/2
      * @Param [conn, id]
@@ -101,9 +109,11 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
         return num;
     }
 
+
+
     /**
      * @MethodName getByIDAndPassword
-     * @Author 周万宁
+     * @Author 李建昌
      * @Description 根据ID与Password获取员工,用来登录操作
      * @Date 21:14 2022/12/2
      * @Param [conn, id, password]
@@ -111,8 +121,11 @@ public class EmployeesInfoDAOImpl extends BaseDAO<EmployeesInfo> implements Empl
      **/
     @Override
     public EmployeesInfo getByIDAndPassword(Connection conn, String id, String password) {
+        //sql语句 ?占位符
         String sql = "select employeesID,name,position,phone from employeesinfo where employeesID = ? and password = ?";
+        //获取一个EmployeeInfo实例
         EmployeesInfo instance = getInstance(conn, sql, id, password);
+        //将实例返回
         return instance;
     }
 }

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author 周万宁
+ * @author 卢明德
  * @className GetListReturnInfoSerlet
  * @create 2022/12/5-21:40
  * @description 搜索退货信息接口
