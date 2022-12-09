@@ -42,12 +42,12 @@ public class LoginServlet extends HttpServlet {
 //        {ID:"看见电视里空间",password:"就看见看到了封杀"}
         String eid = String.valueOf(date.get("ID"));
         String password = String.valueOf(date.get("password"));
-//        System.out.println("ID"+eid);
-//        System.out.println("password"+password);
+        System.out.println("ID"+eid);
+        System.out.println("password"+password);
 
         String userPosition = null;
         userPosition = loginService.userPosition(eid,password);
-//        System.out.println(userPosition);
+        System.out.println(userPosition);
 
         //"经理"==position 不要用 所指向的地址不同,需要用.equals方法来比较值是否相同
         if("经理".equals(userPosition)){

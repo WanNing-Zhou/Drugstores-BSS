@@ -74,7 +74,7 @@ public class LoginFilter implements Filter {
 //            System.out.println(url+"这是登录入口或者静态资源，放行");
             filterChain.doFilter(request, response);
         }else{
-            String position = (String)request.getSession().getAttribute("positin");
+            String position = (String)request.getSession().getAttribute("position");
             System.out.println("position"+position);
             if(position==null||position==""){
                 response.sendRedirect(contextPath+"/HTML/login/login.html");
