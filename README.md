@@ -2,37 +2,37 @@
 
 #### 介绍
 药店进销存系统
+
 用于药店人员对药品的进销存操作
 
-#### 软件架构
-软件架构说明
+本项目采用前后端分离的开发模式,后端主要由servlet实现
 
+适合初学Javaweb的朋友参考
 
-#### 安装教程
+####环境说明
+- idea 2020
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- jdk 12.0
+
+- mySql 8.x
+
+- tomcat 9.x
 
 #### 使用说明
+1. mysql数据库执行database目录下drugstore.sql脚本文件
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+2. idea引入项目资源,
 
-#### 参与贡献
+3. 配置tomcat服务器,井将tomcat服务器的服务器地址改为"http://localhost:8080/"
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+4. tomcat服务器 Applicat context 修改为 "/"
+
+5. 将web\web-inf\lib文件下除fastjson-2.x全部add as library
+
+6. 配置 src/resource/jdbc.properties 文件,将数据库密码与用户名修改成为自己的
+
+7. 如果出现too many connection 报错,可以将上一条文件的初始连接数与最大连接数减少,或者将自己mysql文件的my.ini文件,将最大连接数修改,并重启mysql服务
+
+8. 启动tomcat服务器
 
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
