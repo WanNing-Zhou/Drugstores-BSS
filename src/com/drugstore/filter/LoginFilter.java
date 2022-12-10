@@ -83,7 +83,6 @@ public class LoginFilter implements Filter {
                 if(requestUri.indexOf("/staff/") > -1){
                     response.getWriter().write("404");
                 }else {
-
                     filterChain.doFilter(request,response);
                 }
 

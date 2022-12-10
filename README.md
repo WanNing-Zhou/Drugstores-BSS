@@ -35,4 +35,9 @@
 
 8. 启动tomcat服务器
 
+9.初始登录用户id 10  密码 123456 
+
+####项目在线地址
+[药店进销存系统]http://xn--chq58m1rg.xyz:8080/HTML/login/login.html
+
 

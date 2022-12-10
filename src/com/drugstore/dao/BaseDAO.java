@@ -38,7 +38,7 @@ public abstract class BaseDAO<T> {
     }
 
 
-    // 通用的增删改操作---version 2.0 （考虑上事务）
+    // 通用的增删改操作（考虑上事务）
     public int update(Connection conn, String sql, Object... args) {// sql中占位符的个数与可变形参的长度相同！
         PreparedStatement ps = null;
         try {
@@ -61,7 +61,7 @@ public abstract class BaseDAO<T> {
 
     }
 
-    // 通用的查询操作，用于返回数据表中的一条记录（version 2.0：考虑上事务）
+    // 通用的查询操作，用于返回数据表中的一条记录（考虑上事务）
     public T getInstance(Connection conn, String sql, Object... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
